@@ -1,0 +1,38 @@
+{
+  "id": "./",
+  "name": "Der Kriegstisch",
+  "short_name": "Kriegstisch",
+  "lang": "de",
+  "dir": "ltr",
+  "description": "Interaktiver Taktikkurs mit isometrischen Schlachtanimationen und einem Archiv der Eigenheiten historischer Persönlichkeiten, gemacht für Autorinnen und Autoren.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F3F5F3",
+  "theme_color": "#1F2A33",
+  "categories": [
+    "education",
+    "books"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
