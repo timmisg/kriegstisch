@@ -1,5 +1,5 @@
 /* Service Worker des Kriegstischs: legt alle Dateien beim ersten Start ab, danach läuft die App offline. */
-const CACHE = 'kriegstisch-90e04dfba908';
+const CACHE = 'kriegstisch-1dacfa3ce932';
 const ASSETS = [
   "./",
   "fonts/OFL-BarlowCondensed.txt",
@@ -43,9 +43,18 @@ const ASSETS = [
   "index.html",
   "manifest.webmanifest"
 ];
+// Unterordner mit eigener App und eigenem Service Worker (z. B. hain/): nie aus diesem Cache bedienen.
+const SISTERS = ['hain/'];
+const BASE = new URL(self.registration.scope).pathname;
+function inSister(url) {
+  if (url.origin !== self.location.origin || !url.pathname.startsWith(BASE)) return false;
+  const rel = url.pathname.slice(BASE.length);
+  return SISTERS.some((s) => rel === s.slice(0, -1) || rel.startsWith(s));
+}
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
+  // cache: 'reload' umgeht den HTTP-Cache, sonst landen beim Update womöglich noch die alten Dateien im neuen Cache
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS.map((u) => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
@@ -53,6 +62,8 @@ self.addEventListener('activate', (event) => {
     caches.keys()
       .then((keys) => Promise.all(keys.filter((k) => k.startsWith('kriegstisch-') && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: 'window' }))
+      .then((list) => list.forEach((c) => { if (inSister(new URL(c.url)) && c.navigate) c.navigate(c.url).catch(() => {}); }))
   );
 });
 
@@ -60,7 +71,7 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;
+  if (url.origin !== self.location.origin || inSister(url)) return;
   if (req.mode === 'navigate') {
     event.respondWith(caches.open(CACHE).then((cache) => cache.match('index.html')).then((hit) => hit || fetch(req)));
     return;
