@@ -360,6 +360,117 @@ body.has-focus { overflow: hidden; }
 .lessons a:hover .t { text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; }
 .lessons a.done .n { color: var(--accent); }
 .lessons a.done .n::after { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-fill); margin-left: 3px; vertical-align: middle; }
+/* ---------- Startseite: Hauptmenü ---------- */
+.home { gap: 36px; }
+.home .sect { gap: 14px; }
+.home-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 20px; flex-wrap: wrap; }
+.home-head .eyebrow { font-family: var(--f-ui); font-size: 15.5px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+.home-prog { display: flex; align-items: center; gap: 10px; font-family: var(--f-ui); font-size: 15px; line-height: 1.3; color: var(--muted); }
+.home-prog .ring { width: 42px; height: 42px; flex: none; }
+.home-prog b { color: var(--ink); font-weight: 700; }
+.sect-row { display: flex; align-items: center; justify-content: space-between; gap: 4px 14px; flex-wrap: wrap; }
+.more { display: inline-flex; align-items: center; gap: 2px; min-height: 40px; font-family: var(--f-ui); font-size: 15.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.more svg { width: 16px; height: 16px; }
+.more:hover { text-decoration: underline; text-underline-offset: 3px; }
+.rc-art .st-motif, .chap-art .st-motif, .tile-art .st-motif, .si .st-motif, .ch-art .st-motif { animation: none; filter: none; stroke: #fff; }
+/* Weitermachen: das lebende Bild der nächsten Lektion */
+.resume-card { --rc: color-mix(in srgb, var(--sc) 58%, #0d1317); position: relative; display: grid; grid-template-columns: minmax(0, 1fr); border-radius: 18px; overflow: hidden; color: #f5f2ea; background: var(--rc); box-shadow: var(--shadow); isolation: isolate; }
+.rc-art { --table: #10171c; --table-2: #172128; --ink: #e9ece8; --pill: rgba(16, 23, 28, 0.92); --pill-line: rgba(233, 236, 232, 0.22); --muted: #9aa5ad; --is-dark: 1;
+  position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; overflow: hidden; background: radial-gradient(120% 90% at 50% 40%, color-mix(in srgb, var(--sc) 50%, #10171c) 0%, #10171c 70%); }
+.rc-art[data-story] { cursor: pointer; }
+.rc-art .stage { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; max-height: none; pointer-events: none; background: #10171c; }
+.rc-art .north, .rc-art .focus-x, .rc-art .hint, .rc-art .povbadge, .rc-art .tt-tip { display: none !important; }
+.rc-art::after { content: ""; position: absolute; inset: auto 0 0; height: 42%; background: linear-gradient(180deg, transparent, var(--rc)); pointer-events: none; }
+.rc-art > .st-motif { position: relative; width: 132px; stroke: #f5f2ea; stroke-width: 2.6; animation: st-float 7s ease-in-out infinite; }
+.rc-b { position: relative; display: grid; gap: 8px; padding: 2px 20px 20px; align-content: start; }
+.rc-k { font-family: var(--f-ui); font-size: 15px; font-weight: 600; color: rgba(245, 242, 234, 0.78); }
+.resume-card h2 { font-family: var(--f-head); font-weight: 600; font-size: clamp(32px, 4.6cqi, 44px); line-height: 1.02; color: #fff; }
+.rc-m { font-family: var(--f-ui); font-size: 15px; line-height: 1.4; color: rgba(245, 242, 234, 0.78); }
+.rc-bar { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.2); overflow: hidden; max-width: 380px; margin-top: 2px; }
+.rc-bar i { display: block; height: 100%; border-radius: 2px; background: #f5f2ea; }
+.resume-card .row, .chap-head .row { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; margin-top: 8px; }
+.btn.light { background: #f5f2ea; color: #141b20; }
+.btn.light:hover { background: #fff; }
+.btn.ghost { background: transparent; color: inherit; border-color: rgba(245, 242, 234, 0.5); }
+.btn.ghost:hover { border-color: #f5f2ea; }
+@container main (min-width: 760px) {
+  .resume-card { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); min-height: 360px; }
+  .rc-art { aspect-ratio: auto; }
+  .rc-art::after { inset: 0 0 0 auto; width: 38%; height: auto; background: linear-gradient(90deg, transparent, var(--rc)); }
+  .rc-b { align-content: center; padding: 30px 34px 30px 10px; gap: 10px; }
+}
+/* Lehrgang: eine Kachel pro Kapitel */
+.chapters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.chap { position: relative; display: grid; align-content: end; min-height: 172px; padding: 14px 14px 15px; border-radius: 16px; overflow: hidden; isolation: isolate; color: #fff; text-decoration: none;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--sc) 84%, #fff) 0%, var(--sc) 42%, color-mix(in srgb, var(--sc) 66%, #070b0e) 100%); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.chap:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.chap-art { position: absolute; top: -8px; right: -12px; width: 108px; opacity: 0.3; z-index: -1; }
+.chap-art .st-motif { width: 100%; stroke-width: 3.2; }
+.chap-b { display: grid; gap: 2px; }
+.chap-n { font-family: var(--f-head); font-weight: 600; font-size: 17px; line-height: 1; opacity: 0.78; margin-bottom: 4px; }
+.chap b { font-family: var(--f-head); font-weight: 600; font-size: 21px; line-height: 1.06; overflow-wrap: anywhere; hyphens: auto; }
+.chap-m { font-family: var(--f-ui); font-size: 14px; line-height: 1.3; opacity: 0.84; margin-top: 4px; }
+.chap-bar { height: 3px; border-radius: 2px; background: rgba(255, 255, 255, 0.24); overflow: hidden; margin-top: 8px; }
+.chap-bar i { display: block; height: 100%; background: #fff; border-radius: 2px; }
+.chapters > .chap:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 128px; }
+@container main (min-width: 760px) {
+  .chapters { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .chapters > .chap:last-child:nth-child(odd) { grid-column: auto; min-height: 172px; }
+  .chap { min-height: 190px; padding: 18px; }
+  .chap-art { width: 128px; }
+  .chap b { font-size: 24px; }
+}
+/* Entdecken: die großen Sammlungen */
+.tiles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+@container main (min-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } }
+.tile { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 3px 15px; align-items: center; padding: 15px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--raise); color: var(--ink); text-decoration: none; transition: border-color 0.15s ease; }
+.tile:hover { border-color: var(--line-2); }
+.tile-art { grid-row: span 2; width: 60px; height: 60px; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(155deg, color-mix(in srgb, var(--sc) 84%, #fff), var(--sc)); }
+.tile-art .st-motif { width: 42px; stroke-width: 5.5; }
+.tile > b { align-self: end; font-family: var(--f-head); font-weight: 600; font-size: 22px; line-height: 1.08; }
+.tile > span:last-child { align-self: start; font-family: var(--f-ui); font-size: 15px; line-height: 1.4; color: var(--muted); }
+/* Werkzeuge: gruppierte Liste */
+.tool-grid { display: grid; grid-template-columns: minmax(0, 1fr); border-radius: 16px; border: 1px solid var(--line); background: var(--raise); overflow: hidden; }
+.tool-grid a { display: grid; grid-template-columns: 40px minmax(0, 1fr) 16px; gap: 14px; align-items: center; min-height: 64px; padding: 11px 14px 11px 12px; color: var(--ink); text-decoration: none; border-top: 1px solid var(--line); }
+.tool-grid a:first-child { border-top: 0; }
+.tool-grid a:hover { background: var(--bg-2); }
+.tool-grid .ti { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--sunk); color: var(--ink-2); }
+.tool-grid .ti svg { width: 23px; height: 23px; }
+.tool-grid a > svg { width: 16px; height: 16px; color: var(--muted); }
+.tool-grid b { display: block; font-family: var(--f-ui); font-size: 17px; font-weight: 600; line-height: 1.2; }
+.tool-grid small { display: block; font-family: var(--f-ui); font-size: 14.5px; line-height: 1.35; color: var(--muted); margin-top: 1px; }
+@container main (min-width: 760px) { .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tool-grid a:nth-child(2) { border-top: 0; } .tool-grid a:nth-child(even) { border-left: 1px solid var(--line); } }
+/* Schwester-App */
+.sister { display: grid; grid-template-columns: 54px minmax(0, 1fr) 18px; gap: 15px; align-items: center; padding: 15px 18px 15px 15px; border-radius: 16px; background: #17211b; color: #eef0e8; text-decoration: none; }
+.sister .si { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; background: #24342a; }
+.sister .si .st-motif { width: 38px; stroke: #e2c27a; stroke-width: 5.5; }
+.sister b { display: block; font-family: var(--f-head); font-weight: 600; font-size: 22px; line-height: 1.1; }
+.sister small { display: block; font-family: var(--f-ui); font-size: 15px; line-height: 1.4; color: rgba(238, 240, 232, 0.76); margin-top: 2px; }
+.sister > svg { width: 18px; height: 18px; color: rgba(238, 240, 232, 0.7); }
+.sister:hover b { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(238, 240, 232, 0.5); }
+/* Kapitelseite */
+.chap-head { position: relative; display: grid; padding: 24px 20px 22px; border-radius: 18px; overflow: hidden; isolation: isolate; color: #f5f2ea;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--sc) 86%, #fff) 0%, var(--sc) 40%, color-mix(in srgb, var(--sc) 60%, #070b0e) 100%); }
+.ch-art { position: absolute; top: -18px; right: -26px; width: 180px; opacity: 0.24; z-index: -1; }
+.ch-art .st-motif { width: 100%; stroke-width: 2.6; }
+.ch-b { display: grid; gap: 10px; max-width: 640px; }
+.chap-head .h1 { color: #fff; }
+.chap-head p:not(.rc-k) { font-size: 17px; line-height: 1.5; color: rgba(245, 242, 234, 0.9); }
+.ch-m { font-family: var(--f-ui); font-size: 15px; color: rgba(245, 242, 234, 0.8); }
+@container main (min-width: 760px) { .chap-head { padding: 34px 36px 32px; } .ch-art { width: 260px; top: -30px; right: -20px; } }
+.lesson-list { list-style: none; padding: 0; display: grid; gap: 8px; max-width: 820px; }
+@container main (min-width: 980px) { .lesson-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; max-width: none; } }
+.lesson-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-radius: 14px; border: 1px solid var(--line); background: var(--raise); transition: border-color 0.15s ease; }
+.lesson-list li:hover { border-color: var(--line-2); }
+.lesson-list a { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 13px; align-items: center; padding: 12px 8px 12px 14px; color: var(--ink); text-decoration: none; border-radius: 14px; }
+.lesson-list .n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-ui); font-size: 15px; font-weight: 600; background: var(--sunk); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.lesson-list li.done .n { background: color-mix(in srgb, var(--accent-fill) 24%, transparent); color: var(--accent); }
+.lesson-list b { display: block; font-family: var(--f-ui); font-size: 17.5px; font-weight: 600; line-height: 1.25; }
+.lesson-list small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-family: var(--f-ui); font-size: 14.5px; line-height: 1.35; color: var(--muted); margin-top: 2px; }
+.ll-st { width: 48px; height: 48px; margin-right: 4px; padding: 0; border: 0; border-radius: 50%; background: transparent; display: grid; place-items: center; color: var(--ink); }
+.ll-st span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--sunk); transition: background 0.15s ease; }
+.ll-st:hover span { background: var(--line); }
+.ll-st svg { width: 13px; height: 13px; margin-left: 2px; }
 /* Zeitleiste der Schlachten */
 .timeline { display: grid; gap: 34px; max-width: 880px; }
 .era { display: grid; gap: 4px; }
@@ -513,7 +624,118 @@ table.data td.num { font-family: var(--f-ui); font-size: 16px; font-weight: 600;
 @container main (max-width: 520px) { .stg-b { padding-left: 0; } .stg-it summary { grid-template-columns: 30px minmax(0, 1fr) 18px; gap: 10px; } }
 .qk-card .use b { display: inline; }
 
-@media (prefers-reduced-motion: reduce) { .north svg, .hint { transition: none; } }
+/* ---------- Lektionen als Story ---------- */
+.l-story { margin-top: 6px; }
+.stories-sect { gap: 12px; }
+.rings { display: flex; gap: 12px; overflow-x: auto; padding: 6px 2px 10px; scrollbar-width: none; scroll-snap-type: x proximity; }
+.rings::-webkit-scrollbar { display: none; }
+.ring { flex: none; width: 96px; display: grid; justify-items: center; align-content: start; gap: 6px; padding: 0; border: 0; background: none; color: var(--ink); scroll-snap-align: start; }
+.ring-c { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: var(--sc); box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--accent-fill); transition: transform 0.15s; }
+.ring.all .ring-c { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--line-2); }
+.ring:hover .ring-c { transform: scale(1.04); }
+.ring-c .st-motif { width: 42px; height: 42px; fill: none; stroke: #fff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; animation: none; filter: none; }
+.ring-c .st-motif path { stroke-dasharray: none; animation: none; }
+.ring-t { font-family: var(--f-ui); font-size: 13.5px; font-weight: 600; line-height: 1.2; text-align: center; }
+.ring-n { font-family: var(--f-ui); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: -3px; }
+body.has-story { overflow: hidden; }
+.story { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: rgba(6, 10, 13, 0.9); -webkit-user-select: none; user-select: none;
+  --st-ink: #f5f2ea; --st-muted: rgba(245, 242, 234, 0.72); --st-top: #10171c;
+  --table: #10171c; --table-2: #172128; --ink: #e9ece8; --pill: rgba(16, 23, 28, 0.92); --pill-line: rgba(233, 236, 232, 0.22); --muted: #9aa5ad; --is-dark: 1; }
+.st-frame { position: relative; width: min(440px, 100vw); height: min(880px, 100dvh); border-radius: 18px; overflow: hidden; color: var(--st-ink); cursor: pointer; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, var(--st-top) 0%, var(--st-top) 34%, color-mix(in srgb, var(--sc) 78%, var(--st-top)) 78%, var(--sc) 100%); }
+@media (max-width: 700px), (max-height: 640px) { .st-frame { width: 100vw; height: 100dvh; border-radius: 0; } }
+.st-bars { position: absolute; z-index: 6; top: calc(env(safe-area-inset-top, 0px) + 10px); left: 12px; right: 12px; display: flex; gap: 4px; }
+.st-bars i { flex: 1; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, 0.28); overflow: hidden; }
+.st-bars b { display: block; height: 100%; width: 0; background: #fff; }
+.st-bars i.done b { width: 100%; }
+.st-bars i.now b { width: 100%; animation: st-fill 0.5s ease-out; }
+@keyframes st-fill { from { width: 0; } }
+.st-top { position: absolute; z-index: 6; top: calc(env(safe-area-inset-top, 0px) + 18px); left: 14px; right: 4px; display: flex; align-items: center; gap: 2px; cursor: default; }
+.st-ch { flex: 1; min-width: 0; font-family: var(--f-ui); font-size: 14.5px; font-weight: 600; color: var(--st-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-top button { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--st-ink); }
+.st-top button svg { width: 22px; height: 22px; }
+.st-top button:hover { background: rgba(255, 255, 255, 0.1); }
+.st-stack { position: absolute; inset: 0; }
+.st-card { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; padding-top: calc(env(safe-area-inset-top, 0px) + 66px); padding-bottom: env(safe-area-inset-bottom, 0px); opacity: 0; transform: translateX(26px); transition: opacity 0.3s ease, transform 0.3s ease; }
+.st-card.from-l { transform: translateX(-26px); }
+.st-card.on { opacity: 1; transform: none; }
+.st-card.off { opacity: 0; transition-duration: 0.2s; }
+.st-card.t-duo, .st-card.t-list, .st-card.t-quiz, .st-card.t-quiz-order, .st-card.t-quote { grid-template-rows: minmax(0, 1fr); align-content: center; }
+.st-art { position: relative; min-height: 0; display: grid; place-items: center; padding: 8px 24px; }
+.st-art:not(.st-stage)::before { content: ""; position: absolute; width: min(70vw, 280px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--sc) 75%, transparent) 0%, transparent 68%); }
+.st-art.small .st-motif { width: 92px; }
+.st-art.st-stage { padding: 0; }
+.st-art .stage { width: 100%; height: 100%; aspect-ratio: auto; max-height: none; background: var(--st-top); touch-action: none; }
+.st-art .stage .tt-canvas { cursor: pointer; }
+.story .north, .story .focus-x, .story .hint, .story .povbadge, .story .tt-tip { display: none !important; }
+.st-motif { position: relative; width: min(56vw, 230px); height: auto; fill: none; stroke: var(--st-ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)); animation: st-float 7s ease-in-out infinite; }
+.st-card.on .st-motif path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: st-draw 1.2s ease forwards; animation-delay: var(--d, 0s); }
+@keyframes st-draw { to { stroke-dashoffset: 0; } }
+@keyframes st-float { 50% { transform: translateY(-6px); } }
+.st-txt { position: relative; display: grid; gap: 10px; padding: 18px 26px 34px; align-content: start; }
+.st-txt h1 { font-family: var(--f-head); font-weight: 600; font-size: clamp(44px, 12vw, 58px); line-height: 0.95; }
+.st-txt h2 { font-family: var(--f-head); font-weight: 600; font-size: 31px; line-height: 1.08; }
+.st-kick { font-family: var(--f-ui); font-size: 15px; font-weight: 700; color: var(--st-muted); }
+.st-sub { font-size: 20px; line-height: 1.4; font-style: italic; }
+.st-when { font-family: var(--f-ui); font-size: 15.5px; color: var(--st-muted); }
+.st-p { font-size: 19.5px; line-height: 1.5; }
+.st-hint, .st-go { font-family: var(--f-ui); font-size: 14px; color: var(--st-muted); margin-top: 6px; }
+.st-card.on .st-hint { animation: st-pulse 2.4s ease-in-out 1.2s 2; }
+@keyframes st-pulse { 50% { opacity: 0.35; } }
+.st-duo { gap: 0; }
+.st-duo > div { display: grid; gap: 6px; padding: 18px 0; }
+.st-duo > div + div { border-top: 1px solid rgba(255, 255, 255, 0.22); }
+.st-duo p:not(.st-kick) { font-size: 19px; line-height: 1.5; }
+.st-list ul, .st-end ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 12px; }
+.st-list li, .st-end li { position: relative; padding-left: 22px; font-size: 18.5px; line-height: 1.45; }
+.st-list li::before, .st-end li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 9px; height: 9px; border-radius: 50%; background: var(--st-ink); }
+.st-list.k-plus li::before { background: #8fd6a2; }
+.st-list.k-minus li::before { background: #f2a49c; }
+.st-list.k-konter li::before { background: #9fc4f2; }
+.st-quote blockquote { margin: 0; font-size: 24px; line-height: 1.4; font-style: italic; }
+.st-novel { gap: 8px; }
+.st-quiz { gap: 12px; }
+.st-ctx { font-size: 19px; line-height: 1.45; font-style: italic; }
+.st-opts { display: grid; gap: 10px; margin-top: 4px; cursor: default; }
+.st-opt { min-height: 54px; padding: 12px 16px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.08); color: var(--st-ink); font-family: var(--f-ui); font-size: 17.5px; font-weight: 600; text-align: left; line-height: 1.25; transition: background 0.2s, border-color 0.2s, opacity 0.2s; }
+.st-opt:hover:not(:disabled) { background: rgba(255, 255, 255, 0.16); }
+.st-opt.right { background: #2c7346; border-color: #6fcf8e; }
+.st-opt.wrong { background: #84302b; border-color: #e0756c; }
+.st-opt.dim { opacity: 0.45; }
+.st-opt:disabled { cursor: default; }
+.st-opts.nudge { animation: st-nudge 0.35s; }
+@keyframes st-nudge { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.st-why { display: grid; gap: 4px; font-size: 17.5px; line-height: 1.45; }
+.st-verdict { font-family: var(--f-ui); font-weight: 700; font-size: 18px; }
+.st-verdict.ok { color: #9be3b0; }
+.st-verdict.no { color: #ffb4ab; }
+.st-end { gap: 12px; }
+.st-score { font-family: var(--f-ui); font-size: 16px; font-weight: 600; color: var(--st-muted); }
+.st-acts { display: grid; gap: 8px; margin-top: 6px; cursor: default; }
+.st-btn { min-height: 48px; padding: 10px 16px; border-radius: 12px; border: 1.5px solid rgba(255, 255, 255, 0.4); background: transparent; color: var(--st-ink); font-family: var(--f-ui); font-size: 16.5px; font-weight: 600; text-align: center; }
+.st-btn.primary { background: var(--st-ink); color: #141b20; border-color: var(--st-ink); }
+.st-btn:hover { border-color: #fff; }
+.story .sr-tap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.st-side { position: fixed; top: 50%; z-index: 101; width: 48px; height: 48px; margin-top: -24px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.12); color: #fff; }
+.st-side svg { width: 24px; height: 24px; }
+.st-side:hover { background: rgba(255, 255, 255, 0.22); }
+.st-side:disabled { opacity: 0.25; }
+.st-sprev { left: calc(50% - 220px - 70px); }
+.st-snext { right: calc(50% - 220px - 70px); }
+@media (max-width: 700px), (max-height: 640px) { .st-side { display: none; } }
+.st-toast { position: absolute; z-index: 7; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 26px); transform: translate(-50%, 10px); opacity: 0; padding: 8px 14px; border-radius: 20px; background: rgba(0, 0, 0, 0.72); color: #fff; font-family: var(--f-ui); font-size: 14.5px; font-weight: 600; transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
+.st-toast.on { opacity: 1; transform: translate(-50%, 0); }
+.cards-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.saved-card { display: grid; gap: 8px; align-content: start; padding: 16px 18px; border-radius: 14px; background: var(--sc); color: #f5f2ea; }
+.saved-card .sc-l { font-family: var(--f-ui); font-size: 14.5px; font-weight: 600; }
+.saved-card .sc-l a { color: rgba(245, 242, 234, 0.8); }
+.saved-card h3 { font-family: var(--f-head); font-weight: 600; font-size: 22px; line-height: 1.15; }
+.saved-card p { font-size: 16px; line-height: 1.5; }
+.saved-card .btn.secondary { background: transparent; color: #f5f2ea; border-color: rgba(245, 242, 234, 0.5); }
+.saved-card .linkbtn { color: rgba(245, 242, 234, 0.85); }
+.linkbtn { border: 0; background: none; padding: 0; color: var(--ink-2); font-family: var(--f-ui); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) { .north svg, .hint { transition: none; } .st-card, .st-motif, .st-card.on .st-motif path, .st-bars i.now b { animation: none !important; transition: none !important; stroke-dashoffset: 0 !important; } }
 @media print { .rail, .bar, .viewbar, .transport, .pager { display: none !important; } }
 
 </style>
@@ -7456,6 +7678,51 @@ if (idx >= 0 && !KT.chapters.some((c) => c.items.includes('raenke'))) {
 }
 })();
 
+/* ---- stories.js ---- */
+/* =====================================================================
+   Kriegstisch – handgeschriebene Stories. Lektionen ohne Eintrag hier bekommen
+   eine automatisch gebaute Story aus ihrem Lektionstext (siehe story.js).
+   Kartentypen: cover, text, stage (Phase vom Tisch), duo, list, quote, quiz, novel.
+   ===================================================================== */
+(function () {
+const KT = window.KT; KT.stories = KT.stories || {};
+
+KT.stories.cannae = {
+  take: ['Eine Mitte, die nachgibt, kann eine Falle sein.', 'Entschieden wird an den Flügeln und im Rücken, nicht in der Mitte.', 'Ein Gegner, der sich im Vorteil fühlt, schaut nicht zur Seite.'],
+  cards: [
+    { t: 'cover', title: 'Cannae', sub: 'Die Sichel, die nachgibt', when: '216 v. Chr., Apulien', art: { phase: 0 } },
+    { t: 'text', h: 'Rom will durchbrechen', p: 'Rom stellt die größte Armee seiner Geschichte auf. Sie steht so tief gestaffelt, dass sie jede Front durchbrechen soll.', art: 'shield' },
+    { t: 'stage', phase: 0, h: 'Die Aufstellung', p: 'Hannibals Mitte ist dünn und nach vorn gewölbt. An ihren Rändern warten afrikanische Veteranen, die noch niemand beachtet.' },
+    { t: 'stage', phase: 1, h: 'Reiterkampf am Fluss', p: 'Am Fluss prallen die Reiter aufeinander. Hasdrubals schwere Reiterei treibt die römische vom Feld.' },
+    { t: 'stage', phase: 2, h: 'Die Sichel gibt nach', p: 'Die Mitte weicht Schritt für Schritt zurück. Die Legionen drängen nach und fühlen sich wie Sieger.' },
+    { t: 'quiz', q: 'Warum lässt Hannibal seine Mitte zurückweichen?', opts: ['Sie ist zu schwach und flieht.', 'Die Römer sollen immer tiefer in eine Tasche laufen.', 'Seine Reiter brauchen Zeit, das Lager zu plündern.'], a: 1, why: 'Das Zurückweichen ist gewollt: Jeder römische Schritt nach vorn führt tiefer zwischen die wartenden Flügel.' },
+    { t: 'stage', phase: 3, h: 'Der Ritt hinter die Front', p: 'Hasdrubals Reiter umrunden das Schlachtfeld und tauchen hinter den Legionen auf.' },
+    { t: 'stage', phase: 4, h: 'Die Veteranen schwenken ein', p: 'Die Afrikaner an beiden Rändern haben noch nicht gekämpft. Jetzt schwenken sie ein und fassen die Römer von der Seite.' },
+    { t: 'duo', saw: 'Eine dünne Mitte aus Galliern und Iberern, die unter dem Druck zurückwich. Es fühlte sich an wie der Anfang eines Durchbruchs.', was: 'Jeder Schritt nach vorn führte tiefer in die Tasche. Die Flügel hatten noch gar nicht gekämpft, und hinter den Legionen ritt schon Hasdrubal.' },
+    { t: 'stage', phase: 5, h: 'Der Kessel', p: 'Die Römer stehen so eng, dass viele ihre Waffen kaum noch heben können. Aus dem Vormarsch ist eine Falle geworden.' },
+    { t: 'quiz', q: 'Wer schließt den Kessel im Rücken der Römer?', opts: ['Die afrikanischen Veteranen', 'Hasdrubals Reiterei', 'Die gallische Mitte'], a: 1, why: 'Die Veteranen fassen die Flanken. Den Rücken schließen Hasdrubals Reiter, nachdem sie die römische Reiterei vertrieben haben.' },
+    { t: 'novel', p: 'Erzähl aus der Mitte der Masse: Der Vormarsch fühlt sich gut an, dann wird es eng, dann schreit hinten jemand. Bis zur letzten Stunde sieht es aus wie ein römischer Sieg.' },
+  ],
+};
+
+KT.stories['raenke-schreiben'] = {
+  take: ['Führ Buch darüber, wer was weiß.', 'Gib dem Leser Wissen, nicht nur Überraschungen.', 'Jede List kostet etwas, und der Gegner ist nicht dumm.'],
+  cards: [
+    { t: 'cover', title: 'Ränke schreiben', sub: 'Sieben Regeln für Intrigen, an die Leser glauben', art: 'quill' },
+    { t: 'text', h: 'Wer weiß was', p: 'Jede Intrige ist eine Tabelle: die Figuren in den Zeilen, die Wahrheiten in den Spalten. Jede Szene sollte mindestens ein Feld verändern.', art: 'scroll', key: true },
+    { t: 'text', h: 'Spannung schlägt Überraschung', p: 'Hitchcock erklärte es mit einer Bombe unter dem Tisch: Explodiert sie ohne Vorwarnung, gibt es fünfzehn Sekunden Überraschung. Weiß das Publikum von ihr, gibt es fünfzehn Minuten Spannung.', art: 'eye', key: true },
+    { t: 'quiz', q: 'Was erzeugt nach Hitchcock mehr Spannung?', opts: ['Die Bombe explodiert ohne Vorwarnung.', 'Das Publikum weiß von der Bombe, die Figuren nicht.'], a: 1, why: 'Spannung entsteht aus Wissen: Der Leser sieht die Gefahr, die Figuren sehen sie nicht.' },
+    { t: 'text', h: 'Der Plan reißt', p: 'Kein Plan übersteht den ersten Kontakt mit dem Gegner unbeschadet. Lass ihn an einer unbedachten Stelle reißen und zeig, wie dein Feldherr improvisiert.', art: 'compass' },
+    { t: 'text', h: 'Warum Menschen verraten', p: 'Kautilya nennt vier Gruppen, die man gewinnen kann: die Zornigen, die Verängstigten, die Gierigen und die Stolzen. Moderne Geheimdienste sagen: Geld, Überzeugung, Zwang und Eitelkeit.', art: 'mask', key: true },
+    { t: 'quiz', q: 'Welche Gruppe nennt Kautilya nicht?', opts: ['die Zornigen', 'die Gierigen', 'die Frommen', 'die Stolzen'], a: 2, why: 'Kautilya nennt die Zornigen, die Verängstigten, die Gierigen und die Stolzen.' },
+    { t: 'text', h: 'Jede List hat einen Preis', p: 'Sunzi kennt Spione, die man bewusst opfert: Sie tragen falsche Nachrichten zum Feind. Zeig den Preis einer List, am besten an einer Figur, die der Leser mag.', art: 'sword' },
+    { t: 'text', h: 'Der würdige Gegner', p: 'Ein Ränkeschmied ist nur so klug wie der, den er hereinlegt. Gib dem Gegner einen guten Grund, den Köder zu schlucken, und lass ihn einmal gewinnen.', art: 'crown' },
+    { t: 'list', h: 'Die Prüfliste', items: ['Motiv: Warum jetzt?', 'Mittel: Wer und was wird gebraucht?', 'Gelegenheit: Wo ist die Lücke?', 'Tarnung: Was sieht der Gegner?', 'Ausweg: Was, wenn es auffliegt?', 'Spur: Welches Detail verrät den Plan vorher?'] },
+    { t: 'novel', p: 'Der klügste Zug deines Feldherrn ist nicht der, den der Leser bewundert, sondern der, den er im Rückblick hätte sehen können.' },
+  ],
+};
+})();
+
 /* ---- app.js ---- */
 /* =====================================================================
    Kriegstisch – Oberfläche: Rahmen, Bereiche, Lektionen, Tisch
@@ -7470,7 +7737,8 @@ const undot = (s) => String(s).replace(/\s·\s/g, ', ');
 const SV = (d, w) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (w || 1.8) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
 const ICON = {
   mark: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M1.2 19.6L20 29L20 31.82L1.2 22.42Z" fill="#5E4C37"/><path d="M38.8 19.6L20 29L20 31.82L38.8 22.42Z" fill="#4A3B2B"/><path d="M20 10.2L38.8 19.6L20 29L1.2 19.6Z" fill="#8B9A5C"/><path d="M15.86 18.19L23.2 21.86L23.2 19.6L15.86 15.93Z" fill="#9C2F26"/><path d="M26.02 20.45L23.2 21.86L23.2 19.6L26.02 18.19Z" fill="#B83C31"/><path d="M18.68 14.52L26.02 18.19L23.2 19.6L15.86 15.93Z" fill="#D45A4E"/><path d="M10.04 20.82L19.44 25.52L19.44 23.64L10.04 18.94Z" fill="#24508A"/><path d="M22.07 24.21L19.44 25.52L19.44 23.64L22.07 22.33Z" fill="#2F62A3"/><path d="M12.67 17.63L22.07 22.33L19.44 23.64L10.04 18.94Z" fill="#5287CB"/><path d="M22.73 23.69L25.36 25.01L25.36 23.13L22.73 21.81Z" fill="#24508A"/><path d="M31.94 21.72L25.36 25.01L25.36 23.13L31.94 19.84Z" fill="#2F62A3"/><path d="M29.31 18.52L31.94 19.84L25.36 23.13L22.73 21.81Z" fill="#5287CB"/></svg>',
-  lehrgang: SV('<path d="M3.5 6.5l5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/>'),
+  lehrgang: SV('<path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-6h5v6"/>'),
+  map: SV('<path d="M3.5 6.5l5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/>'),
   schlachten: SV('<rect x="3.5" y="6.5" width="17" height="11" rx=".5"/><path d="M3.5 6.5l17 11M20.5 6.5l-17 11"/>'),
   archiv: SV('<path d="M4 10h16v9.5H4z"/><path d="M6.5 10V6.5h11V10"/><path d="M8.5 6.5V4h7v2.5"/><path d="M10 14h4"/>'),
   raenke: SV('<path d="M3 8.6c2.2-1.4 5.3-2 9-2s6.8.6 9 2c0 3.9-2.1 6.4-4.6 6.4-2.1 0-3-1.6-4.4-1.6s-2.3 1.6-4.4 1.6C5.1 15 3 12.5 3 8.6z"/><path d="M6.4 10.4c.8-.6 1.9-.6 2.7 0M14.9 10.4c.8-.6 1.9-.6 2.7 0"/>'),
@@ -7518,7 +7786,7 @@ const TOOLS = [
   { id: 'quellen', icon: 'scroll', label: 'Quellen', desc: 'Die wichtigsten antiken, mittelalterlichen und modernen Werke, und wie man ihnen misstraut.' },
 ].filter((t) => KT.lessons[t.id]);
 const DESTS = [
-  { id: 'lehrgang', label: 'Lehrgang', href: 'start' },
+  { id: 'lehrgang', label: 'Start', href: 'start' },
   { id: 'schlachten', label: 'Schlachten', href: 'schlachten' },
   { id: 'raenke', label: 'Ränke', href: 'raenke' },
   { id: 'archiv', label: 'Archiv', href: 'marotten' },
@@ -7546,7 +7814,9 @@ function setNav(dest) { $$('[data-dest]', rail).forEach((a) => { if (a.dataset.d
 function setBar(dest, title) {
   if (!title) { bar.innerHTML = '<a class="mark" href="#start">' + ICON.mark + '<b>Der Kriegstisch</b></a>'; return; }
   const d = DESTS.find((x) => x.id === dest) || DESTS[0];
-  bar.innerHTML = '<a class="back" href="#' + d.href + '">' + ICON.back + '<span>' + d.label + '</span></a><span class="title">' + esc(title) + '</span>';
+  const id = (location.hash || '').slice(1).split('?')[0]; const ch = CHAP[id];
+  const back = ch && dest === 'lehrgang' ? [chHref(ch), ch.title] : /^kapitel-/.test(id) && dest === 'lehrgang' ? ['#start', 'Start'] : ['#' + d.href, d.label];
+  bar.innerHTML = '<a class="back" href="' + back[0] + '">' + ICON.back + '<span>' + esc(back[1]) + '</span></a><span class="title">' + esc(title) + '</span>';
 }
 function ixItem(id, n, sub, cur) {
   const L = KT.lessons[id]; if (!L) return '';
@@ -7603,7 +7873,7 @@ function tableHTML(meta, hero) {
 function mountTable(slotEl, sceneId, opts) {
   opts = opts || {}; const def = TT.defs[sceneId]; if (!def) { slotEl.innerHTML = '<p class="note">Diese Szene fehlt.</p>'; return; }
   const meta = def.meta; slotEl.innerHTML = tableHTML(meta, opts.hero);
-  const root = $('.tbl', slotEl); $('.stage-slot', root).replaceWith(stageEl);
+  const root = $('.tbl', slotEl); $('.stage-slot', root).replaceWith(stageEl); STAGE.readTheme(true);
   T = { root, meta, sceneId, hero: !!opts.hero, play: $('.play', root), restart: $('.restart', root), range: $('input[type=range]', root), fill: $('.fill', root), time: $('.time', root), phases: $('.phases', root), caption: $('.caption', root), vdesc: $('.vdesc', root), scrub: $('.scrub', root), legend: $('.tbl-legend', root), variant: null };
   loadScene(sceneId, (meta.variants && meta.variants[0] && meta.variants[0].id) || null, false);
   T.play.addEventListener('click', () => STAGE.toggle());
@@ -7658,15 +7928,16 @@ STAGE.on('time', (t) => updTime(t));
 STAGE.on('phase', (i) => renderCaption(i));
 STAGE.on('play', () => { if (T) { T.play.innerHTML = ICON.pause; T.play.setAttribute('aria-label', 'Anhalten'); } });
 STAGE.on('pause', () => { if (T) { T.play.innerHTML = ICON.play; T.play.setAttribute('aria-label', 'Abspielen'); } });
-STAGE.on('end', () => { if (T && T.hero) setTimeout(() => { if (T && T.hero && !STAGE.playing) { STAGE.setTime(0); STAGE.play(); } }, 2200); });
+const onHome = () => homeStage && !T && stageEl.parentNode && stageEl.parentNode.id === 'rcArt';
+STAGE.on('end', () => { if (onHome()) { setTimeout(() => { if (onHome()) { STAGE.setTime(0); STAGE.play(); } }, 1600); return; } if (T && T.hero) setTimeout(() => { if (T && T.hero && !STAGE.playing) { STAGE.setTime(0); STAGE.play(); } }, 2200); });
 
 // ---------- Lektionen ----------
 function whenHTML(w) { if (!w) return ''; const { date, place } = splitWhen(w); return '<p class="when">' + (date ? '<span class="yr">' + esc(date) + '</span>' : '') + (place ? '<span>' + esc(place) + '</span>' : '') + '</p>'; }
 function info(title, items, color) { if (!items || !items.length) return ''; return '<section class="info"><h3>' + (color ? '<i class="sw" style="--c:' + color + '"></i>' : '') + esc(title) + '</h3><ul>' + items.map((x) => '<li>' + x + '</li>').join('') + '</ul></section>'; }
 function renderLesson(id) {
   const L = KT.lessons[id]; const ch = CHAP[id]; const idx = ORDER.indexOf(id); const pos = ch.items.indexOf(id) + 1; const dest = destOf(id);
-  const hubHref = dest === 'schlachten' ? 'schlachten' : dest === 'werkzeuge' ? 'werkzeuge' : dest === 'raenke' ? 'raenke' : 'start';
-  let h = '<div class="page"><header class="l-head"><p class="crumb"><a href="#' + hubHref + '">' + esc(ch.title) + '</a><span class="pos">Lektion ' + pos + ' von ' + ch.items.length + '</span></p><h1 class="h1">' + esc(L.title) + '</h1>' + whenHTML(L.when) + (L.lead ? '<p class="lead">' + L.lead + '</p>' : '') + '</header>';
+  const hubHref = dest === 'schlachten' ? 'schlachten' : dest === 'werkzeuge' ? 'werkzeuge' : dest === 'raenke' ? 'raenke' : 'kapitel-' + (KT.chapters.indexOf(ch) + 1);
+  let h = '<div class="page"><header class="l-head"><p class="crumb"><a href="#' + hubHref + '">' + esc(ch.title) + '</a><span class="pos">Lektion ' + pos + ' von ' + ch.items.length + '</span></p><h1 class="h1">' + esc(L.title) + '</h1>' + whenHTML(L.when) + (L.lead ? '<p class="lead">' + L.lead + '</p>' : '') + storyBtn(id) + '</header>';
   if (L.scene) h += '<div id="tableSlot"></div>';
   if (L.trick) h += '<div class="trick"><p class="t-h">Der Trick</p><p>' + L.trick + '</p></div>';
   if (L.render && RENDER[L.render] && !L.renderLast) h += RENDER[L.render](L);
@@ -7694,21 +7965,49 @@ function renderLesson(id) {
   document.title = L.title + ' | Der Kriegstisch';
 }
 
+function storyBtn(id) { const S = window.KTStory; const m = S && S.meta(id); if (!m) return ''; return '<p class="row l-story"><button type="button" class="btn primary" data-story="' + id + '">' + ICON.play + 'Als Story ansehen</button><span class="note">' + m.cards + ' Karten, etwa ' + m.min + ' Minuten, mit Fragen zum Verständnis</span></p>'; }
 // ---------- Übersichten ----------
+const CH_DESC = ['Woraus ein Heer besteht und was es zusammenhält: Truppengattungen, Moral und die Grenzen der Kontrolle.', 'Linie, Phalanx, Manipel, Schildwall, Keil, Igel und Wagenburg: wie Menschen in Reih und Glied kämpfen.', 'Flanke, Zange, schiefe Schlachtordnung, Umgehung, Scheinflucht und Hinterhalt.', 'Anhöhe, Anlehnung, Reserve, Feldwerke, Engpass und die Kunst, nicht zu kämpfen.', 'Sicht, Wasser, Wetter und Marsch: was einen Feldzug entscheidet, bevor gekämpft wird.', 'Schlachten von Kadesch bis Azincourt als Szenen auf dem Tisch.', 'Die Arten der Täuschung und ein Kabinett berühmter Listen.', 'Spione, Verrat, Gift, Geiseln und Bestechung: die Spiele im Hintergrund.', 'Eigenheiten großer Köpfe, Erzählen, Würfel und Faustzahlen für dein Manuskript.'];
+const CH_COLORS = ['#55623a', '#2c527c', '#86382d', '#43525e', '#3a644a', '#7d6123', '#55457c', '#723043', '#2c6262', '#4b5563'];
+const CH_ART = ['shield', 'spear', 'arrows', 'tower', 'compass', 'banner', 'eye', 'mask', 'crown'];
+const chIndex = (ch) => KT.chapters.indexOf(ch);
+const chHref = (ch) => '#kapitel-' + (chIndex(ch) + 1);
+let homeStage = false, homeLabels = null;
+function motif(name) { const S = window.KTStory; return S && S.motif ? S.motif(name) : ''; }
+function resumeTarget() {
+  const last = store.get('last', null);
+  if (last && KT.lessons[last] && CHAP[last]) { if (!seen.has(last)) return last; const i = ORDER.indexOf(last); const nx = ORDER.slice(i + 1).find((id) => !seen.has(id)); return nx || last; }
+  return ORDER[0];
+}
+// Erster Satz, ohne an Ordnungszahlen („im 5. Jahrhundert“) oder Abkürzungen („v. Chr.“) abzubrechen
+const firstSentence = (s) => { s = String(s || ''); const re = /[.!?](?=\s+[A-ZÄÖÜ„(])/g; let m; while ((m = re.exec(s))) { const pre = s.slice(Math.max(0, m.index - 6), m.index); if (/\d$/.test(pre) || /(^|[\s(])(v|n|z|u|s|d|bzw|ca|Chr|Jh|Jhs|St|Nr|vgl|usw|hl|Hl)$/.test(pre)) continue; return s.slice(0, m.index + 1); } return s; };
 function renderHome() {
-  const last = store.get('last', null); const has = last && KT.lessons[last] && CHAP[last];
-  const target = has ? last : ORDER[0]; const cta = has ? 'Weiter mit ' + (KT.lessons[last].nav || KT.lessons[last].title) : 'Erste Lektion öffnen';
-  const f = seen.size / ORDER.length;
-  let h = '<div class="page"><section class="intro"><div class="resume"><h1 class="display">Der Kriegstisch</h1><p class="lead">' + KT.start.lead + '</p><div class="row"><a class="btn primary" href="#' + target + '">' + esc(cta) + '</a><a class="btn secondary" href="#schlachten">Zu den Schlachten</a></div>' +
-    '<div class="progress"><span>' + (seen.size ? seen.size + ' von ' + ORDER.length + ' Lektionen angesehen' : ORDER.length + ' Lektionen in ' + KT.chapters.filter((c) => c.items.length).length + ' Kapiteln') + '</span>' + (seen.size ? '<div class="bar-o"><div class="bar-i" style="width:' + (f * 100).toFixed(1) + '%"></div></div>' : '') + '</div></div><div class="hero-tbl" id="heroSlot"></div></section>';
-  h += '<section class="how">' + KT.start.how.map((x) => '<div><h3>' + esc(x[0]) + '</h3><p>' + x[1] + '</p></div>').join('') + '</section>';
-  h += '<section class="sect"><div class="sect-h"><h2 class="h2">Der Lehrgang</h2><p class="note">' + KT.start.mapsub + '</p></div><div class="course">';
-  for (const ch of KT.chapters) { if (!ch.items.length) continue; h += '<section><h3><span class="num">' + ch.num + '</span><span>' + esc(ch.title) + '</span><span class="cnt">' + ch.items.length + '</span></h3><ol class="lessons">' + ch.items.map((id, i) => { const L = KT.lessons[id]; return '<li><a href="#' + id + '"' + (seen.has(id) ? ' class="done"' : '') + '><span class="n">' + (i + 1) + '</span><span class="t">' + esc(L.nav || L.title) + '</span><small>' + esc(L.when ? shortWhen(L.when) : '') + '</small></a></li>'; }).join('') + '</ol></section>'; }
-  h += '</div></section></div>';
-  main.innerHTML = h;
-  mountTable($('#heroSlot'), KT.start.scene, { hero: true });
-  if (!STAGE.reduced) setTimeout(() => { if (T && T.hero) STAGE.play(); }, 500);
+  const id = resumeTarget(); const L = KT.lessons[id]; const ch = CHAP[id]; const ci = chIndex(ch); const S = window.KTStory;
+  const chDone = ch.items.filter((x) => seen.has(x)).length; const fresh = !seen.size;
+  let h = '<div class="page home"><header class="home-head"><div><p class="eyebrow">Taktik, Täuschung und Ränke vor dem Schießpulver</p><h1 class="display">Der Kriegstisch</h1></div>' + (seen.size ? '<div class="home-prog">' + ring(seen.size / ORDER.length) + '<span><b class="tnum">' + seen.size + '</b> von ' + ORDER.length + ' Lektionen</span></div>' : '') + '</header>';
+  h += '<section class="resume-card" style="--sc:' + CH_COLORS[ci] + '" aria-label="' + (fresh ? 'Hier beginnen' : 'Weitermachen') + '"><div class="rc-art" id="rcArt"' + (S && S.hasStory(id) ? ' data-story="' + id + '" data-seq="' + ci + '"' : '') + '>' + (L.scene ? '' : motif(CH_ART[ci])) + '</div><div class="rc-b"><p class="rc-k">' + (fresh ? 'Hier beginnen' : 'Weiter mit') + '</p><h2>' + esc(L.nav || L.title) + '</h2><p class="rc-m">' + esc(ch.num + '  ' + ch.title) + ', Lektion ' + (ch.items.indexOf(id) + 1) + ' von ' + ch.items.length + '</p><div class="rc-bar"><i style="width:' + (chDone / ch.items.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (S && S.hasStory(id) ? '<button type="button" class="btn light" data-story="' + id + '" data-seq="' + ci + '">' + ICON.play + 'Story ansehen</button>' : '') + '<a class="btn ghost" href="#' + id + '">Lektion lesen</a></div></div></section>';
+  h += '<section class="sect"><div class="sect-row"><h2 class="h2">Lehrgang</h2><span class="note">' + KT.chapters.filter((c) => c.items.length).length + ' Kapitel, als Story oder zum Lesen</span></div><div class="chapters">';
+  KT.chapters.forEach((c, k) => { if (!c.items.length) return; const d = c.items.filter((x) => seen.has(x)).length; h += '<a class="chap" href="' + chHref(c) + '" style="--sc:' + CH_COLORS[k] + '"><span class="chap-art">' + motif(CH_ART[k]) + '</span><span class="chap-b"><span class="chap-n">' + c.num + '</span><b>' + esc(c.title) + '</b><span class="chap-m">' + c.items.length + ' Lektionen' + (d ? ', ' + d + ' gesehen' : '') + '</span><span class="chap-bar"><i style="width:' + (d / c.items.length * 100).toFixed(1) + '%"></i></span></span></a>'; });
+  h += '</div></section>';
+  const nQ = (KT.quirks || []).length, nR = (KT.raenke || []).length, nS = KT.strategeme && KT.strategeme.liste ? KT.strategeme.liste.length : 0;
+  const tiles = [['#schlachten', 5, 'Schlachten', BATTLES.length + ' legendäre Manöver von Kadesch bis Azincourt, jede als Szene auf dem Tisch.'], ['#raenke', 7, 'Ränke und Intrigen', nR + ' Fälle aus aller Welt' + (nS ? ' und die ' + nS + ' Strategeme' : '') + '.'], ['#marotten', 8, 'Eigenheiten', nQ + ' Ticks, Rituale und Marotten großer Köpfe für deine Figuren.'], ['#taeuschung', 6, 'Täuschung', (KT.deception || []).length + ' Arten der Täuschung und ' + (KT.cabinet || []).length + ' berühmte Listen.']];
+  h += '<section class="sect"><h2 class="h2">Entdecken</h2><div class="tiles">' + tiles.filter((t) => t[0] !== '#marotten' || KT.lessons.marotten).map((t) => '<a class="tile" href="' + t[0] + '" style="--sc:' + CH_COLORS[t[1]] + '"><span class="tile-art">' + motif(CH_ART[t[1]]) + '</span><b>' + esc(t[2]) + '</b><span>' + esc(t[3]) + '</span></a>').join('') + '</div></section>';
+  const tools = [['wuerfel', 'dice', 'Manöver-Würfel', 'Ein Manöver aus historischen Bausteinen.'], ['raenke-wuerfel', 'raenke', 'Ränke-Würfel', 'Drei echte Ränke, ein neuer Plan.'], ['marotten', 'figure', 'Eigenheiten ziehen', 'Drei Marotten, eine neue Figur.'], ['realismus', 'ruler', 'Faustzahlen', 'Marschtempo, Wasser, Kolonnen, Verluste.'], ['glossar', 'book', 'Glossar', 'Die Begriffe des Kurses.'], ['quellen', 'scroll', 'Quellen', 'Die wichtigsten Werke und wie man ihnen misstraut.'], ['karten', 'tag', 'Gemerkte Karten', (S ? S.savedCount() : 0) + ' Karten aus den Stories.']];
+  h += '<section class="sect"><div class="sect-row"><h2 class="h2">Werkzeuge</h2><a class="more" href="#werkzeuge">Alle ansehen' + ICON.chevR + '</a></div><div class="tool-grid">' + tools.filter((t) => t[0] === 'karten' || KT.lessons[t[0]]).map((t) => '<a href="#' + t[0] + '"><span class="ti">' + ICON[t[1]] + '</span><span><b>' + esc(t[2]) + '</b><small>' + esc(t[3]) + '</small></span>' + ICON.chevR + '</a>').join('') + '</div></section>';
+  h += '<section class="sect"><h2 class="h2">Schwester-App</h2><a class="sister" href="https://timmisg.github.io/kriegstisch/hain/" target="_blank" rel="noopener"><span class="si">' + motif('fire') + '</span><span><b>Der Hain</b><small>Götter, Mythen, Riten, Opfer und Feste aus aller Welt, mit Jahreskreis.</small></span>' + ICON.ext + '</a></section>';
+  main.innerHTML = h + '</div>';
+  T = null; homeStage = false;
+  if (L.scene && TT.defs[L.scene]) { const art = $('#rcArt'); art.appendChild(stageEl); STAGE.load(L.scene, null); STAGE.setPov(null); STAGE.resetView(); STAGE.zoomBy(1.15); homeLabels = STAGE.showLabels; STAGE.showLabels = false; STAGE.readTheme(true); homeStage = true; if (!STAGE.reduced) setTimeout(() => { if (onHome()) STAGE.play(); }, 500); else STAGE.setTime(STAGE.sc.duration * 0.7); }
   document.title = 'Der Kriegstisch';
+}
+function renderChapter(k) {
+  const ch = KT.chapters[k]; const S = window.KTStory; const ids = ch.items; const d = ids.filter((x) => seen.has(x)).length;
+  const first = (S && (ids.find((x) => S.hasStory(x) && !seen.has(x)) || ids.find((x) => S.hasStory(x)))) || null;
+  let h = '<div class="page"><header class="chap-head" style="--sc:' + CH_COLORS[k] + '"><div class="ch-art">' + motif(CH_ART[k]) + '</div><div class="ch-b"><p class="rc-k">Kapitel ' + ch.num + '</p><h1 class="h1">' + esc(ch.title) + '</h1><p>' + esc(CH_DESC[k] || '') + '</p><div class="rc-bar"><i style="width:' + (d / ids.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (first ? '<button type="button" class="btn light" data-story="' + first + '" data-seq="' + k + '">' + ICON.play + (d ? 'Stories fortsetzen' : 'Kapitel als Story') + '</button>' : '') + '<span class="ch-m">' + ids.length + ' Lektionen, ' + d + ' gesehen</span></div></div></header>';
+  h += '<ol class="lesson-list">' + ids.map((id, i) => { const L = KT.lessons[id]; const sub = L.when ? splitWhen(L.when).date + (splitWhen(L.when).place ? ', ' + splitWhen(L.when).place : '') : firstSentence(String(L.lead || '').replace(/<[^>]+>/g, '')); return '<li' + (seen.has(id) ? ' class="done"' : '') + '><a href="#' + id + '"><span class="n">' + (i + 1) + '</span><span class="t"><b>' + esc(L.nav || L.title) + '</b><small>' + esc(sub) + '</small></span></a>' + (S && S.hasStory(id) ? '<button type="button" class="ll-st" data-story="' + id + '" data-seq="' + k + '" aria-label="' + esc((L.nav || L.title) + ' als Story ansehen') + '"><span>' + ICON.play + '</span></button>' : '') + '</li>'; }).join('') + '</ol>';
+  const prev = KT.chapters[k - 1], next = KT.chapters[k + 1];
+  h += '<nav class="pager" aria-label="Kapitel">' + (prev && prev.items.length ? '<a class="prev" href="' + chHref(prev) + '"><span class="dir">' + ICON.chevL + 'Voriges Kapitel</span><span class="ttl">' + esc(prev.title) + '</span></a>' : '') + (next && next.items.length ? '<a class="next" href="' + chHref(next) + '"><span class="dir">Nächstes Kapitel' + ICON.chevR + '</span><span class="ttl">' + esc(next.title) + '</span></a>' : '') + '</nav></div>';
+  main.innerHTML = h; T = null; document.title = ch.title + ' | Der Kriegstisch';
 }
 function renderBattles() {
   const groups = [['Vor Christus', []], ['Nach Christus', []]];
@@ -7725,7 +8024,7 @@ function renderBattles() {
   document.title = 'Schlachten | Der Kriegstisch';
 }
 function renderTools() {
-  main.innerHTML = '<div class="page"><header class="hub-head"><h1 class="h1">Werkzeuge</h1><p class="lead">Für die Arbeit am Manuskript: Generatoren für Manöver und Figuren, Zahlen für glaubwürdige Feldzüge und alles zum Nachschlagen.</p></header><ul class="tools">' + TOOLS.map((t) => '<li><a href="#' + t.id + '">' + ICON[t.icon] + '<span><b>' + esc(t.label) + '</b><span>' + t.desc + '</span></span>' + ICON.chevR + '</a></li>').join('') + '<li><a href="https://timmisg.github.io/kriegstisch/hain/" target="_blank" rel="noopener">' + ICON.ext + '<span><b>Der Hain</b><span>Die Schwester-App: Götter, Mythen, Riten, Opfer und Feste aus aller Welt, mit Jahreskreis und Werkstatt.</span></span>' + ICON.chevR + '</a></li></ul></div>';
+  main.innerHTML = '<div class="page"><header class="hub-head"><h1 class="h1">Werkzeuge</h1><p class="lead">Für die Arbeit am Manuskript: Generatoren für Manöver und Figuren, Zahlen für glaubwürdige Feldzüge und alles zum Nachschlagen.</p></header><ul class="tools">' + TOOLS.map((t) => '<li><a href="#' + t.id + '">' + ICON[t.icon] + '<span><b>' + esc(t.label) + '</b><span>' + t.desc + '</span></span>' + ICON.chevR + '</a></li>').join('') + '<li><a href="#karten">' + ICON.book + '<span><b>Gemerkte Karten</b><span>Karten, die du in den Stories gemerkt hast, zum Wiederholen.</span></span>' + ICON.chevR + '</a></li><li><a href="https://timmisg.github.io/kriegstisch/hain/" target="_blank" rel="noopener">' + ICON.ext + '<span><b>Der Hain</b><span>Die Schwester-App: Götter, Mythen, Riten, Opfer und Feste aus aller Welt, mit Jahreskreis und Werkstatt.</span></span>' + ICON.chevR + '</a></li></ul></div>';
   T = null; document.title = 'Werkzeuge | Der Kriegstisch';
 }
 
@@ -7798,7 +8097,7 @@ RENDER.raenkeIntro = () => {
   let h = '<section class="sect"><h2 class="h2">Zwölf Spielarten</h2><div class="kats">' + (KT.raenkeKats || []).map(([k, d]) => { const c = cnt(k); return '<a class="kat' + (c ? '' : ' empty') + '" href="#raenke-archiv?kat=' + encodeURIComponent(k) + '"><b>' + esc(k) + '</b><span>' + esc(d) + '</span><small>' + (c ? c + (c === 1 ? ' Fall' : ' Fälle') : 'noch keine Fälle') + '</small></a>'; }).join('') + '</div></section>';
   if ((KT.raenkeGrund || []).length) h += '<section class="sect"><h2 class="h2">Was die alten Meister rieten</h2><div class="tax">' + KT.raenkeGrund.map((g) => '<div class="tax-row"><h3>' + esc(g.titel) + '<small>' + esc(g.wer) + '</small></h3><div><p>' + esc(g.text) + '</p><p class="ex">' + richSrc(g.src) + '</p></div></div>').join('') + '</div></section>';
   const list = RITEMS.filter((id) => id !== 'raenke' && KT.lessons[id]);
-  h += '<section class="sect"><h2 class="h2">Alles in diesem Bereich</h2><ul class="tools">' + list.map((id) => { const L = KT.lessons[id]; const ic = id === 'raenke-wuerfel' ? 'dice' : id === 'raenke-archiv' ? 'archiv' : id === 'strategeme' ? 'scroll' : id === 'raenke-schreiben' ? 'book' : 'raenke'; return '<li><a href="#' + id + '">' + ICON[ic] + '<span><b>' + esc(L.nav || L.title) + '</b><span>' + esc(String(L.lead || '').replace(/<[^>]+>/g, '').split(/(?<=[.!?])\s/)[0]) + '</span></span>' + ICON.chevR + '</a></li>'; }).join('') + '</ul></section>';
+  h += '<section class="sect"><h2 class="h2">Alles in diesem Bereich</h2><ul class="tools">' + list.map((id) => { const L = KT.lessons[id]; const ic = id === 'raenke-wuerfel' ? 'dice' : id === 'raenke-archiv' ? 'archiv' : id === 'strategeme' ? 'scroll' : id === 'raenke-schreiben' ? 'book' : 'raenke'; return '<li><a href="#' + id + '">' + ICON[ic] + '<span><b>' + esc(L.nav || L.title) + '</b><span>' + esc(firstSentence(String(L.lead || '').replace(/<[^>]+>/g, ''))) + '</span></span>' + ICON.chevR + '</a></li>'; }).join('') + '</ul></section>';
   return h;
 };
 RENDER.raenke = () => {
@@ -7857,15 +8156,18 @@ AFTER.raenkeDice = () => {
 };
 
 // ---------- Router ----------
-const scrollMem = {}; let curKey = null; let QUERY = {}; const HUBS = ['start', 'schlachten', 'werkzeuge', 'marotten', 'raenke', 'raenke-archiv'];
+const scrollMem = {}; let curKey = null; let QUERY = {}; const HUBS = ['start', 'schlachten', 'werkzeuge', 'marotten', 'raenke', 'raenke-archiv', 'kapitel-1', 'kapitel-2', 'kapitel-3', 'kapitel-4', 'kapitel-5', 'kapitel-6', 'kapitel-7', 'kapitel-8', 'kapitel-9'];
 function route() {
   const full = (location.hash || '').replace('#', ''); const qi = full.indexOf('?'); const id = qi < 0 ? full : full.slice(0, qi);
   QUERY = {}; if (qi >= 0) new URLSearchParams(full.slice(qi + 1)).forEach((v, k) => { QUERY[k] = v; });
   if (curKey) scrollMem[curKey] = window.scrollY;
   setFocus(false);
+  if (homeStage) STAGE.pause(); homeStage = false; if (homeLabels !== null) { STAGE.showLabels = homeLabels; homeLabels = null; }
   let dest, title = null, split = false;
   if (id === 'schlachten') { dest = 'schlachten'; renderBattles(); }
   else if (id === 'werkzeuge') { dest = 'werkzeuge'; renderTools(); }
+  else if (/^kapitel-\d+$/.test(id) && KT.chapters[+id.slice(8) - 1]) { const k = +id.slice(8) - 1; const ch = KT.chapters[k]; dest = ch.items.some((x) => RITEMS.includes(x)) ? 'raenke' : ch.items.includes('cannae') ? 'schlachten' : 'lehrgang'; renderChapter(k); title = ch.title; }
+  else if (id === 'karten' && window.KTStory) { dest = 'werkzeuge'; window.KTStory.renderKarten(main); T = null; title = 'Gemerkte Karten'; document.title = 'Gemerkte Karten | Der Kriegstisch'; }
   else if (id && KT.lessons[id] && CHAP[id]) { dest = destOf(id); renderLesson(id); if (dest !== 'archiv' && id !== 'raenke-archiv' && id !== 'raenke') { title = KT.lessons[id].nav || KT.lessons[id].title; split = true; } }
   else { dest = 'lehrgang'; renderHome(); }
   setNav(dest); setBar(dest, title);
@@ -7888,6 +8190,298 @@ document.addEventListener('keydown', (e) => {
 
 route();
 window.__KT = { STAGE, route };
+})();
+
+/* ---- story.js ---- */
+/* =====================================================================
+   Kriegstisch – Lektionen als Story: Karten zum Antippen, Animationen vom Tisch,
+   Verständnisfragen, gemerkte Karten. Lädt nach app.js (braucht window.__KT).
+   ===================================================================== */
+(function () {
+'use strict';
+const KT = window.KT, API = window.__KT; if (!KT || !API) return;
+const STAGE = API.STAGE; const stageEl = document.getElementById('stage');
+const $ = (s, el) => (el || document).querySelector(s);
+const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const strip = (h) => String(h || '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+const store = { get(k, d) { try { const v = localStorage.getItem('kt.' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem('kt.' + k, JSON.stringify(v)); } catch (e) { } } };
+const reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function sentences(t, n, max) {
+  const s = strip(t).match(/[^.!?]+(?:[.!?]+["“”»«]?|$)\s*/g) || []; let out = '';
+  for (const x of s.slice(0, n)) { if (out && (out + x).length > max) break; out += x; }
+  return (out || strip(t).slice(0, max)).trim();
+}
+
+// ---------- Ordnung und Farben ----------
+const ORDER = [], CHAP = {}, CHI = {};
+KT.chapters.forEach((c, ci) => c.items.forEach((id) => { ORDER.push(id); CHAP[id] = c; CHI[id] = ci; }));
+const NO_STORY = new Set(['marotten', 'raenke-archiv', 'raenke-wuerfel', 'wuerfel', 'glossar', 'quellen', 'realismus', 'kabinett']);
+const hasStory = (id) => !!(KT.lessons[id] && CHAP[id] && !NO_STORY.has(id));
+// Je Kapitel eine Farbe für die Story-Flächen (dunkel genug für weiße Schrift)
+const COLORS = ['#55623a', '#2c527c', '#86382d', '#43525e', '#3a644a', '#7d6123', '#55457c', '#723043', '#2c6262', '#4b5563'];
+const colorOf = (id) => COLORS[(CHI[id] || 0) % COLORS.length];
+
+// ---------- Zeichen (Strichzeichnungen, die sich beim Erscheinen selbst zeichnen) ----------
+const C = (cx, cy, r) => 'M' + (cx - r) + ' ' + cy + 'a' + r + ' ' + r + ' 0 1 0 ' + 2 * r + ' 0a' + r + ' ' + r + ' 0 1 0 ' + -2 * r + ' 0';
+const MOTIF = {
+  shield: ['M60 14L96 26V58C96 82 80 98 60 106C40 98 24 82 24 58V26Z', 'M60 30V90M40 54H80'],
+  spear: ['M36 104L52 22', 'M60 104V18', 'M84 104L68 22', 'M48 32L52 22L57 31', 'M55 28L60 18L65 28', 'M63 31L68 22L72 32', 'M26 86H94', 'M30 86C30 96 40 100 48 100M90 86C90 96 80 100 72 100'],
+  sword: ['M60 12L67 24V78H53V24Z', 'M40 78H80', 'M60 78V98', C(60, 104, 5)],
+  arrows: ['M18 94C40 72 62 56 98 30', 'M85 27L98 30L93 42', 'M18 70C34 58 52 48 80 38', 'M69 34L80 38L74 48'],
+  pincer: ['M18 28C58 18 88 38 92 58', 'M18 92C58 102 88 82 92 62', 'M82 46L92 58L78 60', 'M82 74L92 62L78 60', C(54, 60, 8)],
+  tower: ['M30 104V44H90V104', 'M30 44V32H42V44M54 44V32H66V44M78 44V32H90V44', 'M50 104V82A10 10 0 0 1 70 82V104', 'M20 104H100'],
+  hill: ['M8 96C30 60 46 50 62 62C76 72 88 46 112 96', 'M30 96C40 82 50 76 62 82C72 88 80 78 92 96', 'M60 52V30L74 36L60 42'],
+  river: ['M10 46C25 36 40 56 55 46S85 36 110 46', 'M10 66C25 56 40 76 55 66S85 56 110 66', 'M10 86C25 76 40 96 55 86S85 76 110 86'],
+  cloud: ['M38 66C22 66 22 44 40 44C42 30 64 26 72 40C86 34 100 44 94 58C102 62 98 72 88 72H40', 'M46 82L42 94M62 82L58 94M78 82L74 94'],
+  eye: ['M10 60C30 32 90 32 110 60C90 88 30 88 10 60Z', C(60, 60, 16), C(60, 60, 5)],
+  heart: ['M60 100C20 72 14 46 30 32C42 22 56 28 60 40C64 28 78 22 90 32C106 46 100 72 60 100Z', 'M22 62H44L50 50L58 74L64 58H98'],
+  mask: ['M12 50C30 38 90 38 108 50C108 72 94 82 82 82C70 82 66 72 60 72C54 72 50 82 38 82C26 82 12 72 12 50Z', 'M28 58C34 54 44 54 50 58', 'M70 58C76 54 86 54 92 58'],
+  scroll: ['M30 24H86V92C86 100 80 104 74 104H30', 'M30 24C22 24 20 34 30 34', 'M30 104C38 104 40 94 30 94H74', 'M42 46H76M42 60H76M42 74H64'],
+  quill: ['M96 14C60 22 40 50 34 92C52 76 76 56 96 14Z', 'M34 92L24 106', 'M62 50L46 66', 'M18 108H70'],
+  dice: ['M30 28H90A4 4 0 0 1 94 32V92A4 4 0 0 1 90 96H30A4 4 0 0 1 26 92V32A4 4 0 0 1 30 28Z', C(44, 46, 3), C(76, 46, 3), C(60, 62, 3), C(44, 78, 3), C(76, 78, 3)],
+  crown: ['M22 86L28 40L46 62L60 30L74 62L92 40L98 86Z', 'M22 98H98', C(60, 30, 3)],
+  fire: ['M30 100L90 84M30 84L90 100', 'M60 82C44 72 48 54 60 36C62 50 72 54 70 66C76 60 76 52 74 46C84 58 82 78 60 82Z'],
+  compass: [C(60, 60, 42), 'M60 26L68 60L60 94L52 60Z', 'M60 60L68 60', 'M56 14H64'],
+  banner: ['M36 108V14', 'M36 18C56 10 70 28 92 20V56C70 64 56 46 36 54', C(36, 12, 3)],
+  moon: ['M78 18A42 42 0 1 0 102 78A34 34 0 1 1 78 18Z', 'M30 26L32 32L38 34L32 36L30 42L28 36L22 34L28 32Z'],
+  letter: ['M18 34H102V90H18Z', 'M18 34L60 66L102 34', 'M18 90L50 60M102 90L70 60'],
+};
+const ART = { bausteine: 'shield', moral: 'heart', linie: 'spear', phalanx: 'spear', manipel: 'shield', schildwall: 'shield', keil: 'arrows', igel: 'spear', wagenburg: 'tower', flanke: 'arrows', hammer: 'pincer', zange: 'pincer', schief: 'arrows', umgehung: 'arrows', flucht: 'arrows', hinterhalt: 'eye', reiterbogen: 'arrows', nacht: 'moon', anhoehe: 'hill', anlehnen: 'river', reserve: 'shield', feldwerke: 'tower', engpass: 'hill', fabius: 'fire', sicht: 'eye', wasser: 'river', wetter: 'cloud', marsch: 'compass', taeuschung: 'eye', raenke: 'mask', strategeme: 'scroll', 'raenke-schreiben': 'quill', kommandant: 'crown', eigenheiten: 'crown', erzaehlen: 'quill' };
+const artOf = (id) => ART[id] || (CHAP[id] && CHAP[id].items.includes('cannae') ? 'banner' : 'scroll');
+function motifSVG(name, big) {
+  const P = MOTIF[name] || MOTIF.scroll;
+  return '<svg class="st-motif' + (big ? ' big' : '') + '" viewBox="0 0 120 120" aria-hidden="true">' + P.map((d, i) => '<path d="' + d + '" pathLength="1" style="--d:' + (i * 0.12).toFixed(2) + 's"/>').join('') + '</svg>';
+}
+
+// ---------- Karten bauen ----------
+function autoCards(id) {
+  const L = KT.lessons[id]; const cards = [];
+  cards.push({ t: 'cover', title: L.title.split(': ')[0], sub: L.title.split(': ')[1] || sentences(L.lead, 1, 140), when: L.when ? String(L.when).split(' · ').reverse().join(', ') : '', art: L.scene ? { phase: 0 } : artOf(id) });
+  if (L.lead && L.title.indexOf(': ') > 0) cards.push({ t: 'text', p: sentences(L.lead, 2, 230), art: artOf(id) });
+  if (L.trick) cards.push({ t: 'text', h: 'Der Trick', p: sentences(L.trick, 3, 260), art: L.scene ? null : 'eye', key: true });
+  if (L.scene) { const n = (window.__KTPhaseCount && window.__KTPhaseCount(L.scene)) || 0; for (let i = 0; i < Math.min(n || 5, 7); i++) cards.push({ t: 'stage', phase: i }); }
+  if (L.saw || L.was) cards.push({ t: 'duo', saw: sentences(L.saw, 2, 200), was: sentences(L.was, 2, 200) });
+  if (!L.scene && L.body && L.body.length) for (const s of L.body.slice(0, 4)) { if (!s.h) continue; cards.push({ t: 'text', h: s.h, p: sentences(s.html, 2, 240), art: artOf(id), key: true }); }
+  const c = L.cards || {};
+  if (c.plus && c.plus.length) cards.push({ t: 'list', h: 'Stärken', kind: 'plus', items: c.plus.slice(0, 3).map((x) => sentences(x, 1, 120)) });
+  if (c.minus && c.minus.length) cards.push({ t: 'list', h: 'Schwächen', kind: 'minus', items: c.minus.slice(0, 3).map((x) => sentences(x, 1, 120)) });
+  if (c.plus && c.plus.length && c.minus && c.minus.length) {
+    const pick = Math.random() < 0.5 ? ['plus', c.plus] : ['minus', c.minus]; const item = sentences(pick[1][Math.floor(Math.random() * Math.min(3, pick[1].length))], 1, 120);
+    cards.push({ t: 'quiz', q: 'Stärke oder Schwäche?', ctx: item, opts: ['Stärke', 'Schwäche'], a: pick[0] === 'plus' ? 0 : 1, why: 'In der Lektion steht das bei den ' + (pick[0] === 'plus' ? 'Stärken.' : 'Schwächen.') });
+  }
+  if (c.konter && c.konter.length) cards.push({ t: 'list', h: 'So kontert man', kind: 'konter', items: c.konter.slice(0, 3).map((x) => sentences(x, 1, 120)) });
+  if (L.scene) cards.push({ t: 'quiz-order' });
+  if (L.novel) cards.push({ t: 'novel', p: sentences(L.novel, 2, 240) });
+  return cards;
+}
+function cardsOf(id) {
+  const S = KT.stories && KT.stories[id];
+  const cards = S && S.cards ? S.cards.slice() : autoCards(id);
+  cards.push({ t: 'end', take: S && S.take });
+  return cards;
+}
+function meta(id) { if (!hasStory(id)) return null; const n = cardsOf(id).length; return { cards: n, min: Math.max(2, Math.round(n * 0.35)) }; }
+
+// ---------- Ablage ----------
+const seen = new Set(store.get('storySeen', []));
+let saved = store.get('cards', []);
+const isSaved = (id, i) => saved.some((x) => x.id === id && x.i === i);
+
+// ---------- Spieler ----------
+let S = null, root = null, prevLabels = true, lastFocus = null;
+function open(id, seq) {
+  if (!hasStory(id)) return;
+  lastFocus = document.activeElement;
+  const L0 = KT.lessons[id]; if (L0.scene && (!STAGE.sc || STAGE.sc.id !== L0.scene)) { try { STAGE.load(L0.scene, null); } catch (e) { } }
+  S = { id, seq: seq || null, cards: cardsOf(id), i: 0, ans: {}, right: 0, asked: 0, phases: L0.scene && STAGE.sc ? STAGE.sc.phases : null, loop: null };
+  if (!root) {
+    root = document.createElement('div'); root.className = 'story'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
+    root.innerHTML = '<div class="st-frame"><div class="st-bars" aria-hidden="true"></div><div class="st-top"><span class="st-ch"></span><button type="button" class="st-save" aria-pressed="false" aria-label="Karte merken"></button><button type="button" class="st-x" aria-label="Story schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="st-stack"></div><button type="button" class="sr-tap st-prev" aria-label="Vorige Karte"></button><button type="button" class="sr-tap st-next" aria-label="Nächste Karte"></button></div><button type="button" class="st-side st-sprev" aria-label="Vorige Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></svg></button><button type="button" class="st-side st-snext" aria-label="Nächste Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg></button>';
+    document.body.appendChild(root);
+    $('.st-x', root).addEventListener('click', close);
+    $('.st-prev', root).addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+    $('.st-next', root).addEventListener('click', (e) => { e.stopPropagation(); go(1); });
+    // Antippen wie bei Stories: linkes Drittel zurück, sonst weiter; Knöpfe in der Karte bleiben bedienbar
+    $('.st-frame', root).addEventListener('click', (e) => { if (e.target.closest('button, a, .st-opts, .st-top')) return; const r = e.currentTarget.getBoundingClientRect(); if (e.clientX - r.left < r.width * 0.3) go(-1); else go(1); });
+    $('.st-sprev', root).addEventListener('click', () => go(-1));
+    $('.st-snext', root).addEventListener('click', () => go(1));
+    $('.st-save', root).addEventListener('click', toggleSave);
+    root.addEventListener('click', (e) => { if (e.target === root) close(); });
+    let y0 = null; root.addEventListener('touchstart', (e) => { y0 = e.touches[0].clientY; }, { passive: true });
+    root.addEventListener('touchend', (e) => { if (y0 !== null && e.changedTouches[0].clientY - y0 > 110) close(); y0 = null; }, { passive: true });
+  }
+  root.style.setProperty('--sc', colorOf(id));
+  root.setAttribute('aria-label', 'Story: ' + KT.lessons[id].title);
+  $('.st-ch', root).textContent = (CHAP[id].num ? CHAP[id].num + '  ' : '') + (KT.lessons[id].nav || KT.lessons[id].title);
+  prevLabels = STAGE.showLabels; STAGE.showLabels = false;
+  document.body.classList.add('has-story'); root.hidden = false;
+  document.addEventListener('keydown', onKey, true);
+  draw(1);
+  $('.st-next', root).focus({ preventScroll: true });
+}
+function close() {
+  if (!S) return; stopLoop(); STAGE.pause(); STAGE.showLabels = prevLabels;
+  document.removeEventListener('keydown', onKey, true);
+  root.hidden = true; document.body.classList.remove('has-story');
+  const id = S.id; S = null; $('.st-stack', root).innerHTML = '';
+  STAGE.readTheme && STAGE.readTheme(true);
+  API.route(); // Tisch an seinen Platz zurück, Fortschritt neu zeichnen
+  const btn = document.querySelector('[data-story="' + id + '"]'); if (btn) btn.focus({ preventScroll: true }); else if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+}
+function onKey(e) {
+  if (!S) return;
+  if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); }
+  else if (e.key === 'ArrowRight' || (e.key === ' ' && !(e.target.closest && e.target.closest('button')))) { e.preventDefault(); e.stopPropagation(); go(1); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); go(-1); }
+}
+function blocked() { const c = S.cards[S.i]; if (c.t === 'quiz-order' && !orderQuiz(c)) return false; return (c.t === 'quiz' || c.t === 'quiz-order') && S.ans[S.i] === undefined; }
+function go(d) {
+  if (!S) return;
+  if (d > 0 && blocked()) { const q = $('.st-card.on .st-opts', root); if (q) { q.classList.remove('nudge'); void q.offsetWidth; q.classList.add('nudge'); } return; }
+  const n = S.i + d;
+  if (n < 0) return;
+  if (n >= S.cards.length) { nextStory(); return; }
+  S.i = n; draw(d);
+}
+function nextStory() {
+  const L = S.seq || ORDER; const i = L.indexOf(S.id); const nx = L.slice(i + 1).find(hasStory);
+  if (nx) { const seq = S.seq; stopLoop(); open(nx, seq); } else close();
+}
+function bars() {
+  $('.st-bars', root).innerHTML = S.cards.map((_, i) => '<i' + (i < S.i ? ' class="done"' : i === S.i ? ' class="now"' : '') + '><b></b></i>').join('');
+}
+function draw(dir) {
+  bars();
+  const c = S.cards[S.i]; const stack = $('.st-stack', root);
+  const el = document.createElement('div'); el.className = 'st-card ' + (dir < 0 ? 'from-l' : 'from-r') + ' t-' + c.t;
+  el.innerHTML = cardHTML(c, S.i);
+  const old = $$('.st-card', stack); old.forEach((o) => { o.classList.remove('on'); o.classList.add('off'); setTimeout(() => o.remove(), reduced ? 0 : 320); });
+  stack.appendChild(el); requestAnimationFrame(() => el.classList.add('on'));
+  wire(el, c);
+  const sv = $('.st-save', root); const can = ['text', 'list', 'novel', 'stage', 'duo'].includes(c.t);
+  sv.hidden = !can; sv.setAttribute('aria-pressed', isSaved(S.id, S.i)); sv.innerHTML = isSaved(S.id, S.i) ? SAVE_ON : SAVE_OFF;
+  $('.st-prev', root).disabled = S.i === 0; $('.st-sprev', root).disabled = S.i === 0;
+  if (S.i === S.cards.length - 1) { seen.add(S.id); store.set('storySeen', [...seen]); }
+}
+const SAVE_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M7 4.5h10v15.2l-5-3.7-5 3.7z"/></svg>';
+const SAVE_ON = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M7 4.5h10v15.2l-5-3.7-5 3.7z"/></svg>';
+function toggleSave() {
+  const c = S.cards[S.i]; const L = KT.lessons[S.id];
+  if (isSaved(S.id, S.i)) saved = saved.filter((x) => !(x.id === S.id && x.i === S.i));
+  else saved.unshift({ id: S.id, i: S.i, h: c.h || (c.t === 'stage' ? $('.st-card.on h2', root) && $('.st-card.on h2', root).textContent : c.t === 'novel' ? 'Für deinen Roman' : c.t === 'duo' ? 'Was der Gegner sah, was geschah' : L.title), p: c.t === 'list' ? (c.items || []).join(' ') : c.t === 'duo' ? c.saw + ' ' + c.was : c.p || ($('.st-card.on .st-p', root) || {}).textContent || '', when: Date.now() });
+  store.set('cards', saved.slice(0, 300));
+  const on = isSaved(S.id, S.i); const sv = $('.st-save', root); sv.setAttribute('aria-pressed', on); sv.innerHTML = on ? SAVE_ON : SAVE_OFF;
+  toast(on ? 'Karte gemerkt' : 'Nicht mehr gemerkt');
+}
+let tt = 0; function toast(t) { let el = $('.st-toast', root); if (!el) { el = document.createElement('div'); el.className = 'st-toast'; el.setAttribute('role', 'status'); $('.st-frame', root).appendChild(el); } el.textContent = t; el.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('on'), 1400); }
+
+function artHTML(art, cls) {
+  if (!art) return '';
+  if (typeof art === 'string') return '<div class="st-art ' + (cls || '') + '">' + motifSVG(art, true) + '</div>';
+  return '<div class="st-art st-stage ' + (cls || '') + '" data-phase="' + (art.phase || 0) + '"></div>';
+}
+function cardHTML(c, i) {
+  const L = KT.lessons[S.id];
+  if (c.t === 'cover') return artHTML(c.art, 'cover') + '<div class="st-txt"><p class="st-kick">' + esc(CHAP[S.id].title) + '</p><h1>' + esc(c.title) + '</h1>' + (c.sub ? '<p class="st-sub">' + esc(c.sub) + '</p>' : '') + (c.when ? '<p class="st-when">' + esc(c.when) + '</p>' : '') + '<p class="st-hint">Tippe rechts, um weiterzugehen</p></div>';
+  if (c.t === 'text') return artHTML(c.art === undefined ? artOf(S.id) : c.art) + '<div class="st-txt">' + (c.h ? '<h2>' + esc(c.h) + '</h2>' : '') + '<p class="st-p">' + c.p + '</p></div>';
+  if (c.t === 'stage') return '<div class="st-art st-stage" data-phase="' + c.phase + '"></div><div class="st-txt"><p class="st-kick st-ph"></p><h2>' + esc(c.h || '') + '</h2><p class="st-p">' + (c.p || '') + '</p></div>';
+  if (c.t === 'duo') return '<div class="st-txt st-duo"><div><p class="st-kick">Was der Gegner sah</p><p>' + esc(c.saw) + '</p></div><div><p class="st-kick">Was wirklich geschah</p><p>' + esc(c.was) + '</p></div></div>';
+  if (c.t === 'list') return '<div class="st-txt st-list k-' + (c.kind || '') + '"><h2>' + esc(c.h) + '</h2><ul>' + c.items.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul></div>';
+  if (c.t === 'quote') return '<div class="st-txt st-quote"><blockquote>' + esc(c.q) + '</blockquote><p class="st-when">' + esc(c.who) + '</p></div>';
+  if (c.t === 'novel') return artHTML('quill', 'small') + '<div class="st-txt st-novel"><p class="st-kick">Für deinen Roman</p><p class="st-p">' + esc(c.p) + '</p></div>';
+  if (c.t === 'quiz' || c.t === 'quiz-order') {
+    const q = c.t === 'quiz-order' ? orderQuiz(c) : c; if (!q) return '<div class="st-txt"><p class="st-p">Weiter.</p></div>';
+    const a = S.ans[i];
+    return '<div class="st-txt st-quiz"><p class="st-kick">Kurz geprüft</p><h2>' + esc(q.q) + '</h2>' + (q.ctx ? '<p class="st-ctx">„' + esc(q.ctx) + '“</p>' : '') + '<div class="st-opts" role="group" aria-label="Antworten">' + q.opts.map((o, k) => '<button type="button" class="st-opt' + (a !== undefined ? (k === q.a ? ' right' : k === a ? ' wrong' : ' dim') : '') + '" data-k="' + k + '"' + (a !== undefined ? ' disabled' : '') + '>' + esc(o) + '</button>').join('') + '</div><div class="st-why" aria-live="polite">' + (a !== undefined ? whyHTML(q, a) : '') + '</div></div>';
+  }
+  if (c.t === 'end') {
+    const take = c.take || autoTake(L);
+    const nx = (S.seq || ORDER).slice((S.seq || ORDER).indexOf(S.id) + 1).find(hasStory);
+    return artHTML(artOf(S.id), 'small') + '<div class="st-txt st-end"><p class="st-kick">Das nimmst du mit</p><ul>' + take.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul>' + (S.asked ? '<p class="st-score">' + S.right + ' von ' + S.asked + ' Fragen richtig</p>' : '') + '<div class="st-acts">' + (nx ? '<button type="button" class="st-btn primary" data-act="next">Nächste Story: ' + esc(KT.lessons[nx].nav || KT.lessons[nx].title) + '</button>' : '') + '<button type="button" class="st-btn" data-act="read">Ganze Lektion lesen</button><button type="button" class="st-btn" data-act="again">Noch einmal</button></div></div>';
+  }
+  return '';
+}
+function whyHTML(q, a) { const ok = a === q.a; return '<p class="st-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Richtig.' : 'Nicht ganz.') + '</p><p>' + esc(q.why || '') + '</p><p class="st-go">Tippe rechts, um weiterzugehen</p>'; }
+function autoTake(L) {
+  const t = []; if (L.trick) t.push(sentences(L.trick, 1, 140)); const c = L.cards || {};
+  if (c.konter && c.konter[0]) t.push('Gegenmittel: ' + sentences(c.konter[0], 1, 120)); if (L.novel) t.push(sentences(L.novel, 1, 140));
+  if (!t.length && L.lead) t.push(sentences(L.lead, 1, 160));
+  return t.slice(0, 3);
+}
+function orderQuiz(c) {
+  if (c._q) return c._q; const P = S.phases; if (!P || P.length < 3) return null;
+  const i = 1 + Math.floor(Math.random() * (P.length - 2)); const j = i + 1 + Math.floor(Math.random() * (P.length - i - 1));
+  const first = Math.random() < 0.5; const opts = first ? [P[i].title, P[j].title] : [P[j].title, P[i].title];
+  c._q = { q: 'Was geschah zuerst?', opts, a: first ? 0 : 1, why: '„' + P[i].title + '“ ist Phase ' + (i + 1) + ', „' + P[j].title + '“ erst Phase ' + (j + 1) + '.' };
+  return c._q;
+}
+function wire(el, c) {
+  stopLoop();
+  const st = $('.st-stage', el);
+  if (st) mountStage(st, +st.dataset.phase, el, c); else { STAGE.pause(); }
+  $$('.st-opt', el).forEach((b) => b.addEventListener('click', (e) => {
+    e.stopPropagation(); if (S.ans[S.i] !== undefined) return;
+    const q = c.t === 'quiz-order' ? c._q : c; const k = +b.dataset.k; S.ans[S.i] = k; S.asked++; if (k === q.a) S.right++;
+    $$('.st-opt', el).forEach((x) => { const kk = +x.dataset.k; x.disabled = true; x.classList.add(kk === q.a ? 'right' : kk === k ? 'wrong' : 'dim'); });
+    $('.st-why', el).innerHTML = whyHTML(q, k);
+  }));
+  $$('[data-act]', el).forEach((b) => b.addEventListener('click', (e) => {
+    e.stopPropagation(); const a = b.dataset.act;
+    if (a === 'next') nextStory(); else if (a === 'again') { const id = S.id, seq = S.seq; open(id, seq); } else if (a === 'read') { const id = S.id; close(); if (location.hash !== '#' + id) location.hash = id; }
+  }));
+}
+function mountStage(slot, phase, el, c) {
+  const L = KT.lessons[S.id]; if (!L.scene) return;
+  slot.appendChild(stageEl);
+  if (!STAGE.sc || STAGE.sc.id !== L.scene) STAGE.load(L.scene, null);
+  STAGE.setPov(null); STAGE.resetView();
+  STAGE.readTheme && STAGE.readTheme(true);
+  S.phases = STAGE.sc.phases;
+  // Karten ohne eigene Phase (Titel, Lead) zeigen die erste
+  const P = STAGE.sc.phases[Math.min(phase, STAGE.sc.phases.length - 1)]; if (!P) return;
+  const t0 = P.t0, t1 = P.t1 || (STAGE.sc.phases[phase + 1] || { t0: STAGE.sc.duration }).t0;
+  if (c.t === 'stage') {
+    const ph = $('.st-ph', el); if (ph) ph.textContent = 'Phase ' + (phase + 1) + ' von ' + STAGE.sc.phases.length;
+    const h = $('h2', el); if (h && !c.h) h.textContent = P.title;
+    const p = $('.st-p', el); if (p && !c.p) p.textContent = sentences(P.text, 2, 230);
+  }
+  STAGE.setTime(t0 + 0.01);
+  if (reduced) { STAGE.setTime(Math.min(t1 - 0.05, t0 + (t1 - t0) * 0.8)); STAGE.pause(); return; }
+  STAGE.play();
+  S.loop = { t0, t1 };
+}
+function stopLoop() { if (S) S.loop = null; }
+STAGE.on('time', (t) => { if (!S || !S.loop) return; if (t >= S.loop.t1 - 0.02) { STAGE.setTime(S.loop.t0 + 0.01); if (!STAGE.playing) STAGE.play(); } });
+STAGE.on('end', () => { if (S && S.loop) { STAGE.setTime(S.loop.t0 + 0.01); STAGE.play(); } });
+window.__KTPhaseCount = (sceneId) => { try { if (STAGE.sc && STAGE.sc.id === sceneId) return STAGE.sc.phases.length; } catch (e) { } return 0; };
+
+// ---------- Für die Übersichten ----------
+function ringsHTML() {
+  let h = '<div class="rings" role="list">';
+  KT.chapters.forEach((ch, ci) => {
+    const ids = ch.items.filter(hasStory); if (!ids.length) return;
+    const done = ids.filter((id) => seen.has(id)).length; const first = ids.find((id) => !seen.has(id)) || ids[0];
+    h += '<button type="button" class="ring' + (done === ids.length ? ' all' : '') + '" role="listitem" data-story="' + first + '" data-seq="' + ci + '" style="--sc:' + COLORS[ci % COLORS.length] + '" aria-label="' + esc(ch.title + ', ' + done + ' von ' + ids.length + ' Stories gesehen') + '"><span class="ring-c">' + motifSVG(artOf(ch.items[0]), false) + '</span><span class="ring-t">' + esc(ch.title) + '</span><span class="ring-n">' + done + '/' + ids.length + '</span></button>';
+  });
+  return h + '</div>';
+}
+function renderKarten(main) {
+  saved = store.get('cards', []);
+  let h = '<div class="page"><header class="hub-head"><h1 class="h1">Gemerkte Karten</h1><p class="lead">Karten, die du in den Stories gemerkt hast, zum Wiederholen. Tippe auf das Lesezeichen oben in einer Story, um eine Karte hier abzulegen.</p></header>';
+  if (!saved.length) h += '<p class="note">Noch keine Karten gemerkt.</p>';
+  else h += '<div class="cards-list">' + saved.map((x, k) => { const L = KT.lessons[x.id]; if (!L) return ''; return '<article class="saved-card" style="--sc:' + colorOf(x.id) + '"><p class="sc-l"><a href="#' + x.id + '">' + esc(L.nav || L.title) + '</a></p><h3>' + esc(x.h || '') + '</h3><p>' + esc(x.p || '') + '</p><div class="row"><button type="button" class="btn secondary" data-story="' + x.id + '" data-at="' + x.i + '">In der Story öffnen</button><button type="button" class="linkbtn" data-unsave="' + k + '">Entfernen</button></div></article>'; }).join('') + '</div>';
+  main.innerHTML = h + '</div>';
+  $$('[data-unsave]', main).forEach((b) => b.addEventListener('click', () => { saved.splice(+b.dataset.unsave, 1); store.set('cards', saved); renderKarten(main); }));
+}
+// Klicks auf [data-story] überall in der App
+document.addEventListener('click', (e) => {
+  const b = e.target.closest && e.target.closest('[data-story]'); if (!b || (root && root.contains(b))) return;
+  e.preventDefault(); const id = b.dataset.story; const seq = b.dataset.seq !== undefined ? KT.chapters[+b.dataset.seq].items.filter(hasStory) : null;
+  open(id, seq); if (b.dataset.at && S) { S.i = Math.min(+b.dataset.at, S.cards.length - 1); draw(1); }
+});
+window.KTStory = { open, close, meta, hasStory, ringsHTML, renderKarten, motif: (n) => motifSVG(n, false), seen: () => seen, savedCount: () => store.get('cards', []).length };
+API.route();
 })();
 
 </script>

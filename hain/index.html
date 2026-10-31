@@ -371,6 +371,152 @@ b, strong { font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media print { .rail, .bar, .pager, .ar-tools { display: none !important; } }
+/* ---------- Startseite: Hauptmenü ---------- */
+.home { gap: 36px; }
+.home .sect { gap: 14px; }
+.home-head { display: grid; gap: 8px; }
+.home-head .eyebrow { font-family: var(--f-ui); font-size: 15.5px; font-weight: 600; color: var(--accent); }
+.home-head .note b { color: var(--ink); font-weight: 700; }
+.home-find { display: grid; gap: 12px; margin-top: -14px; }
+.home-search { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; max-width: 720px; }
+.search.big { min-height: 50px; font-size: 17px; border-radius: 12px; padding-left: 42px; background-position: 13px 50%; background-size: 20px 20px; box-shadow: 0 1px 2px rgba(25, 33, 28, 0.05); }
+.home-search .btn { min-height: 50px; border-radius: 12px; }
+@container main (max-width: 480px) { .home-search .btn { display: none; } .home-search { grid-template-columns: minmax(0, 1fr); } }
+.qchips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); -webkit-overflow-scrolling: touch; }
+.qchips::-webkit-scrollbar { display: none; }
+.qchips a { flex: none; display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid var(--line-2); background: var(--raise); color: var(--ink-2); font-family: var(--f-ui); font-size: 15px; font-weight: 600; text-decoration: none; }
+.qchips a:hover { border-color: var(--muted); color: var(--ink); }
+@container main (min-width: 760px) { .qchips { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; } }
+.sect-row { display: flex; align-items: center; justify-content: space-between; gap: 4px 14px; flex-wrap: wrap; }
+.more { display: inline-flex; align-items: center; gap: 2px; min-height: 40px; font-family: var(--f-ui); font-size: 15.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.more svg { width: 16px; height: 16px; }
+.more:hover { text-decoration: underline; text-underline-offset: 3px; }
+.motif { display: block; width: 100%; height: auto; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.btn.light { background: #f3efe4; color: #17211b; }
+.btn.light:hover { background: #fff; }
+.btn.ghost { background: transparent; color: inherit; border-color: rgba(243, 239, 228, 0.5); }
+.btn.ghost:hover { border-color: #f3efe4; }
+.pill { display: inline-flex; align-items: center; min-height: 24px; padding: 0 9px; border-radius: 12px; font-family: var(--f-ui); font-size: 13.5px; font-weight: 700; background: color-mix(in srgb, var(--accent-fill) 22%, transparent); color: var(--accent); white-space: nowrap; }
+/* Heute: der Jahreskreis im Kleinen */
+.today-card { --bg: #17211b; --raise: #1f2b23; --sunk: #243229; --ink: #eef1ea; --ink-2: #c9d2ca; --muted: #9aa79d; --line: #2f3f35; --line-2: #3d4d42; --accent: #e7b866; --accent-fill: #d9a24a; --day: #8a6a2e;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 18px 20px 22px; border-radius: 18px; overflow: hidden; color: var(--ink); box-shadow: var(--shadow);
+  background: radial-gradient(130% 80% at 50% 0%, #2a3a2f 0%, #17211b 62%); }
+.tc-wheel { display: block; width: min(100%, 300px); justify-self: center; margin: -4px 0 6px; }
+.tc-wheel .wheel { width: 100%; }
+.tc-b { display: grid; gap: 7px; align-content: start; min-width: 0; }
+.tc-k { font-family: var(--f-ui); font-size: 15px; font-weight: 700; color: var(--accent); }
+.tc-l { font-family: var(--f-ui); font-size: 14.5px; font-weight: 600; color: var(--muted); }
+.today-card h2 { font-family: var(--f-head); font-weight: 600; font-size: clamp(32px, 4.6cqi, 44px); line-height: 1.02; }
+.today-card h2 a { color: #fff; text-decoration: none; }
+.today-card h2 a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.tc-m { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-family: var(--f-ui); font-size: 15px; color: var(--ink-2); }
+.tc-m .rg { color: var(--ink-2); }
+.tc-t { font-size: 16.5px; line-height: 1.55; color: var(--ink-2); max-width: 54ch; }
+.tc-after { margin-top: 8px; }
+.tc-next { list-style: none; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.tc-next a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+.tc-next b { display: block; font-family: var(--f-ui); font-size: 16.5px; font-weight: 600; line-height: 1.25; }
+.tc-next small { display: block; font-family: var(--f-ui); font-size: 14px; color: var(--muted); }
+.tc-next .w { font-family: var(--f-ui); font-size: 14px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.tc-next a:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.today-card .row { margin-top: 10px; }
+@container main (min-width: 760px) {
+  .today-card { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 36px; padding: 30px 34px; align-items: center; background: radial-gradient(90% 120% at 80% 50%, #2a3a2f 0%, #17211b 64%); }
+  .tc-wheel { order: 2; width: min(100%, 380px); margin: 0; }
+}
+/* Großräume */
+.regions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.reg { position: relative; display: grid; align-content: end; min-height: 188px; padding: 14px 14px 15px; border-radius: 16px; overflow: hidden; isolation: isolate; color: #fff; text-decoration: none;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--sc) 84%, #fff) 0%, var(--sc) 44%, color-mix(in srgb, var(--sc) 64%, #060906) 100%); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.reg:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.reg-art { position: absolute; top: -6px; right: -10px; width: 104px; opacity: 0.3; z-index: -1; }
+.reg-b { display: grid; gap: 3px; }
+.reg-k { display: flex; align-items: center; gap: 6px; font-family: var(--f-ui); font-size: 13.5px; font-weight: 600; opacity: 0.86; }
+.reg-k .rg { color: #fff; width: 11px; height: 11px; }
+.reg b { font-family: var(--f-head); font-weight: 600; font-size: 22px; line-height: 1.04; overflow-wrap: anywhere; hyphens: auto; }
+.reg-l { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-family: var(--f-ui); font-size: 13.5px; line-height: 1.32; opacity: 0.84; margin-top: 2px; }
+@container main (min-width: 760px) { .regions { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } .reg { min-height: 200px; padding: 18px; } .reg-art { width: 124px; } .reg b { font-size: 25px; } .reg-l { font-size: 14.5px; } }
+/* Nach Art */
+.arts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@container main (min-width: 760px) { .arts { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; } }
+.art { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 58px; padding: 9px 12px 9px 10px; border-radius: 14px; border: 1px solid var(--line); background: var(--raise); color: var(--ink); text-decoration: none; }
+.art:hover { border-color: var(--line-2); }
+.art .ai { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--sunk); color: var(--ink-2); }
+.art .ai svg { width: 21px; height: 21px; }
+.art b { font-family: var(--f-ui); font-size: 15.5px; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; hyphens: auto; }
+.art .tnum { font-family: var(--f-ui); font-size: 14px; font-weight: 600; color: var(--muted); }
+@container main (min-width: 760px) { .art { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; padding: 12px 14px; gap: 8px 6px; } .art .ai { grid-column: 1 / -1; } }
+/* Zufallsfund */
+.lucky { display: grid; gap: 8px; padding: 18px 20px 20px; border-radius: 18px; border: 1px solid var(--line); background: var(--raise); }
+.lk-k { display: flex; align-items: center; gap: 7px; font-family: var(--f-ui); font-size: 15px; font-weight: 700; color: var(--accent); }
+.lk-k svg { width: 18px; height: 18px; }
+.lk-n { font-family: var(--f-head); font-weight: 600; font-size: clamp(28px, 4cqi, 36px); line-height: 1.06; }
+.lk-n a { color: var(--ink); text-decoration: none; }
+.lk-n a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-2); }
+.lk-m { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-family: var(--f-ui); font-size: 15px; color: var(--muted); }
+.lk-t { font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 62ch; }
+.lucky .row { margin-top: 6px; }
+/* Werkstatt: gruppierte Liste */
+.tool-grid { display: grid; grid-template-columns: minmax(0, 1fr); border-radius: 16px; border: 1px solid var(--line); background: var(--raise); overflow: hidden; }
+.tool-grid a { display: grid; grid-template-columns: 40px minmax(0, 1fr) 16px; gap: 14px; align-items: center; min-height: 64px; padding: 11px 14px 11px 12px; color: var(--ink); text-decoration: none; border-top: 1px solid var(--line); }
+.tool-grid a:first-child { border-top: 0; }
+.tool-grid a:hover { background: var(--bg-2); }
+.tool-grid .ti { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--sunk); color: var(--ink-2); }
+.tool-grid .ti svg { width: 23px; height: 23px; }
+.tool-grid a > svg { width: 16px; height: 16px; color: var(--muted); }
+.tool-grid b { display: block; font-family: var(--f-ui); font-size: 17px; font-weight: 600; line-height: 1.2; }
+.tool-grid small { display: block; font-family: var(--f-ui); font-size: 14.5px; line-height: 1.35; color: var(--muted); margin-top: 1px; }
+@container main (min-width: 760px) { .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tool-grid a:nth-child(2) { border-top: 0; } .tool-grid a:nth-child(even) { border-left: 1px solid var(--line); } }
+/* Verlässlichkeit */
+.rel-card { display: grid; grid-template-columns: minmax(0, 1fr); border-radius: 16px; border: 1px solid var(--line); background: var(--raise); overflow: hidden; }
+.rel-card > div { display: grid; gap: 3px; padding: 13px 16px 14px; border-top: 1px solid var(--line); }
+.rel-card > div:first-child { border-top: 0; }
+.rel-card h3 { font-family: var(--f-ui); font-size: 16.5px; font-weight: 700; }
+.rel-card p { font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+@container main (min-width: 760px) { .rel-card { grid-template-columns: repeat(3, minmax(0, 1fr)); } .rel-card > div { border-top: 0; } .rel-card > div + div { border-left: 1px solid var(--line); } }
+/* Schwester-App */
+.sister { display: grid; grid-template-columns: 54px minmax(0, 1fr) 18px; gap: 15px; align-items: center; padding: 15px 18px 15px 15px; border-radius: 16px; background: #1f2a33; color: #eef2f4; text-decoration: none; }
+.sister .si { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; background: #2c3a45; }
+.sister .si .motif { width: 36px; stroke: #e2c27a; stroke-width: 6; }
+.sister b { display: block; font-family: var(--f-head); font-weight: 600; font-size: 22px; line-height: 1.1; }
+.sister small { display: block; font-family: var(--f-ui); font-size: 15px; line-height: 1.4; color: rgba(238, 242, 244, 0.76); margin-top: 2px; }
+.sister > svg { width: 18px; height: 18px; color: rgba(238, 242, 244, 0.7); }
+.sister:hover b { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(238, 242, 244, 0.5); }
+/* Großraum-Seite */
+.reg-head { position: relative; display: grid; padding: 24px 20px 22px; border-radius: 18px; overflow: hidden; isolation: isolate; color: #f6f3ea;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--sc) 86%, #fff) 0%, var(--sc) 40%, color-mix(in srgb, var(--sc) 58%, #060906) 100%); }
+.rh-art { position: absolute; top: -14px; right: -22px; width: 170px; opacity: 0.24; z-index: -1; }
+.rh-art .motif { stroke-width: 2.6; }
+.rh-b { display: grid; gap: 10px; max-width: 640px; }
+.rh-k { display: flex; align-items: center; gap: 7px; font-family: var(--f-ui); font-size: 15px; font-weight: 600; color: rgba(246, 243, 234, 0.82); }
+.rh-k .rg { color: #fff; }
+.reg-head .h1 { color: #fff; }
+.rh-t { font-size: 17px; line-height: 1.5; color: rgba(246, 243, 234, 0.92); }
+.rh-m { font-family: var(--f-ui); font-size: 15px; color: rgba(246, 243, 234, 0.8); }
+.reg-head .row { margin-top: 6px; }
+@container main (min-width: 760px) { .reg-head { padding: 34px 36px 32px; } .rh-art { width: 250px; top: -26px; right: -16px; } }
+.kcards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+@container main (min-width: 700px) { .kcards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+.kcard { display: grid; gap: 5px; align-content: start; padding: 15px 16px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--raise); color: var(--ink); text-decoration: none; transition: border-color 0.15s ease; }
+.kcard:hover { border-color: var(--line-2); }
+.kc-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.kc-h b { font-family: var(--f-head); font-weight: 600; font-size: 24px; line-height: 1.1; }
+.kc-h .tnum { font-family: var(--f-ui); font-size: 14.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.kc-z { font-family: var(--f-ui); font-size: 14.5px; color: var(--muted); }
+.kc-d { font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+.kc-a { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.kc-a span { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 10px 0 8px; border-radius: 14px; background: var(--sunk); font-family: var(--f-ui); font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+.kc-a svg { width: 15px; height: 15px; }
+.kcard:hover .kc-h b { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); }
+.fest-list { list-style: none; padding: 0; display: grid; border-radius: 16px; border: 1px solid var(--line); background: var(--raise); overflow: hidden; max-width: 820px; }
+.fest-list li + li { border-top: 1px solid var(--line); }
+.fest-list a { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 11px 14px; color: var(--ink); text-decoration: none; }
+.fest-list a:hover { background: var(--bg-2); }
+.fest-list .fd { display: grid; justify-items: center; line-height: 1.05; padding: 6px 0; border-radius: 10px; background: var(--sunk); }
+.fest-list .fd b { font-family: var(--f-head); font-weight: 600; font-size: 20px; }
+.fest-list .fd small { font-family: var(--f-ui); font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.fest-list .fb b { display: block; font-family: var(--f-ui); font-size: 16.5px; font-weight: 600; line-height: 1.25; }
+.fest-list .fb small { display: block; font-family: var(--f-ui); font-size: 14px; line-height: 1.35; color: var(--muted); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 </style>
@@ -2436,6 +2582,15 @@ const ICON = {
   irrtum: SV('<circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.6a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.6v.4"/><circle cx="12" cy="16.7" r=".7" fill="currentColor" stroke="none"/>'),
   quellen: SV('<path d="M7.5 4.5h10.5v12.5a2.5 2.5 0 0 1-2.5 2.5H6"/><path d="M7.5 4.5a2 2 0 0 0-2 2V8h2"/><path d="M6 19.5A2.5 2.5 0 0 1 3.5 17v-1h10v1a2.5 2.5 0 0 0 2.5 2.5"/><path d="M10.5 8.5h4.5M10.5 11.5h4.5"/>'),
   ext: SV('<path d="M14 5h5v5M19 5l-8 8"/><path d="M17 13.5V19H5V7h5.5"/>'),
+  start: SV('<path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-6h5v6"/>'),
+  figur: SV('<circle cx="12" cy="7.2" r="3.3"/><path d="M5.5 20.5c.7-4.3 3.3-7 6.5-7s5.8 2.7 6.5 7"/>'),
+  wesen: SV('<path d="M6 10c0-3.6 2.7-5.6 6-5.6s6 2 6 5.6c0 4.6-2.7 7.4-6 10.2-3.3-2.8-6-5.6-6-10.2z"/><path d="M6.8 7.4L4 3.6M17.2 7.4L20 3.6"/><path d="M9.3 10.6h1.8M12.9 10.6h1.8"/>'),
+  fest: SV('<circle cx="12" cy="12" r="7.8"/><circle cx="12" cy="12" r="2.3"/><path d="M12 4.2v5.5M12 14.3v5.5M4.2 12h5.5M14.3 12h5.5"/>'),
+  magie: SV('<path d="M2.8 12S6.3 6 12 6s9.2 6 9.2 6-3.5 6-9.2 6-9.2-6-9.2-6z"/><circle cx="12" cy="12" r="2.6"/>'),
+  recht: SV('<path d="M12 4v15.5M7.5 19.5h9M4.5 7.5h15"/><path d="M4.5 7.5L2 13.5h5zM19.5 7.5L17 13.5h5z"/>'),
+  ort: SV('<path d="M4.5 19.5V9.6L7 8l2.5 1.6v9.9M14.5 19.5V8.2L17 6.5l2.5 1.7v11.3"/><path d="M3 19.5h18M9.5 12h5"/>'),
+  ding: SV('<path d="M12 3.2l6.5 4.1v9.4L12 20.8l-6.5-4.1V7.3z"/><path d="M12 7.5v9M9.2 10.2L12 7.5l2.8 2.7"/>'),
+  shuffle: SV('<path d="M3.5 7h3.2c2.2 0 3.4 1 4.6 3l1.4 2.5c1.2 2 2.4 3 4.6 3h3.2"/><path d="M3.5 17h3.2c2 0 3.2-.8 4.3-2.4M13.2 9.4C14.3 7.8 15.5 7 17.3 7h3.2"/><path d="M18 4.5L20.5 7 18 9.5M18 13l2.5 2.5L18 18"/>'),
   relA: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="currentColor"/></svg>',
   relB: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 1.8a5.2 5.2 0 0 1 0 10.4z" fill="currentColor"/></svg>',
   relC: '<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
@@ -2506,12 +2661,12 @@ function toggleKeep(id) { if (KEEP.has(id)) KEEP.delete(id); else KEEP.add(id); 
 // ---------- Rahmen ----------
 const app = $('#app'), bar = $('#bar'), rail = $('#rail'), main = $('#main'), tip = $('#tip');
 const DESTS = [
-  { id: 'kulturen', label: 'Kulturen', href: 'start' },
+  { id: 'kulturen', label: 'Start', href: 'start', icon: 'start' },
   { id: 'jahreskreis', label: 'Jahreskreis', href: 'jahreskreis' },
   { id: 'archiv', label: 'Archiv', href: 'archiv' },
   { id: 'werkstatt', label: 'Werkstatt', href: 'werkstatt' },
 ];
-rail.innerHTML = '<a class="mark" href="#start" aria-label="Der Hain, Übersicht">' + ICON.mark + '<span>Hain</span></a><nav aria-label="Bereiche">' + DESTS.map((d) => '<a href="#' + d.href + '" data-dest="' + d.id + '">' + ICON[d.id] + '<span>' + d.label + '</span></a>').join('') + '</nav><a class="keep" href="#archiv?m=1" id="keepLink">' + ICON.keep + '<span><b class="tnum" id="keepN">0</b><br>gemerkt</span></a>';
+rail.innerHTML = '<a class="mark" href="#start" aria-label="Der Hain, Übersicht">' + ICON.mark + '<span>Hain</span></a><nav aria-label="Bereiche">' + DESTS.map((d) => '<a href="#' + d.href + '" data-dest="' + d.id + '">' + ICON[d.icon || d.id] + '<span>' + d.label + '</span></a>').join('') + '</nav><a class="keep" href="#archiv?m=1" id="keepLink">' + ICON.keep + '<span><b class="tnum" id="keepN">0</b><br>gemerkt</span></a>';
 function updKeep() { $('#keepN').textContent = KEEP.size; }
 function setNav(dest) { $$('[data-dest]', rail).forEach((a) => { if (a.dataset.dest === dest) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }); }
 function setBar(back, title) {
@@ -2527,7 +2682,8 @@ function kultSelect(id, label, all, val) {
   return h + '</select></label>';
 }
 const inScope = (e, v) => !v || (v.startsWith('r:') ? e.region.id === v.slice(2) : e.kultur === v);
-const firstSentence = (s) => { const m = String(s || '').match(/^.*?[.!?](\s|$)/); return m ? m[0].trim() : String(s || ''); };
+// Erster Satz, ohne an Ordnungszahlen („im 5. Jahrhundert“) oder Abkürzungen („v. Chr.“) abzubrechen
+const firstSentence = (s) => { s = String(s || ''); const re = /[.!?](?=\s+[A-ZÄÖÜ„(])/g; let m; while ((m = re.exec(s))) { const pre = s.slice(Math.max(0, m.index - 6), m.index); if (/\d$/.test(pre) || /(^|[\s(])(v|n|z|u|s|d|bzw|ca|Chr|Jh|Jhs|St|Nr|vgl|usw|hl|Hl)$/.test(pre)) continue; return s.slice(0, m.index + 1); } return s; };
 
 // ---------- Jahreskreis ----------
 const R = { out: 300, mon: 268, lab: 284, f: [251, 236, 221, 206], d0: 96, k: 5, hand0: 100 };
@@ -2594,8 +2750,9 @@ function wireWheel(root, onPick) {
   });
   root.addEventListener('keydown', (ev) => { const g = ev.target.closest && ev.target.closest('.fm'); if (g && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); onPick(g.dataset.id); } });
 }
-function nextFests(n) { return FESTS.filter((f) => !f.rare).sort((a, b) => ahead(a.mond ? a.t0 : a.at) - ahead(b.mond ? b.t0 : b.at)).slice(0, n); }
 const inWin = (f) => f.t1 !== null && (((TODAY - f.t0 + 365) % 365) <= f.t1 - f.t0);
+const festKey = (f) => (inWin(f) ? -1 : ahead(f.mond ? f.t0 : f.at));
+function nextFests(n, list) { return (list || FESTS).filter((f) => !f.rare).sort((a, b) => festKey(a) - festKey(b)).slice(0, n); }
 function when(f) {
   if (f.rare) return 'nicht jedes Jahr';
   if (f.mond) { if (inWin(f)) return 'in diesen Wochen'; const a = ahead(f.t0); return 'in etwa ' + a + ' Tagen'; }
@@ -2605,30 +2762,76 @@ function when(f) {
 const shortDate = (f) => (f.mond ? 'um den ' : '') + f.d + '. ' + MONTHS[f.m - 1];
 
 // ---------- Startseite ----------
+const RG = {
+  nord: { c: '#3f5361', t: 'Asen und Wanen, Druiden und heilige Haine, Perun und die Hausgeister: die Glaubenswelten Nordeuropas vor der Bekehrung.',
+    m: ['M60 66C38 70 22 58 24 42c2-14 16-22 28-20 4-8 18-10 24-2 12-2 22 8 20 20 6 14-8 28-36 26z', 'M60 108V58', 'M60 74L46 60M60 68L74 54M60 80L70 70', 'M60 108c-10 0-18 2-26 6M60 108c10 0 18 2 26 6M60 100c-6 4-10 8-12 14M60 100c6 4 10 8 12 14'] },
+  mitte: { c: '#8b4a2b', t: 'Olymp und Kapitol, Nil und Zweistromland, Baal und die Wettergötter Anatoliens: die ältesten aufgeschriebenen Mythen.',
+    m: ['M18 44L60 20L102 44Z', 'M22 50H98', 'M32 56V92M48 56V92M72 56V92M88 56V92', 'M24 98H96M16 106H104'] },
+  asien: { c: '#7a2f3a', t: 'Von Zarathustra und den Veden über Daoisten und Kami bis zu den Schamanen der Steppe.',
+    m: ['M10 26Q60 40 110 26', 'M16 36Q60 46 104 36', 'M26 54H94', 'M36 40V108M84 40V108', 'M60 44V54'] },
+  afrika: { c: '#86641e', t: 'Orisha und Ahnen, Orakel und Masken: Glaubenswelten, die fast nur mündlich weitergegeben wurden.',
+    m: ['M60 12C40 12 30 32 30 56c0 28 14 46 30 54 16-8 30-26 30-54 0-24-10-44-30-44z', 'M40 52c5-4 11-4 16 0M64 52c5-4 11-4 16 0', 'M60 56V76', 'M50 88c6 4 14 4 20 0', 'M46 28h28M48 36h24'] },
+  amerika: { c: '#2b6460', t: 'Von den Völkern Nordamerikas über Azteken und Maya bis zu den Inka und ihren heiligen Orten.',
+    m: ['M12 106H108', 'M18 106V94H30V82H42V70H52V58H68V70H78V82H90V94H102V106', 'M52 58V40H68V58', 'M48 40H72', 'M56 106V60M64 106V60'] },
+  ozeanien: { c: '#24597e', t: 'Tangaroa und Maui, das Träumen der Aborigines und die Geister Melanesiens.',
+    m: ['M10 100c8-6 16-6 24 0s16 6 24 0 16-6 24 0 16-6 24 0', 'M26 82h60c-3 6-9 9-16 9H42c-7 0-13-3-16-9z', 'M56 82V24', 'M56 26C80 30 96 50 92 74c-8-12-20-18-36-20', 'M30 74h52M34 74v8M78 74v8'] },
+};
+const SHIELD = ['M60 14l36 12v28c0 26-16 44-36 52-20-8-36-26-36-52V26z', 'M60 32v58M38 56h44'];
+const motif = (paths) => '<svg class="motif" viewBox="0 0 120 120" aria-hidden="true">' + paths.map((d) => '<path d="' + d + '"/>').join('') + '</svg>';
+const ART_ICON = { 'Gottheit': 'gott', 'Figur': 'figur', 'Wesen': 'wesen', 'Mythos & Sage': 'sage', 'Ritus & Opfer': 'ritus', 'Fest': 'fest', 'Magie & Weissagung': 'magie', 'Recht & Brauch': 'recht', 'Ort & Heiligtum': 'ort', 'Ding & Zeichen': 'ding' };
+const CHIPS = ['Unterwelt', 'Opfer', 'Drache', 'Schlange', 'Orakel', 'Schöpfung', 'Verwandlung', 'Unsterblich', 'Runen', 'Maske'];
+const regCount = (r) => r.kult.reduce((a, k) => a + (BYK[k] ? BYK[k].length : 0), 0);
+const archHref = (q) => '#archiv?' + new URLSearchParams(q).toString();
+const REL_SHORT = { A: 'Funde, Inschriften oder Augenzeugen der Zeit. Auch Zeitgenossen hatten Absichten.', B: 'Später aufgeschrieben, aber aus ernsthafter Überlieferung, wie die Edda oder das Popol Vuh.', C: 'Sage, späte Dichtung, Hörensagen oder Rekonstruktion. Für einen Roman oft am ergiebigsten.' };
+function luckyHTML(e) {
+  return '<p class="lk-k">' + ICON.shuffle + 'Zufallsfund</p><h2 class="lk-n"><a href="#e/' + e.id + '">' + esc(e.name) + '</a></h2><p class="lk-m">' + rgIcon(e.region.id) + '<span>' + esc(e.art + ', ' + e.kultur) + '</span>' + relHTML(e.rel, true) + '</p><p class="lk-t">' + esc(e.kurz) + '</p><div class="row"><a class="btn primary" href="#e/' + e.id + '">Lesen</a><button type="button" class="btn secondary" id="lkAgain">' + ICON.shuffle + 'Noch einer</button></div>';
+}
+const pickLucky = (not) => { const xs = E.filter((e) => e.kurz && e !== not); return xs[Math.floor(Math.random() * xs.length)]; };
 function renderHome() {
-  const n = E.length, nk = KULTS.length;
-  let h = '<div class="page"><section class="intro"><div class="resume"><h1 class="display">Der Hain</h1><p class="lead">Götter, Helden, Wesen, Mythen, Riten, Opfer und Feste aus aller Welt, gesammelt für deine eigene Welt. Jeder Eintrag sagt, woher wir es wissen, wie sicher das ist und was du daraus für deinen Roman machen kannst.</p>' +
-    '<div class="row"><a class="btn primary" href="#archiv">Archiv durchsuchen</a><a class="btn secondary" href="#jahreskreis">Zum Jahreskreis</a></div><p class="note">' + n + ' Einträge aus ' + nk + ' Kulturen in ' + REGS.length + ' Großräumen</p>';
-  const nx = nextFests(4);
-  if (nx.length) { const td = fromDoy(TODAY); h += '<div class="today"><p class="t-h">Heute, ' + td.d + '. ' + MONTHS[td.m - 1] + ' <span>und die nächsten Feste</span></p><div class="ents">' + nx.map((f) => '<a class="ent" href="#e/' + f.e.id + '"><span class="e-n">' + esc(f.e.name) + '</span><span class="e-r note">' + when(f) + '</span><span class="e-m">' + esc(shortDate(f) + ', ' + f.e.kultur) + '</span></a>').join('') + '</div></div>'; }
-  h += '</div><a class="hero-wheel" href="#jahreskreis" aria-label="Zum Jahreskreis">' + wheelSVG({ small: true, compact: main.clientWidth < 600 }) + '<span class="note">Die Feste aller Kulturen auf einem Jahr. Innen die Länge des Tages in Uppsala.</span></a></section>';
-  h += '<section class="how"><div><h3>' + relHTML('A') + 'Belegt</h3><p>Funde, Inschriften oder Augenzeugen der Zeit. Aber Vorsicht: Auch Zeitgenossen hatten Absichten, und viele waren Fremde oder Feinde.</p></div><div><h3>' + relHTML('B') + 'Überliefert</h3><p>Später aufgeschrieben, aber aus ernsthafter Überlieferung. Die Edda, die irischen Sagen und das Popol Vuh gehören hierher.</p></div><div><h3>' + relHTML('C') + 'Umstritten</h3><p>Späte Literatur, Hörensagen oder moderne Rekonstruktion. Für einen Roman oft am ergiebigsten: als Gerücht, Propaganda oder Legende.</p></div></section>';
-  h += '<section class="sect"><div class="sect-h"><h2 class="h2">Kulturen</h2><p class="note">Nach Großräumen geordnet. Jede Kultur hat eine eigene Seite mit Quellenlage und allen Einträgen.</p></div>';
-  for (const r of REGS) {
-    const cnt = r.kult.reduce((a, k) => a + (BYK[k] ? BYK[k].length : 0), 0);
-    h += '<div class="region"><h3 class="rg-h">' + rgIcon(r.id) + esc(r.name) + '<span class="cnt">' + cnt + '</span></h3><div class="kults">';
-    for (const k of r.kult) { if (!BYK[k]) continue; const I = KINFO[k] || {}; h += '<a class="kult" href="' + kultHref(k) + '"><b>' + esc(k) + '</b>' + (I.zeit ? '<span class="z">' + esc(I.zeit) + '</span>' : '') + (I.text ? '<span class="d">' + esc(firstSentence(I.text)) + '</span>' : '') + '<span class="n">' + BYK[k].length + ' Einträge</span></a>'; }
-    h += '</div></div>';
+  const n = E.length, nk = KULTS.length; const td = fromDoy(TODAY); const nx = nextFests(4); const f0 = nx[0];
+  let h = '<div class="page home"><header class="home-head"><p class="eyebrow">Götter, Mythen, Riten und Feste aus aller Welt</p><h1 class="display">Der Hain</h1><p class="note"><b class="tnum">' + n + '</b> Einträge aus <b class="tnum">' + nk + '</b> Kulturen, jeder mit Quelle und Verlässlichkeit</p></header>';
+  h += '<div class="home-find"><form class="home-search" id="hSearch" role="search"><label class="sr" for="hQ">Im Archiv suchen</label><input type="search" id="hQ" class="search big" placeholder="Gott, Wesen, Ritus oder Motiv" autocomplete="off" enterkeyhint="search"><button type="submit" class="btn primary">Suchen</button></form>';
+  h += '<div class="qchips" role="list" aria-label="Häufige Motive">' + CHIPS.map((c) => '<a role="listitem" href="' + archHref({ q: c }) + '">' + esc(c) + '</a>').join('') + '</div></div>';
+  if (f0) {
+    const e = f0.e; const now = inWin(f0) || ahead(f0.at) === 0;
+    h += '<section class="today-card" aria-label="Heute im Jahreskreis"><a class="tc-wheel" href="#jahreskreis" aria-label="Zum Jahreskreis">' + wheelSVG({ small: true, compact: true }) + '</a><div class="tc-b"><p class="tc-k">Heute, ' + td.d + '. ' + MONTHS[td.m - 1] + '</p><p class="tc-l">' + (now ? 'Gerade im Jahreskreis' : 'Das nächste Fest') + '</p><h2><a href="#e/' + e.id + '">' + esc(e.name) + '</a></h2><p class="tc-m">' + rgIcon(e.region.id) + '<span>' + esc(e.kultur + ', ' + f0.label) + '</span><span class="pill">' + esc(when(f0)) + '</span></p><p class="tc-t">' + esc(e.kurz) + '</p>';
+    if (nx.length > 1) h += '<p class="tc-l tc-after">Weitere Feste</p><ol class="tc-next">' + nx.slice(1).map((f) => '<li><a href="#e/' + f.e.id + '"><span><b>' + esc(f.e.name) + '</b><small>' + esc(f.e.kultur) + '</small></span><span class="w">' + esc(when(f)) + '</span></a></li>').join('') + '</ol>';
+    h += '<div class="row"><a class="btn light" href="#jahreskreis?f=' + e.id + '">Zum Jahreskreis</a><a class="btn ghost" href="#e/' + e.id + '">Zum Eintrag</a></div></div></section>';
   }
-  main.innerHTML = h + '</section></div>';
-  wireWheel($('.hero-wheel'));
+  h += '<section class="sect"><div class="sect-row"><h2 class="h2">Großräume</h2><span class="note">' + REGS.length + ' Räume, ' + nk + ' Kulturen</span></div><div class="regions">' + REGS.map((r) => { const ks = r.kult.filter((k) => BYK[k]); return '<a class="reg" href="#r/' + r.id + '" style="--sc:' + RG[r.id].c + '"><span class="reg-art">' + motif(RG[r.id].m) + '</span><span class="reg-b"><span class="reg-k">' + rgIcon(r.id) + '<span>' + ks.length + ' Kulturen, ' + regCount(r) + ' Einträge</span></span><b>' + esc(r.name) + '</b><span class="reg-l">' + esc(ks.join(', ')) + '</span></span></a>'; }).join('') + '</div></section>';
+  h += '<section class="sect"><h2 class="h2">Nach Art</h2><div class="arts">' + ARTS.filter((a) => E.some((e) => e.art === a)).map((a) => '<a class="art" href="' + archHref({ a }) + '"><span class="ai">' + ICON[ART_ICON[a]] + '</span><b>' + esc(H.ARTS_PL[a]) + '</b><span class="tnum">' + E.filter((e) => e.art === a).length + '</span></a>').join('') + '</div></section>';
+  h += '<section class="lucky" id="lucky" aria-live="polite"></section>';
+  h += '<section class="sect"><div class="sect-row"><h2 class="h2">Werkstatt</h2><a class="more" href="#werkstatt">Alle ansehen' + ICON.chevR + '</a></div><div class="tool-grid">' + TOOLS.map((t) => { const g = GENS[t.id] || t; return '<a href="#' + t.id + '"><span class="ti">' + ICON[g.icon] + '</span><span><b>' + esc(g.title) + '</b><small>' + esc(g.short || '') + '</small></span>' + ICON.chevR + '</a>'; }).join('') + '<a href="#archiv?m=1"><span class="ti">' + ICON.keep + '</span><span><b>Merkliste</b><small>' + (KEEP.size === 1 ? '1 gemerkter Eintrag' : KEEP.size + ' gemerkte Einträge') + '</small></span>' + ICON.chevR + '</a></div></section>';
+  h += '<section class="sect"><h2 class="h2">Wie sicher ist das?</h2><div class="rel-card">' + ['A', 'B', 'C'].map((r) => '<div><h3>' + relHTML(r, true) + '</h3><p>' + REL_SHORT[r] + '</p></div>').join('') + '</div><p><a class="more" href="#quellen">Mehr in der Quellenkunde' + ICON.chevR + '</a></p></section>';
+  h += '<section class="sect"><h2 class="h2">Schwester-App</h2><a class="sister" href="https://timmisg.github.io/kriegstisch/" target="_blank" rel="noopener"><span class="si">' + motif(SHIELD) + '</span><span><b>Der Kriegstisch</b><small>Taktik vor dem Schießpulver, legendäre Manöver und die Ränke im Hintergrund.</small></span>' + ICON.ext + '</a></section>';
+  main.innerHTML = h + '</div>';
+  const lk = $('#lucky'); let cur = pickLucky(null);
+  const drawLucky = () => { lk.innerHTML = luckyHTML(cur); $('#lkAgain').addEventListener('click', () => { cur = pickLucky(cur); drawLucky(); $('#lkAgain').focus({ preventScroll: true }); }); };
+  if (cur) drawLucky(); else lk.remove();
+  $('#hSearch').addEventListener('submit', (ev) => { ev.preventDefault(); const q = $('#hQ').value.trim(); location.hash = q ? archHref({ q }).slice(1) : 'archiv'; });
+  const tw = $('.tc-wheel svg'); if (tw) tw.removeAttribute('role');
   document.title = 'Der Hain';
+}
+
+// ---------- Großraum ----------
+function renderRegion(r) {
+  const ks = r.kult.filter((k) => BYK[k]); const nE = regCount(r); const fs = FESTS.filter((f) => f.e.region.id === r.id); const nx = nextFests(5, fs);
+  let h = '<div class="page"><header class="reg-head" style="--sc:' + RG[r.id].c + '"><div class="rh-art">' + motif(RG[r.id].m) + '</div><div class="rh-b"><p class="rh-k">' + rgIcon(r.id) + 'Großraum</p><h1 class="h1">' + esc(r.name) + '</h1><p class="rh-t">' + esc(RG[r.id].t) + '</p><p class="rh-m">' + ks.length + ' Kulturen, ' + nE + ' Einträge, ' + fs.length + ' Feste</p><div class="row"><a class="btn light" href="' + archHref({ k: 'r:' + r.id }) + '">Alle Einträge durchsuchen</a>' + (fs.length ? '<a class="btn ghost" href="#jahreskreis?r=' + r.id + '">Im Jahreskreis</a>' : '') + '</div></div></header>';
+  h += '<section class="sect"><h2 class="h2">Kulturen</h2><div class="kcards">' + ks.map((k) => {
+    const I = KINFO[k] || {}; const L = BYK[k];
+    const top = ARTS.map((a) => [a, L.filter((e) => e.art === a).length]).filter((x) => x[1]).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    return '<a class="kcard" href="' + kultHref(k) + '"><span class="kc-h"><b>' + esc(k) + '</b><span class="tnum">' + L.length + '</span></span>' + (I.zeit ? '<span class="kc-z">' + esc(I.zeit) + '</span>' : '') + (I.text ? '<span class="kc-d">' + esc(firstSentence(I.text)) + '</span>' : '') + '<span class="kc-a">' + top.map((x) => '<span>' + ICON[ART_ICON[x[0]]] + x[1] + ' ' + esc(x[1] === 1 ? x[0] : H.ARTS_PL[x[0]]) + '</span>').join('') + '</span></a>';
+  }).join('') + '</div></section>';
+  if (nx.length) h += '<section class="sect"><h2 class="h2">Die nächsten Feste</h2><ol class="fest-list">' + nx.map((f) => '<li><a href="#e/' + f.e.id + '"><span class="fd"><b class="tnum">' + (f.mond ? '≈' : '') + f.d + '.</b><small>' + MON3[f.m - 1] + '</small></span><span class="fb"><b>' + esc(f.e.name) + '</b><small>' + esc(f.e.kultur + ', ' + f.label) + '</small></span><span class="pill">' + esc(when(f)) + '</span></a></li>').join('') + '</ol></section>';
+  const i = REGS.indexOf(r); const prev = REGS[i - 1], next = REGS[i + 1];
+  h += '<nav class="pager" aria-label="Großräume">' + (prev ? '<a class="prev" href="#r/' + prev.id + '"><span class="dir">' + ICON.chevL + 'Voriger Raum</span><span class="ttl">' + esc(prev.name) + '</span></a>' : '') + (next ? '<a class="next" href="#r/' + next.id + '"><span class="dir">Nächster Raum' + ICON.chevR + '</span><span class="ttl">' + esc(next.name) + '</span></a>' : '') + '</nav></div>';
+  main.innerHTML = h; document.title = r.name + ' | Der Hain';
 }
 
 // ---------- Kultur ----------
 function renderKultur(k) {
   const L = BYK[k]; const I = KINFO[k] || {}; const r = REGION_OF[k];
-  let h = '<div class="page"><header class="l-head"><p class="crumb"><a href="#start">Kulturen</a><span>' + esc(r.name) + '</span></p><h1 class="h1">' + esc(k) + '</h1>' + (I.zeit ? '<p class="when"><span>' + esc(I.zeit) + '</span></p>' : '') + (I.text ? '<p class="lead">' + esc(I.text) + '</p>' : '') + '</header>';
+  let h = '<div class="page"><header class="l-head"><p class="crumb"><a href="#r/' + r.id + '">' + esc(r.name) + '</a></p><h1 class="h1">' + esc(k) + '</h1>' + (I.zeit ? '<p class="when"><span>' + esc(I.zeit) + '</span></p>' : '') + (I.text ? '<p class="lead">' + esc(I.text) + '</p>' : '') + '</header>';
   h += '<div class="l-body"><div class="prose">';
   for (const a of ARTS) { const xs = L.filter((e) => e.art === a); if (!xs.length) continue; h += '<section class="grp" id="art-' + ARTS.indexOf(a) + '"><h2 class="grp-h">' + esc(H.ARTS_PL[a]) + '<span class="cnt">' + xs.length + '</span></h2><div class="ents">' + xs.map((e) => entRow(e, 'volk')).join('') + '</div></section>'; }
   h += '</div><aside class="aside">';
@@ -2686,6 +2889,7 @@ function renderEntry(e) {
 const JK = { region: store.get('jkRegion', ''), light: store.get('jkLight', true), modern: false, sel: null };
 function renderJahreskreis(q) {
   if (q.f && FEST_OF[q.f]) JK.sel = q.f;
+  if (q.r !== undefined && (q.r === '' || REGS.some((x) => x.id === q.r))) { JK.region = q.r; store.set('jkRegion', q.r); const f = FEST_OF[JK.sel]; if (!q.f && (!f || (q.r && f.e.region.id !== q.r))) { const v = nextFests(1, FESTS.filter((x) => !q.r || x.e.region.id === q.r))[0]; JK.sel = v ? v.e.id : JK.sel; } }
   if (!JK.sel || !FEST_OF[JK.sel]) { const n = nextFests(1)[0] || FESTS[0]; JK.sel = n ? n.e.id : null; }
   let h = '<div class="page"><header class="hub-head"><h1 class="h1">Jahreskreis</h1><p class="lead">Alle Feste und datierten Riten des Archivs auf einem Jahr, nach unserem Kalender. Feste nach dem Mond wandern; sie stehen in der Mitte ihres üblichen Fensters.</p></header>';
   h += '<div class="jk-ctl"><div class="seg" role="group" aria-label="Großraum"><button type="button" data-rg="" aria-pressed="' + !JK.region + '">Alle</button>' + REGS.map((r) => '<button type="button" data-rg="' + r.id + '" aria-pressed="' + (JK.region === r.id) + '">' + rgIcon(r.id) + esc(r.name) + '</button>').join('') + '</div>';
@@ -2760,20 +2964,20 @@ function renderArchiv(q) {
 
 // ---------- Werkstatt ----------
 const GENS = {
-  ritus: { icon: 'ritus', title: 'Ritus-Baukasten', desc: 'Setzt einen Ritus für deine Welt aus echten Bausteinen zusammen: Anlass, Ort, Handlung, Zeichen und Regel.', lead: 'Fünf Bausteine aus fünf echten Riten. Halt fest, was dir gefällt, und zieh den Rest neu. Die Mischung ist erfunden, die Teile sind es nicht.',
+  ritus: { icon: 'ritus', title: 'Ritus-Baukasten', short: 'Fünf echte Bausteine, ein neuer Ritus.', desc: 'Setzt einen Ritus für deine Welt aus echten Bausteinen zusammen: Anlass, Ort, Handlung, Zeichen und Regel.', lead: 'Fünf Bausteine aus fünf echten Riten. Halt fest, was dir gefällt, und zieh den Rest neu. Die Mischung ist erfunden, die Teile sind es nicht.',
     slots: [['Anlass', ['Fest']], ['Ort', ['Ort & Heiligtum']], ['Handlung', ['Ritus & Opfer']], ['Zeichen', ['Magie & Weissagung']], ['Regel', ['Recht & Brauch']]],
     ask: ['Wer leitet diesen Ritus, und was verliert er, wenn er misslingt?', 'Welcher Teil ist eine spätere Zutat, und wer in deiner Welt weiß das?', 'Was geschieht, wenn jemand die Regel bricht, und wer bricht sie zuerst?', 'Wer verdient daran, dass der Ritus genau so abläuft?', 'Wie erzählt ein Fremder, der nur zusieht, diesen Ritus falsch?', 'Welches Detail würde ein Kind zuerst bemerken?', 'Was davon ist verboten worden, und wer hält heimlich daran fest?'] },
-  gott: { icon: 'gott', title: 'Götterschmiede', desc: 'Formt eine Gottheit aus zwei echten Vorbildern, einem Wesen an ihrer Seite, einem Zeichen und einem Fest.', lead: 'Zwei Gottheiten als Vorbild, dazu ein Begleiter, ein Zeichen und ein Fest. Daraus formst du eine eigene Gestalt.',
+  gott: { icon: 'gott', title: 'Götterschmiede', short: 'Zwei Vorbilder, eine neue Gottheit.', desc: 'Formt eine Gottheit aus zwei echten Vorbildern, einem Wesen an ihrer Seite, einem Zeichen und einem Fest.', lead: 'Zwei Gottheiten als Vorbild, dazu ein Begleiter, ein Zeichen und ein Fest. Daraus formst du eine eigene Gestalt.',
     slots: [['Vorbild', ['Gottheit']], ['Zweites Gesicht', ['Gottheit']], ['Begleiter', ['Wesen']], ['Zeichen', ['Ding & Zeichen']], ['Fest', ['Fest', 'Ritus & Opfer']]],
     ask: ['Was verlangt deine Gottheit, das ihre Anhänger beschämt?', 'Welche Geschichte erzählen ihre Feinde über sie?', 'Wo widersprechen sich die beiden Vorbilder, und welche Priesterschaft entscheidet den Streit?', 'Was geschieht mit dem Zeichen, wenn die Gottheit stirbt oder vergessen wird?', 'Wer darf ihren Namen nicht aussprechen, und warum?'] },
-  sage: { icon: 'sage', title: 'Sagenmischer', desc: 'Mischt eine Ausgangslage, eine Figur, eine Wendung und einen Schauplatz aus echten Sagen zu einem Plot.', lead: 'Eine Sage als Ausgangslage, eine Figur, eine zweite Sage als Wendung und ein Schauplatz. Daraus lässt sich ein Kapitel bauen.',
+  sage: { icon: 'sage', title: 'Sagenmischer', short: 'Vier Sagenteile, ein neuer Plot.', desc: 'Mischt eine Ausgangslage, eine Figur, eine Wendung und einen Schauplatz aus echten Sagen zu einem Plot.', lead: 'Eine Sage als Ausgangslage, eine Figur, eine zweite Sage als Wendung und ein Schauplatz. Daraus lässt sich ein Kapitel bauen.',
     slots: [['Ausgangslage', ['Mythos & Sage']], ['Figur', ['Figur']], ['Wendung', ['Mythos & Sage']], ['Schauplatz', ['Ort & Heiligtum']]],
     ask: ['Wer erzählt diese Geschichte später, und was lässt er weg?', 'Welche Figur hält sich für den Helden, ist es aber nicht?', 'Was wäre der leiseste mögliche Schluss?', 'Welche Lüge hält die ganze Geschichte zusammen?', 'Wo würde dein Leser die Wendung zu früh ahnen, und wie verhinderst du das?'] },
 };
 const TOOLS = [
   { id: 'ritus' }, { id: 'gott' }, { id: 'sage' },
-  { id: 'irrtuemer', icon: 'irrtum', title: 'Irrtümer und Erfindungen', desc: 'Hörnerhelme, das Rad mit acht Festen, Voodoo-Puppen: was nicht stimmt, und woher es stammt.' },
-  { id: 'quellen', icon: 'quellen', title: 'Quellenkunde', desc: 'Wer hat was wann aufgeschrieben? Die Quellenlage jeder Kultur und wie man ihr misstraut.' },
+  { id: 'irrtuemer', icon: 'irrtum', title: 'Irrtümer und Erfindungen', short: 'Hörnerhelme und andere Legenden.', desc: 'Hörnerhelme, das Rad mit acht Festen, Voodoo-Puppen: was nicht stimmt, und woher es stammt.' },
+  { id: 'quellen', icon: 'quellen', title: 'Quellenkunde', short: 'Wer hat was wann aufgeschrieben?', desc: 'Wer hat was wann aufgeschrieben? Die Quellenlage jeder Kultur und wie man ihr misstraut.' },
 ];
 function renderWerkstatt() {
   const list = TOOLS.map((t) => { const g = GENS[t.id] || t; return '<li><a href="#' + t.id + '">' + ICON[g.icon] + '<span><b>' + esc(g.title) + '</b><span>' + esc(g.desc) + '</span></span>' + ICON.chevR + '</a></li>'; }).join('');
@@ -2840,7 +3044,8 @@ function route() {
   hideTip();
   let dest = 'kulturen', back = null, title = null, key = path || 'start', keepScroll = true;
   if (path.startsWith('e/') && BY[path.slice(2)]) { const e = BY[path.slice(2)]; dest = 'archiv'; renderEntry(e); back = lastList || [kultHref(e.kultur), e.kultur]; title = e.name; keepScroll = false; }
-  else if (path.startsWith('k/') && BYK[path.slice(2)]) { const k = path.slice(2); dest = 'kulturen'; renderKultur(k); back = ['#start', 'Kulturen']; title = k; lastList = [kultHref(k), k]; }
+  else if (path.startsWith('k/') && BYK[path.slice(2)]) { const k = path.slice(2); const r = REGION_OF[k]; dest = 'kulturen'; renderKultur(k); back = ['#r/' + r.id, r.name]; title = k; lastList = [kultHref(k), k]; }
+  else if (path.startsWith('r/') && REGS.some((x) => x.id === path.slice(2))) { const r = REGS.find((x) => x.id === path.slice(2)); dest = 'kulturen'; renderRegion(r); back = ['#start', 'Start']; title = r.name; }
   else if (path === 'jahreskreis') { dest = 'jahreskreis'; renderJahreskreis(q); }
   else if (path === 'archiv') { dest = 'archiv'; renderArchiv(q); key = 'archiv'; }
   else if (path === 'werkstatt') { dest = 'werkstatt'; renderWerkstatt(); }
