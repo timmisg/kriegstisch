@@ -1,5 +1,5 @@
 /* Service Worker des Kriegstischs: legt alle Dateien beim ersten Start ab, danach läuft die App offline. */
-const CACHE = 'kriegstisch-598323cb62ac';
+const CACHE = 'kriegstisch-60368cad6350';
 const ASSETS = [
   "./",
   "fonts/OFL-BarlowCondensed.txt",
