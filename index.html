@@ -471,6 +471,63 @@ body.has-focus { overflow: hidden; }
 .ll-st span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--sunk); transition: background 0.15s ease; }
 .ll-st:hover span { background: var(--line); }
 .ll-st svg { width: 13px; height: 13px; margin-left: 2px; }
+/* ---------- Übersichten im neuen Stil ---------- */
+.practice { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 14px; align-items: center; margin-top: -20px; padding: 13px 16px 13px 13px; border-radius: 16px; border: 1px solid var(--line); background: var(--raise); color: var(--ink); text-decoration: none; transition: border-color 0.15s ease; }
+.practice:hover { border-color: var(--line-2); }
+.pr-i { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--sunk); color: var(--accent); }
+.pr-i svg { width: 24px; height: 24px; }
+.pr-b b { display: block; font-family: var(--f-ui); font-size: 17.5px; font-weight: 700; line-height: 1.2; }
+.pr-b small { display: block; font-family: var(--f-ui); font-size: 14.5px; line-height: 1.35; color: var(--muted); margin-top: 1px; }
+.pr-go { display: inline-flex; align-items: center; gap: 2px; font-family: var(--f-ui); font-size: 15.5px; font-weight: 700; color: var(--accent); }
+.pr-go svg { width: 16px; height: 16px; }
+.chap-head .btn.ghost svg, .resume-card .btn.ghost svg { width: 18px; height: 18px; }
+/* Schlachten als Karten auf der Zeitleiste */
+.era > h2.h2 { border-bottom: 0; padding-bottom: 2px; font-size: 24px; }
+.era .bt-list { list-style: none; padding: 0; display: grid; gap: 8px; }
+.era .bt-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-radius: 14px; border: 1px solid var(--line); background: var(--raise); transition: border-color 0.15s ease; }
+.era .bt-list li:hover { border-color: var(--line-2); }
+.era .bt-list a { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 14px; align-items: center; padding: 12px 6px 12px 12px; border: 0; color: var(--ink); text-decoration: none; }
+.era .bt-list .yr { font-family: var(--f-head); font-weight: 600; font-size: 22px; line-height: 1.1; text-align: right; color: var(--ink-2); }
+.era .bt-list li.done .yr { color: var(--accent); }
+.era .bt-list .bd { display: grid; gap: 1px; min-width: 0; }
+.era .bt-list b { font-family: var(--f-head); font-weight: 600; font-size: 21px; line-height: 1.12; }
+.era .bt-list .sub { font-family: var(--f-ui); font-size: 15.5px; font-weight: 500; line-height: 1.3; color: var(--ink-2); }
+.era .bt-list small { font-family: var(--f-ui); font-size: 14px; line-height: 1.35; color: var(--muted); }
+@container main (min-width: 980px) { .era .bt-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; } .timeline { max-width: none; } }
+/* Aufklappbare Karten in den Archiven */
+.qk-grid { columns: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 10px 14px; align-items: start; }
+details.ac { border-radius: 14px; border: 1px solid var(--line); background: var(--raise); transition: border-color 0.15s ease; }
+details.ac:hover, details.ac[open] { border-color: var(--line-2); }
+.qk-card.ac { display: block; padding: 0; border-top: 1px solid var(--line); }
+details.ac > summary { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) 16px; gap: 3px 10px; padding: 13px 14px 14px 16px; cursor: pointer; border-radius: 14px; }
+details.ac > summary::-webkit-details-marker { display: none; }
+details.ac > summary > :not(svg) { grid-column: 1; }
+details.ac > summary > svg { grid-column: 2; grid-row: 1 / span 3; align-self: center; width: 16px; height: 16px; color: var(--muted); transition: transform 0.2s ease; }
+details.ac[open] > summary > svg { transform: rotate(90deg); }
+.ac-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.ac-h b { font-family: var(--f-head); font-weight: 600; font-size: 21px; line-height: 1.12; }
+.ac-h .rel { flex: none; display: inline-flex; align-items: center; gap: 5px; font-family: var(--f-ui); font-size: 13.5px; font-weight: 600; }
+.ac-h .rel svg { width: 12px; height: 12px; }
+.ac-m { font-family: var(--f-ui); font-size: 14.5px; line-height: 1.35; color: var(--muted); }
+.ac-m .yr { color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.ac-t { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 3px; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+details.ac[open] .ac-t { display: none; }
+.ac-b { display: grid; gap: 8px; padding: 0 16px 16px; }
+.ac-b > p { font-size: 16px; line-height: 1.58; }
+.ac-b .tags { display: flex; flex-wrap: wrap; gap: 4px 14px; font-family: var(--f-ui); font-size: 14.5px; font-weight: 600; color: var(--ink-2); }
+.ac-b .use { font-size: 15.5px; color: var(--ink-2); padding-left: 12px; border-left: 2px solid var(--line-2); }
+.ac-b .use b { font-family: var(--f-ui); font-weight: 700; color: var(--ink); margin-right: 4px; }
+.ac-b .src, .ac-b .meta { font-family: var(--f-ui); font-size: 14px; line-height: 1.4; color: var(--muted); }
+.more-btn { grid-column: 1 / -1; justify-self: center; margin-top: 6px; }
+.more-btn .note { font-weight: 500; }
+.masters { display: grid; gap: 8px; max-width: 820px; }
+.kats.kats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; border-top: 0; }
+.kats-grid .kat { gap: 2px; padding: 11px 12px 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--raise); }
+.kats-grid .kat:hover { border-color: var(--line-2); }
+.kats-grid .kat b { font-size: 18px; line-height: 1.12; }
+.kats-grid .kat span { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 14px; line-height: 1.4; }
+.kats-grid .kat small { font-size: 13.5px; margin-top: 3px; }
+@container main (min-width: 760px) { .kats.kats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } .kats-grid .kat b { font-size: 20px; } .kats-grid .kat span { font-size: 15px; } }
 /* Zeitleiste der Schlachten */
 .timeline { display: grid; gap: 34px; max-width: 880px; }
 .era { display: grid; gap: 4px; }
@@ -678,6 +735,10 @@ body.has-story { overflow: hidden; }
 .st-card.t-duo, .st-card.t-list, .st-card.t-quiz, .st-card.t-quiz-order, .st-card.t-quote { grid-template-rows: minmax(0, auto); }
 .st-txt { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
 .st-txt::-webkit-scrollbar { display: none; }
+.st-score.big { font-family: var(--f-head); font-weight: 600; font-size: 42px; line-height: 1.05; color: #fff; }
+.st-links { list-style: none; padding: 0; display: grid; gap: 4px; margin-bottom: 4px; }
+.st-links .linkbtn { min-height: 36px; padding: 0; border: 0; background: none; color: var(--st-ink); font-family: var(--f-ui); font-size: 17px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(255, 255, 255, 0.4); cursor: pointer; text-align: left; }
+.st-ctx { font-style: italic; }
 @media (max-height: 700px) {
   .st-txt { gap: 8px; padding: 14px 22px 24px; }
   .st-txt h1 { font-size: clamp(38px, 11vw, 50px); }
@@ -7649,7 +7710,6 @@ const n = KT.raenke.length;
 L.raenke = {
   title: 'Die Spiele im Hintergrund', nav: 'Ränke im Überblick',
   lead: 'Schlachten entscheiden seltener über einen Krieg, als man denkt. Oft ist er vorher entschieden: durch einen Brief, der nie ankam, ein Tor, das jemand von innen öffnete, ein Gerücht, das ein Heer schneller auflöste als jede Reiterei. Dieses Kapitel sammelt die Spiele im Hintergrund.',
-  render: 'raenkeIntro', renderLast: true,
   body: [
     { h: 'Was Ränke von Manövern unterscheidet', html: '<p>Ein Manöver arbeitet mit Truppen auf einem Feld, das beide Seiten sehen können. Ränke arbeiten mit dem, was die Gegenseite weiß, glaubt, fürchtet und begehrt. Ihr Werkzeug sind Menschen: Boten, Diener, Händler, Geiseln, Bräute, Überläufer. Ihr Schlachtfeld ist die Nachricht.</p><p>Darum taugen Ränke so gut für einen Roman. Sie verlangen Figuren mit Motiven, sie leben von Geheimnissen, und sie haben einen Preis, der sich erst spät zeigt. Ein Feldherr, der nur Truppen bewegt, ist ein Handwerker. Einer, der den Gegner dazu bringt, sich selbst zu schlagen, ist eine Figur.</p>' },
     { h: 'Wie dieses Kapitel aufgebaut ist', html: '<p>Das <a href="#raenke-archiv">Archiv der Ränke</a> sammelt ' + (n ? n + ' ' : '') + 'überlieferte Fälle aus aller Welt bis etwa 1500, jeweils mit dem Trick dahinter, dem Gegenzug und einem Hinweis für deinen Roman. <a href="#strategeme">Die 36 Strategeme</a> sind die klassische chinesische Sammlung von Listen. <a href="#raenke-schreiben">Ränke schreiben</a> zeigt, wie man Intrigen für Leser baut, und der <a href="#raenke-wuerfel">Ränke-Würfel</a> mischt echte Fälle zu einem neuen Plan.</p>' },
@@ -8930,6 +8990,50 @@ KT.stories.erzaehlen = {
 
 })();
 
+/* ---- stories-7.js ---- */
+/* Kriegstisch – handgeschriebene Stories für zwei Nachschlage-Lektionen: Kabinett der Listen und Faustzahlen */
+(function () {
+const KT = window.KT; KT.stories = KT.stories || {};
+
+KT.stories.kabinett = {
+  take: ['Stiehl den Mechanismus, nicht die Geschichte.', 'Die beste Tarnung ist das, was der Gegner jeden Tag sieht.', 'Greif dort an, wo der Gegner hinmuss, nicht wo er stark ist.'],
+  cards: [
+    { t: 'cover', title: 'Kabinett der Listen', sub: 'Sechs Kniffe aus zweitausend Jahren und wie du sie stiehlst', art: 'crown' },
+    { t: 'text', h: 'Stiehl den Mechanismus', p: 'Jede Karte im Kabinett ist ein Samenkorn für eine Romanszene. Entscheidend ist nicht die Geschichte, sondern der Mechanismus dahinter. Der funktioniert auch in deiner Welt.', art: 'quill', key: true },
+    { t: 'text', h: 'Der Sandsackdamm', p: 'Über Nacht staut Han Xin den Fluss mit Sandsäcken. Dann watet er hinüber, greift an und flieht zum Schein. Long Ju setzt ihm ins Flussbett nach, und in diesem Moment wird der Damm geöffnet.', art: 'river' },
+    { t: 'quiz', q: 'Wozu braucht Han Xin die Scheinflucht?', opts: ['Long Ju soll im Flussbett stehen, wenn die Flut kommt', 'Seine Männer brauchen Zeit, um den Damm zu bauen', 'Long Ju soll die Verfolgung aufgeben'], a: 0, why: 'Die Flut trifft nur, wer im Flussbett steht, und die Scheinflucht zieht Long Ju genau dorthin. Sein Hochmut half nach: Er hielt Han Xin für leicht zu schlagen.' },
+    { t: 'text', h: 'Holzfäller mit Klingen', p: 'So erzählt es die bretonische Überlieferung: Bertrand du Guesclin lässt seine Männer als Holzfäller Feuerholz zur Burg Grand-Fougeray bringen. Die Waffen stecken im Reisig. Als das Tor aufgeht, halten sie es.', art: 'tower' },
+    { t: 'text', h: 'Die erbeuteten Banner', p: 'Prinz Edward erbeutet nachts die Banner von Simon de Montforts Sohn und marschiert mit ihnen an der Spitze auf Evesham zu. Simon hält das Heer für den Entsatz seines Sohnes, bis die königliche Standarte auftaucht.', art: 'banner' },
+    { t: 'quiz', q: 'Was haben die Holzfäller und die Banner gemeinsam?', opts: ['Beide brauchen einen Verräter hinter den Mauern', 'Der Gegner sieht, was er erwartet, und öffnet sich selbst', 'Beide gelingen nur im Schutz der Nacht'], a: 1, why: 'Ein Tor öffnet sich für das, was jeden Tag kommt, und ein Heer unter vertrauten Bannern wirkt wie ein Freund. Die Tarnung passt genau zur Erwartung des Gegners.' },
+    { t: 'text', h: 'Kamele als Wasserschläuche', p: 'Khalid ibn al-Walid nimmt eine Route, die niemand für möglich hält: sechs Tage ohne Wasserstelle. Vorher trinken etwa zwanzig Kamele übermäßig. Unterwegs schlachtet man eines nach dem anderen und trinkt das Wasser aus ihren Mägen.', art: 'compass' },
+    { t: 'text', h: 'Ins Leere schlagen', p: 'Wei belagert Handan, die Hauptstadt von Zhao. Qi schickt sein Heer nicht dorthin, sondern bedroht Daliang, die unverteidigte Hauptstadt von Wei. Wei bricht die Belagerung ab, eilt heim und läuft bei Guiling in einen Hinterhalt.', art: 'pincer' },
+    { t: 'quiz', q: 'Warum zieht Qi nicht direkt nach Handan?', opts: ['Handan liegt zu weit entfernt für einen Entsatz', 'Qi will Zhao schwächen und Handan fallen lassen', 'Wei muss heimeilen, und Qi wartet auf dem Weg'], a: 2, why: 'Greif nicht an, wo der Gegner stark ist, sondern dort, wo er hinmuss. Wei eilte heim und lief bei Guiling in den Hinterhalt, den Sun Bin geplant hatte.' },
+    { t: 'text', h: 'Das Gerücht, das einen General absetzte', p: 'Lian Po hält das Heer von Zhao hinter Mauern, und Qin kommt nicht voran. Da streuen Agenten aus Qin, man fürchte nur den jungen Zhao Kuo. Zhao setzt Lian Po ab, und Qin lockt den Neuen vor seine Mauern.', art: 'letter' },
+    { t: 'list', h: 'Bausteine zum Stehlen', items: ['Die Natur arbeitet mit: Wasser, Wüste, Dunkelheit', 'Eine Tarnung, die zur Erwartung passt: Holz, Banner, Händler', 'Druck dort, wo der Gegner hinmuss, nicht wo er stark ist', 'Ein Gerücht, das der Gegner gern glaubt', 'Hochmut beim Gegner als Schmiermittel'] },
+    { t: 'novel', p: 'Kombiniere zwei Karten zu einer neuen List und verlege sie in eine andere Welt. Der Sandsackdamm funktioniert auch mit einem Mühlwehr, die Holzfäller von Fougeray auch als Wasserträger oder Pilger.' },
+  ],
+};
+
+KT.stories.realismus = {
+  take: ['Ein Heer ist so schnell wie sein Tross.', 'Wasser und Futter bestimmen den Weg, nicht die Karte.', 'Die meisten Toten fallen auf der Flucht, nicht an der Front.'],
+  cards: [
+    { t: 'cover', title: 'Faustzahlen', sub: 'Schätz mal: Wie weit, wie schnell, wie viel?', art: 'compass' },
+    { t: 'text', h: 'Leser rechnen mit', p: 'Leser verzeihen viel, aber kein Heer, das an einem Tag hundert Kilometer schafft oder tagelang ohne Wasser kämpft. Ein paar Zahlen genügen, damit dein Feldzug glaubwürdig bleibt.', art: 'scroll' },
+    { t: 'quiz', q: 'Wie weit kommt ein großes Heer mit Tross an einem Tag?', opts: ['13 bis 19 Kilometer', '35 bis 45 Kilometer', '60 bis 80 Kilometer'], a: 0, why: 'Ein großes Heer schafft meist 13 bis 19 Kilometer am Tag, mit schwerem Tross oft weniger. 19 Kilometer gelten schon als schnell.' },
+    { t: 'text', h: 'So schnell wie der Tross', p: 'Ochsen gehen halb so schnell wie Fußvolk und ziehen nur etwa fünf Stunden am Tag. Ein Gewaltmarsch schafft bis zu 56 Kilometer, aber danach ist die Infanterie schnell verbraucht.', art: 'banner' },
+    { t: 'quiz', q: 'Wie kam mongolische Reiterei auf bis zu 95 Kilometer am Tag?', opts: ['Sie ritt nur in der Kühle der Nacht', 'Sie folgte festen Straßen mit Rasthäusern', 'Jeder Mann hatte mindestens drei Pferde'], a: 2, why: 'Mit mindestens drei Pferden pro Mann konnte die mongolische Reiterei solche Strecken auch über lange Zeit halten.' },
+    { t: 'text', h: 'Das vergessene Wasser', p: 'Ein Pferd trinkt rund 30 Liter am Tag, ein Soldat braucht etwa 2 Liter und 1,4 Kilo Getreide. Hattin, Carrhae und Ankara wurden auch durch Durst entschieden.', art: 'river', key: true },
+    { t: 'quiz', q: 'Was braucht ein Heer von 65 000 Mann und 15 000 Tieren am Tag?', opts: ['Etwa 100 Tonnen Nahrung und Wasser', 'Etwa 1000 Tonnen Nahrung und Wasser', 'Etwa 10 000 Tonnen Nahrung und Wasser'], a: 1, why: 'Rund 1000 Tonnen Nahrung und Wasser am Tag. Deshalb folgen Heere Flüssen, Straßen und Ernten.' },
+    { t: 'text', h: 'Flugweite ist nicht Reichweite', p: 'Ein Langbogen schießt 250 bis 300 Meter weit. Gezielt und wirksam trifft er deutlich näher, und gegen Plattenpanzer richtet er kaum etwas aus.', art: 'arrows' },
+    { t: 'quiz', q: 'Deine Bogenschützen stehen 250 Meter vor schwer gepanzerten Rittern. Was ist realistisch?', opts: ['Die Pfeile erreichen sie, durchschlagen Platten aber kaum', 'Jeder Treffer durchschlägt die Rüstung', 'Die Pfeile fallen weit vor den Rittern zu Boden'], a: 0, why: 'Rund 250 Meter ist ungefähr die Flugweite. Wirksam und gezielt schießt man deutlich näher, und gegen Plattenpanzer helfen Pfeile kaum.' },
+    { t: 'text', h: 'Wo die Toten fallen', p: 'Die meisten Toten fallen nicht im Gedränge an der Front, sondern wenn eine Seite flieht und verfolgt wird. Bei Kortrijk 1302 ging die Verfolgung über mehr als zehn Kilometer.', art: 'sword' },
+    { t: 'text', h: 'Riesenzahlen', p: 'Antike und mittelalterliche Heereszahlen sind fast immer zu hoch. Die Millionen des Xerxes sind unmöglich. Rechne lieber mit dem, was Straßen, Brunnen und Felder tragen können.', art: 'eye' },
+    { t: 'list', h: 'Der Spickzettel', items: ['Großes Heer: 13 bis 19 Kilometer am Tag', 'Soldat: 1,4 Kilo Getreide und 2 Liter Wasser am Tag', 'Pferd: 9 Kilo Futter und 30 Liter Wasser am Tag', '1000 Mann in Kolonne: 200 bis 300 Meter, mit Tross etwa doppelt', 'Rüstung eines Ritters: etwa 23 bis 27 Kilo'] },
+    { t: 'novel', p: 'Zahlen erzeugen Handlung. Lass deinen Feldherrn sichtbar rechnen: Wie viele Tage bis zum Fluss, wie viele Brunnen auf dem Weg? Und eine falsche Zahl im Kopf des Gegners ist der Motor vieler Listen, bei Maling die Zahl der Herdfeuer.' },
+  ],
+};
+})();
+
 /* ---- app.js ---- */
 /* =====================================================================
    Kriegstisch – Oberfläche: Rahmen, Bereiche, Lektionen, Tisch
@@ -8945,6 +9049,7 @@ const SV = (d, w) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 const ICON = {
   mark: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M1.2 19.6L20 29L20 31.82L1.2 22.42Z" fill="#5E4C37"/><path d="M38.8 19.6L20 29L20 31.82L38.8 22.42Z" fill="#4A3B2B"/><path d="M20 10.2L38.8 19.6L20 29L1.2 19.6Z" fill="#8B9A5C"/><path d="M15.86 18.19L23.2 21.86L23.2 19.6L15.86 15.93Z" fill="#9C2F26"/><path d="M26.02 20.45L23.2 21.86L23.2 19.6L26.02 18.19Z" fill="#B83C31"/><path d="M18.68 14.52L26.02 18.19L23.2 19.6L15.86 15.93Z" fill="#D45A4E"/><path d="M10.04 20.82L19.44 25.52L19.44 23.64L10.04 18.94Z" fill="#24508A"/><path d="M22.07 24.21L19.44 25.52L19.44 23.64L22.07 22.33Z" fill="#2F62A3"/><path d="M12.67 17.63L22.07 22.33L19.44 23.64L10.04 18.94Z" fill="#5287CB"/><path d="M22.73 23.69L25.36 25.01L25.36 23.13L22.73 21.81Z" fill="#24508A"/><path d="M31.94 21.72L25.36 25.01L25.36 23.13L31.94 19.84Z" fill="#2F62A3"/><path d="M29.31 18.52L31.94 19.84L25.36 23.13L22.73 21.81Z" fill="#5287CB"/></svg>',
   lehrgang: SV('<path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-6h5v6"/>'),
+  repeat: SV('<path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/>'),
   map: SV('<path d="M3.5 6.5l5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/>'),
   schlachten: SV('<rect x="3.5" y="6.5" width="17" height="11" rx=".5"/><path d="M3.5 6.5l17 11M20.5 6.5l-17 11"/>'),
   archiv: SV('<path d="M4 10h16v9.5H4z"/><path d="M6.5 10V6.5h11V10"/><path d="M8.5 6.5V4h7v2.5"/><path d="M10 14h4"/>'),
@@ -8995,7 +9100,7 @@ const TOOLS = [
 const DESTS = [
   { id: 'lehrgang', label: 'Start', href: 'start' },
   { id: 'schlachten', label: 'Schlachten', href: 'schlachten' },
-  { id: 'raenke', label: 'Ränke', href: 'raenke' },
+  { id: 'raenke', label: 'Ränke', href: 'intrigen' },
   { id: 'archiv', label: 'Archiv', href: 'marotten' },
   { id: 'werkzeuge', label: 'Werkzeuge', href: 'werkzeuge' },
 ].filter((d) => (d.id !== 'archiv' || KT.lessons.marotten) && (d.id !== 'raenke' || KT.lessons.raenke));
@@ -9143,7 +9248,7 @@ function whenHTML(w) { if (!w) return ''; const { date, place } = splitWhen(w); 
 function info(title, items, color) { if (!items || !items.length) return ''; return '<section class="info"><h3>' + (color ? '<i class="sw" style="--c:' + color + '"></i>' : '') + esc(title) + '</h3><ul>' + items.map((x) => '<li>' + x + '</li>').join('') + '</ul></section>'; }
 function renderLesson(id) {
   const L = KT.lessons[id]; const ch = CHAP[id]; const idx = ORDER.indexOf(id); const pos = ch.items.indexOf(id) + 1; const dest = destOf(id);
-  const hubHref = dest === 'schlachten' ? 'schlachten' : dest === 'werkzeuge' ? 'werkzeuge' : dest === 'raenke' ? 'raenke' : 'kapitel-' + (KT.chapters.indexOf(ch) + 1);
+  const hubHref = dest === 'schlachten' ? 'schlachten' : dest === 'werkzeuge' ? 'werkzeuge' : dest === 'raenke' ? 'intrigen' : 'kapitel-' + (KT.chapters.indexOf(ch) + 1);
   let h = '<div class="page"><header class="l-head"><p class="crumb"><a href="#' + hubHref + '">' + esc(ch.title) + '</a><span class="pos">Lektion ' + pos + ' von ' + ch.items.length + '</span></p><h1 class="h1">' + esc(L.title) + '</h1>' + whenHTML(L.when) + (L.lead ? '<p class="lead">' + L.lead + '</p>' : '') + storyBtn(id) + '</header>';
   if (L.scene) h += '<div id="tableSlot"></div>';
   if (L.trick) h += '<div class="trick"><p class="t-h">Der Trick</p><p>' + L.trick + '</p></div>';
@@ -9193,6 +9298,7 @@ function renderHome() {
   const chDone = ch.items.filter((x) => seen.has(x)).length; const fresh = !seen.size;
   let h = '<div class="page home"><header class="home-head"><div><p class="eyebrow">Taktik, Täuschung und Ränke vor dem Schießpulver</p><h1 class="display">Der Kriegstisch</h1></div>' + (seen.size ? '<div class="home-prog">' + ring(seen.size / ORDER.length) + '<span><b class="tnum">' + seen.size + '</b> von ' + ORDER.length + ' Lektionen</span></div>' : '') + '</header>';
   h += '<section class="resume-card" style="--sc:' + CH_COLORS[ci] + '" aria-label="' + (fresh ? 'Hier beginnen' : 'Weitermachen') + '"><div class="rc-art" id="rcArt"' + (S && S.hasStory(id) ? ' data-story="' + id + '" data-seq="' + ci + '"' : '') + '>' + (L.scene ? '' : motif(CH_ART[ci])) + '</div><div class="rc-b"><p class="rc-k">' + (fresh ? 'Hier beginnen' : 'Weiter mit') + '</p><h2>' + esc(L.nav || L.title) + '</h2><p class="rc-m">' + esc(ch.num + '  ' + ch.title) + ', Lektion ' + (ch.items.indexOf(id) + 1) + ' von ' + ch.items.length + '</p><div class="rc-bar"><i style="width:' + (chDone / ch.items.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (S && S.hasStory(id) ? '<button type="button" class="btn light" data-story="' + id + '" data-seq="' + ci + '">' + ICON.play + 'Story ansehen</button>' : '') + '<a class="btn ghost" href="#' + id + '">Lektion lesen</a></div></div></section>';
+  if (S && S.reviewCount(null) >= 3) { const wk = S.weakCount(); h += '<a class="practice" href="#start" data-review=""><span class="pr-i">' + ICON.repeat + '</span><span class="pr-b"><b>Wiederholen</b><small>' + (seen.size ? '10 gemischte Fragen aus deinen Lektionen' + (wk ? ', mit ' + wk + (wk === 1 ? ' Wackelkandidat' : ' Wackelkandidaten') : '') : '10 Fragen quer durch den Kurs: Wie viel weißt du schon?') + '</small></span><span class="pr-go">Los' + ICON.chevR + '</span></a>'; }
   h += '<section class="sect"><div class="sect-row"><h2 class="h2">Lehrgang</h2><span class="note">' + KT.chapters.filter((c) => c.items.length).length + ' Kapitel, als Story oder zum Lesen</span></div><div class="chapters">';
   KT.chapters.forEach((c, k) => { if (!c.items.length) return; const d = c.items.filter((x) => seen.has(x)).length; h += '<a class="chap" href="' + chHref(c) + '" style="--sc:' + CH_COLORS[k] + '"><span class="chap-art">' + motif(CH_ART[k]) + '</span><span class="chap-b"><span class="chap-n">' + c.num + '</span><b>' + esc(c.title) + '</b><span class="chap-m">' + c.items.length + ' Lektionen' + (d ? ', ' + d + ' gesehen' : '') + '</span><span class="chap-bar"><i style="width:' + (d / c.items.length * 100).toFixed(1) + '%"></i></span></span></a>'; });
   h += '</div></section>';
@@ -9207,32 +9313,64 @@ function renderHome() {
   if (L.scene && TT.defs[L.scene]) { const art = $('#rcArt'); art.appendChild(stageEl); STAGE.load(L.scene, null); STAGE.setPov(null); STAGE.resetView(); STAGE.zoomBy(1.15); homeLabels = STAGE.showLabels; STAGE.showLabels = false; STAGE.readTheme(true); homeStage = true; if (!STAGE.reduced) setTimeout(() => { if (onHome()) STAGE.play(); }, 500); else STAGE.setTime(STAGE.sc.duration * 0.7); }
   document.title = 'Der Kriegstisch';
 }
+function lessonRows(ids, k) {
+  const S = window.KTStory;
+  return '<ol class="lesson-list">' + ids.map((id, i) => { const L = KT.lessons[id]; const sub = L.when ? splitWhen(L.when).date + (splitWhen(L.when).place ? ', ' + splitWhen(L.when).place : '') : firstSentence(String(L.lead || '').replace(/<[^>]+>/g, '')); return '<li' + (seen.has(id) ? ' class="done"' : '') + '><a href="#' + id + '"><span class="n">' + (i + 1) + '</span><span class="t"><b>' + esc(L.nav || L.title) + '</b><small>' + esc(sub) + '</small></span></a>' + (S && S.hasStory(id) ? '<button type="button" class="ll-st" data-story="' + id + '" data-seq="' + k + '" aria-label="' + esc((L.nav || L.title) + ' als Story ansehen') + '"><span>' + ICON.play + '</span></button>' : '') + '</li>'; }).join('') + '</ol>';
+}
+const reviewBtn = (k, cls) => { const S = window.KTStory; return S && S.reviewCount(k) >= 3 ? '<button type="button" class="btn ' + (cls || 'ghost') + '" data-review="' + (k === null ? '' : k) + '">' + ICON.repeat + 'Fragen wiederholen</button>' : ''; };
 function renderChapter(k) {
   const ch = KT.chapters[k]; const S = window.KTStory; const ids = ch.items; const d = ids.filter((x) => seen.has(x)).length;
   const first = (S && (ids.find((x) => S.hasStory(x) && !seen.has(x)) || ids.find((x) => S.hasStory(x)))) || null;
-  let h = '<div class="page"><header class="chap-head" style="--sc:' + CH_COLORS[k] + '"><div class="ch-art">' + motif(CH_ART[k]) + '</div><div class="ch-b"><p class="rc-k">Kapitel ' + ch.num + '</p><h1 class="h1">' + esc(ch.title) + '</h1><p>' + esc(CH_DESC[k] || '') + '</p><div class="rc-bar"><i style="width:' + (d / ids.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (first ? '<button type="button" class="btn light" data-story="' + first + '" data-seq="' + k + '">' + ICON.play + (d ? 'Stories fortsetzen' : 'Kapitel als Story') + '</button>' : '') + '<span class="ch-m">' + ids.length + ' Lektionen, ' + d + ' gesehen</span></div></div></header>';
-  h += '<ol class="lesson-list">' + ids.map((id, i) => { const L = KT.lessons[id]; const sub = L.when ? splitWhen(L.when).date + (splitWhen(L.when).place ? ', ' + splitWhen(L.when).place : '') : firstSentence(String(L.lead || '').replace(/<[^>]+>/g, '')); return '<li' + (seen.has(id) ? ' class="done"' : '') + '><a href="#' + id + '"><span class="n">' + (i + 1) + '</span><span class="t"><b>' + esc(L.nav || L.title) + '</b><small>' + esc(sub) + '</small></span></a>' + (S && S.hasStory(id) ? '<button type="button" class="ll-st" data-story="' + id + '" data-seq="' + k + '" aria-label="' + esc((L.nav || L.title) + ' als Story ansehen') + '"><span>' + ICON.play + '</span></button>' : '') + '</li>'; }).join('') + '</ol>';
+  let h = '<div class="page"><header class="chap-head" style="--sc:' + CH_COLORS[k] + '"><div class="ch-art">' + motif(CH_ART[k]) + '</div><div class="ch-b"><p class="rc-k">Kapitel ' + ch.num + '</p><h1 class="h1">' + esc(ch.title) + '</h1><p>' + esc(CH_DESC[k] || '') + '</p><div class="rc-bar"><i style="width:' + (d / ids.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (first ? '<button type="button" class="btn light" data-story="' + first + '" data-seq="' + k + '">' + ICON.play + (d ? 'Stories fortsetzen' : 'Kapitel als Story') + '</button>' : '') + reviewBtn(k) + '<span class="ch-m">' + ids.length + ' Lektionen, ' + d + ' gesehen</span></div></div></header>';
+  h += lessonRows(ids, k);
   const prev = KT.chapters[k - 1], next = KT.chapters[k + 1];
   h += '<nav class="pager" aria-label="Kapitel">' + (prev && prev.items.length ? '<a class="prev" href="' + chHref(prev) + '"><span class="dir">' + ICON.chevL + 'Voriges Kapitel</span><span class="ttl">' + esc(prev.title) + '</span></a>' : '') + (next && next.items.length ? '<a class="next" href="' + chHref(next) + '"><span class="dir">Nächstes Kapitel' + ICON.chevR + '</span><span class="ttl">' + esc(next.title) + '</span></a>' : '') + '</nav></div>';
   main.innerHTML = h; T = null; document.title = ch.title + ' | Der Kriegstisch';
 }
 function renderBattles() {
+  const S = window.KTStory; const k = KT.chapters.findIndex((c) => c.items.includes('cannae'));
   const groups = [['Vor Christus', []], ['Nach Christus', []]];
   for (const id of BATTLES) groups[/v\. Chr\./.test(KT.lessons[id].when || '') ? 0 : 1][1].push(id);
-  let h = '<div class="page"><header class="hub-head"><h1 class="h1">Schlachten</h1><p class="lead">' + BATTLES.length + ' legendäre Manöver von Kadesch bis Azincourt, in der Reihenfolge der Ereignisse. Jede Schlacht läuft als Szene auf dem Tisch, aus der Sicht beider Seiten.</p></header><div class="timeline">';
+  const d = BATTLES.filter((x) => seen.has(x)).length; const first = S && (BATTLES.find((x) => S.hasStory(x) && !seen.has(x)) || BATTLES.find((x) => S.hasStory(x)));
+  let h = '<div class="page"><header class="chap-head" style="--sc:' + CH_COLORS[k] + '"><div class="ch-art">' + motif('banner') + '</div><div class="ch-b"><p class="rc-k">Kapitel ' + KT.chapters[k].num + '</p><h1 class="h1">Schlachten</h1><p>' + BATTLES.length + ' legendäre Manöver von Kadesch bis Azincourt, in der Reihenfolge der Ereignisse. Jede läuft als Szene auf dem Tisch, aus der Sicht beider Seiten.</p><div class="rc-bar"><i style="width:' + (d / BATTLES.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (first ? '<button type="button" class="btn light" data-story="' + first + '" data-seq="' + k + '">' + ICON.play + (d ? 'Stories fortsetzen' : 'Alle als Story') + '</button>' : '') + reviewBtn(k) + '<span class="ch-m">' + d + ' von ' + BATTLES.length + ' gesehen</span></div></div></header><div class="timeline">';
   for (const [name, ids] of groups) {
     if (!ids.length) continue;
-    h += '<section class="era"><h2>' + name + '</h2><ol>' + ids.map((id) => {
+    h += '<section class="era"><h2 class="h2">' + name + '</h2><ol class="bt-list">' + ids.map((id) => {
       const L = KT.lessons[id]; const { date, place } = splitWhen(L.when); const m = date.match(/(\d{1,4}(?:\/\d{1,4})?)\s*(?:v\.\sChr\.|n\.\sChr\.)?\s*$/); const yr = m ? m[1] : date; const sub = (L.title.split(': ')[1] || '');
-      return '<li><a href="#' + id + '"' + (seen.has(id) ? ' class="done"' : '') + '><span class="yr">' + esc(yr) + '</span><span class="bd"><span class="nm">' + esc(L.nav || L.title) + '</span>' + (sub ? '<span class="sub">' + esc(sub) + '</span>' : '') + '<span class="pl">' + esc(place + (date ? ', ' + date : '')) + '</span></span></a></li>';
+      return '<li' + (seen.has(id) ? ' class="done"' : '') + '><a href="#' + id + '"><span class="yr tnum">' + esc(yr) + '</span><span class="bd"><b>' + esc(L.nav || L.title) + '</b>' + (sub ? '<span class="sub">' + esc(sub) + '</span>' : '') + '<small>' + esc(place) + '</small></span></a>' + (S && S.hasStory(id) ? '<button type="button" class="ll-st" data-story="' + id + '" data-seq="' + k + '" aria-label="' + esc((L.nav || L.title) + ' als Story ansehen') + '"><span>' + ICON.play + '</span></button>' : '') + '</li>';
     }).join('') + '</ol></section>';
   }
   main.innerHTML = h + '</div></div>'; T = null;
   document.title = 'Schlachten | Der Kriegstisch';
 }
+const toolRow = (href, icon, title, sub, extra) => '<a href="' + href + '"' + (extra || '') + '><span class="ti">' + ICON[icon] + '</span><span><b>' + esc(title) + '</b><small>' + esc(sub) + '</small></span>' + ICON.chevR + '</a>';
 function renderTools() {
-  main.innerHTML = '<div class="page"><header class="hub-head"><h1 class="h1">Werkzeuge</h1><p class="lead">Für die Arbeit am Manuskript: Generatoren für Manöver und Figuren, Zahlen für glaubwürdige Feldzüge und alles zum Nachschlagen.</p></header><ul class="tools">' + TOOLS.map((t) => '<li><a href="#' + t.id + '">' + ICON[t.icon] + '<span><b>' + esc(t.label) + '</b><span>' + t.desc + '</span></span>' + ICON.chevR + '</a></li>').join('') + '<li><a href="#karten">' + ICON.book + '<span><b>Gemerkte Karten</b><span>Karten, die du in den Stories gemerkt hast, zum Wiederholen.</span></span>' + ICON.chevR + '</a></li><li><a href="https://timmisg.github.io/kriegstisch/hain/" target="_blank" rel="noopener">' + ICON.ext + '<span><b>Der Hain</b><span>Die Schwester-App: Götter, Mythen, Riten, Opfer und Feste aus aller Welt, mit Jahreskreis und Werkstatt.</span></span>' + ICON.chevR + '</a></li></ul></div>';
+  const S = window.KTStory; const t = (id) => TOOLS.find((x) => x.id === id);
+  const grp = (h2, rows) => { const r = rows.filter(Boolean); return r.length ? '<section class="sect"><h2 class="h2">' + h2 + '</h2><div class="tool-grid">' + r.join('') + '</div></section>' : ''; };
+  const row = (id) => { const x = t(id); return x ? toolRow('#' + x.id, x.icon, x.label, x.desc) : ''; };
+  let h = '<div class="page"><header class="hub-head"><h1 class="h1">Werkzeuge</h1><p class="lead">Für die Arbeit am Manuskript: zum Üben, zum Würfeln neuer Ideen und zum Nachschlagen.</p></header>';
+  h += grp('Üben', [S && S.reviewCount(null) >= 3 ? toolRow('#werkzeuge', 'repeat', 'Wiederholen', '10 gemischte Fragen aus den Stories. Was du falsch beantwortest, kommt öfter dran.' + (S.weakCount() ? ' Gerade ' + S.weakCount() + (S.weakCount() === 1 ? ' Wackelkandidat.' : ' Wackelkandidaten.') : ''), ' data-review=""') : '', toolRow('#karten', 'book', 'Gemerkte Karten', (S ? S.savedCount() : 0) + ' Karten, die du in den Stories gemerkt hast.')]);
+  h += grp('Würfeln und mischen', [row('wuerfel'), row('raenke-wuerfel'), row('marotten')]);
+  h += grp('Nachschlagen', [row('realismus'), row('glossar'), row('quellen')]);
+  h += '<section class="sect"><h2 class="h2">Schwester-App</h2><a class="sister" href="https://timmisg.github.io/kriegstisch/hain/" target="_blank" rel="noopener"><span class="si">' + motif('fire') + '</span><span><b>Der Hain</b><small>Götter, Mythen, Riten, Opfer und Feste aus aller Welt, mit Jahreskreis.</small></span>' + ICON.ext + '</a></section>';
+  main.innerHTML = h + '</div>';
   T = null; document.title = 'Werkzeuge | Der Kriegstisch';
+}
+// ---------- Ränke und Täuschung: die Übersicht hinter dem Reiter ----------
+function renderIntrigen() {
+  const S = window.KTStory; const kR = KT.chapters.findIndex((c) => c.items.includes('raenke')); const kT = KT.chapters.findIndex((c) => c.items.includes('kabinett'));
+  const R = KT.raenke || []; const ids = RITEMS.filter((id) => KT.lessons[id]); const d = ids.filter((x) => seen.has(x)).length;
+  const first = S && (ids.find((x) => S.hasStory(x) && !seen.has(x)) || ids.find((x) => S.hasStory(x)));
+  const seqK = first && KT.chapters[kT] && KT.chapters[kT].items.includes(first) ? kT : kR;
+  let h = '<div class="page"><header class="chap-head" style="--sc:' + CH_COLORS[kR] + '"><div class="ch-art">' + motif('mask') + '</div><div class="ch-b"><p class="rc-k">Kapitel ' + (KT.chapters[kT] ? KT.chapters[kT].num + ' und ' : '') + KT.chapters[kR].num + '</p><h1 class="h1">Ränke und Täuschung</h1><p>Schlachten entscheiden seltener über einen Krieg, als man denkt. Oft ist er vorher entschieden: durch einen Brief, der nie ankam, ein Tor, das jemand von innen öffnete, ein Gerücht oder eine falsche Fährte.</p><div class="rc-bar"><i style="width:' + (d / ids.length * 100).toFixed(1) + '%"></i></div><div class="row">' + (first ? '<button type="button" class="btn light" data-story="' + first + '" data-seq="' + seqK + '">' + ICON.play + (d ? 'Stories fortsetzen' : 'Als Story beginnen') + '</button>' : '') + reviewBtn(kR) + '</div></div></header>';
+  const nS = KT.strategeme && KT.strategeme.liste ? KT.strategeme.liste.length : 0;
+  const tiles = [['#raenke-archiv', 'scroll', 'Archiv der Ränke', R.length + ' überlieferte Fälle aus aller Welt, mit Trick, Gegenzug und Quelle.'], ['#strategeme', 'dice', 'Die ' + nS + ' Strategeme', 'Die klassische chinesische Sammlung von Listen, jede mit Beispiel und Konter.'], ['#kabinett', 'crown', 'Kabinett der Listen', (KT.cabinet || []).length + ' berühmte Täuschungen von Troja bis Hastings.'], ['#taeuschung', 'eye', 'Arten der Täuschung', (KT.deception || []).length + ' Bausteine, aus denen sich jede List zusammensetzt.']].filter((x) => KT.lessons[x[0].slice(1)]);
+  h += '<section class="sect"><h2 class="h2">Sammlungen</h2><div class="tiles">' + tiles.map((x, i) => '<a class="tile" href="' + x[0] + '" style="--sc:' + CH_COLORS[i % 2 ? kT : kR] + '"><span class="tile-art">' + motif(x[1]) + '</span><b>' + esc(x[2]) + '</b><span>' + esc(x[3]) + '</span></a>').join('') + '</div></section>';
+  const cnt = (k) => R.filter((r) => r.kat === k).length;
+  h += '<section class="sect"><div class="sect-row"><h2 class="h2">Zwölf Spielarten</h2><a class="more" href="#raenke-archiv">Alle Fälle' + ICON.chevR + '</a></div><div class="kats kats-grid">' + (KT.raenkeKats || []).map(([k, dsc]) => { const c = cnt(k); return '<a class="kat' + (c ? '' : ' empty') + '" href="#raenke-archiv?kat=' + encodeURIComponent(k) + '"><b>' + esc(k) + '</b><span>' + esc(dsc) + '</span><small>' + (c ? c + (c === 1 ? ' Fall' : ' Fälle') : 'noch keine Fälle') + '</small></a>'; }).join('') + '</div></section>';
+  for (const k of [kT, kR]) { const ch = KT.chapters[k]; if (!ch) continue; h += '<section class="sect"><div class="sect-row"><h2 class="h2">' + esc(ch.title) + '</h2><a class="more" href="#kapitel-' + (k + 1) + '">Kapitel ' + ch.num + ICON.chevR + '</a></div>' + lessonRows(ch.items, k) + '</section>'; }
+  if ((KT.raenkeGrund || []).length) h += '<section class="sect"><h2 class="h2">Was die alten Meister rieten</h2><div class="masters">' + KT.raenkeGrund.map((g) => '<details class="ac"><summary><span class="ac-h"><b>' + esc(g.titel) + '</b></span><span class="ac-m">' + esc(g.wer) + '</span>' + ICON.chevR + '</summary><div class="ac-b"><p>' + esc(g.text) + '</p><p class="src">' + richSrc(g.src) + '</p></div></details>').join('') + '</div></section>';
+  main.innerHTML = h + '</div>'; T = null; document.title = 'Ränke und Täuschung | Der Kriegstisch';
 }
 
 // ---------- Sonderseiten ----------
@@ -9254,6 +9392,12 @@ AFTER.dice = () => {
   $('#roll').addEventListener('click', roll); roll();
 };
 
+// Lange Listen in Etappen zeigen: erst 30, dann auf Knopfdruck die nächsten
+function paged(grid, out, card, empty, noun) {
+  const STEP = 30; let n = 0;
+  const more = () => { const b = $('.more-btn', grid); if (b) b.remove(); grid.insertAdjacentHTML('beforeend', out.slice(n, n + STEP).map(card).join('')); n += STEP; const left = out.length - n; if (left > 0) { grid.insertAdjacentHTML('beforeend', '<button type="button" class="btn secondary more-btn">' + Math.min(STEP, left) + ' weitere ' + noun + ' zeigen<span class="note"> (noch ' + left + ')</span></button>'); $('.more-btn', grid).addEventListener('click', more); } };
+  grid.innerHTML = out.length ? '' : empty; if (out.length) more();
+}
 RENDER.quirks = (L) => {
   const sel = (id, label, all) => '<label class="field" for="' + id + '">' + label + '<select id="' + id + '"><option value="">' + all + '</option></select></label>';
   return '<section class="qk" id="qk">' +
@@ -9273,11 +9417,11 @@ AFTER.quirks = () => {
   fill('qkRel', 'rel', ['A', 'B', 'C'], (v) => REL[v][0]);
   const idx = Q.map((x) => norm([x.who, x.meta, x.text, x.use, x.src, x.cat, x.era, x.grp].join(' ')));
   const meta = (m) => { const p = String(m || '').split(' · '); if (p.length !== 3) return esc(undot(m)); return '<span class="yr">' + esc(p[1]) + '</span>, ' + esc(p[2]) + ', ' + esc(p[0]); };
-  const card = (x) => '<article class="qk-card"><div class="who"><h3>' + esc(x.who) + '</h3><p class="meta">' + meta(x.meta) + '</p></div><p class="tags"><span>' + esc(x.cat) + '</span><span class="rel rel-' + x.rel + '" title="' + REL[x.rel][1] + '">' + ICON['rel' + x.rel] + REL[x.rel][0] + '</span></p><p>' + x.text + '</p>' + (x.use ? '<p class="use"><b>Für deine Figur</b>' + x.use + '</p>' : '') + '<p class="src">' + undot(x.src) + '</p></article>';
+  const card = (x) => '<details class="qk-card ac"><summary><span class="ac-h"><b>' + esc(x.who) + '</b><span class="rel rel-' + x.rel + '" title="' + REL[x.rel][1] + '">' + ICON['rel' + x.rel] + REL[x.rel][0] + '</span></span><span class="ac-m">' + meta(x.meta) + '</span><span class="ac-t">' + esc(firstSentence(String(x.text).replace(/<[^>]+>/g, ''))) + '</span>' + ICON.chevR + '</summary><div class="ac-b"><p class="tags"><span>' + esc(x.cat) + '</span></p><p>' + x.text + '</p>' + (x.use ? '<p class="use"><b>Für deine Figur</b>' + x.use + '</p>' : '') + '<p class="src">' + undot(x.src) + '</p></div></details>';
   function draw() {
     const words = norm(st.q).trim().split(/\s+/).filter(Boolean); const out = [];
     Q.forEach((x, i) => { if (st.cat && x.cat !== st.cat) return; if (st.era && x.era !== st.era) return; if (st.grp && x.grp !== st.grp) return; if (st.rel && x.rel !== st.rel) return; if (words.length && !words.every((w) => idx[i].includes(w))) return; out.push(x); });
-    $('#qkGrid').innerHTML = out.length ? out.map(card).join('') : '<p class="qk-empty">Keine Einträge passen zu dieser Suche. Versuch einen anderen Begriff oder setz die Filter zurück.</p>';
+    paged($('#qkGrid'), out, card, '<p class="qk-empty">Keine Einträge passen zu dieser Suche. Versuch einen anderen Begriff oder setz die Filter zurück.</p>', 'Einträge');
     $('#qkCount').textContent = out.length === Q.length ? Q.length + ' Einträge' : out.length + ' von ' + Q.length + ' Einträgen';
     $('#qkReset').hidden = !(st.q || st.cat || st.era || st.grp || st.rel);
     const my = $('#qkMyths'); if (my) { let n = 0; $$('li', my).forEach((li) => { const ok = !words.length || words.every((w) => norm(li.textContent).includes(w)); li.hidden = !ok; if (ok) n++; }); my.hidden = !n; }
@@ -9319,11 +9463,11 @@ AFTER.raenke = () => {
   fill('rkRel', 'rel', ['A', 'B', 'C'], (v) => REL3[v][0]);
   const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/<[^>]+>/g, ' ').toLowerCase();
   const idx = Q.map((x) => norm([x.titel, x.wer, x.ort, x.zeit, x.text, x.trick, x.konter, x.roman, x.src, x.kat, x.era].join(' ')));
-  const card = (x) => '<article class="qk-card rk-card"><div class="who"><h3>' + esc(x.titel) + '</h3><p class="meta"><span class="yr">' + esc(x.zeit) + '</span>, ' + esc(x.ort) + '</p><p class="meta">' + esc(x.wer) + '</p></div><p class="tags"><span>' + esc(x.kat) + '</span><span class="rel rel-' + x.rel + '" title="' + REL3[x.rel][1] + '">' + ICON['rel' + x.rel] + REL3[x.rel][0] + '</span></p><p>' + esc(x.text) + '</p><p class="use"><b>Der Trick</b>' + esc(x.trick) + '</p><p class="use"><b>So kontert man</b>' + esc(x.konter) + '</p><p class="use"><b>Für deinen Roman</b>' + esc(x.roman) + '</p><p class="src">' + richSrc(x.src) + '</p></article>';
+  const card = (x) => '<details class="qk-card rk-card ac"><summary><span class="ac-h"><b>' + esc(x.titel) + '</b><span class="rel rel-' + x.rel + '" title="' + REL3[x.rel][1] + '">' + ICON['rel' + x.rel] + REL3[x.rel][0] + '</span></span><span class="ac-m"><span class="yr">' + esc(x.zeit) + '</span>, ' + esc(x.ort) + '</span><span class="ac-t">' + esc(firstSentence(x.text)) + '</span>' + ICON.chevR + '</summary><div class="ac-b"><p class="meta">' + esc(x.wer) + '</p><p class="tags"><span>' + esc(x.kat) + '</span></p><p>' + esc(x.text) + '</p><p class="use"><b>Der Trick</b>' + esc(x.trick) + '</p><p class="use"><b>So kontert man</b>' + esc(x.konter) + '</p><p class="use"><b>Für deinen Roman</b>' + esc(x.roman) + '</p><p class="src">' + richSrc(x.src) + '</p></div></details>';
   function draw() {
     const words = norm(st.q).trim().split(/\s+/).filter(Boolean); const out = [];
     Q.forEach((x, i) => { if (st.kat && x.kat !== st.kat) return; if (st.era && x.era !== st.era) return; if (st.rel && x.rel !== st.rel) return; if (words.length && !words.every((w) => idx[i].includes(w))) return; out.push(x); });
-    $('#rkGrid').innerHTML = out.length ? out.map(card).join('') : '<p class="qk-empty">Keine Fälle passen zu dieser Suche. Versuch einen anderen Begriff oder setz die Filter zurück.</p>';
+    paged($('#rkGrid'), out, card, '<p class="qk-empty">Keine Fälle passen zu dieser Suche. Versuch einen anderen Begriff oder setz die Filter zurück.</p>', 'Fälle');
     $('#rkCount').textContent = out.length === Q.length ? Q.length + ' Fälle' : out.length + ' von ' + Q.length + ' Fällen';
     $('#rkReset').hidden = !(st.q || st.kat || st.era || st.rel);
     const my = $('#rkMyths'); if (my) { let n = 0; $$('li', my).forEach((li) => { const ok = !words.length || words.every((w) => norm(li.textContent).includes(w)); li.hidden = !ok; if (ok) n++; }); my.closest('section').hidden = !n; }
@@ -9363,7 +9507,7 @@ AFTER.raenkeDice = () => {
 };
 
 // ---------- Router ----------
-const scrollMem = {}; let curKey = null; let QUERY = {}; const HUBS = ['start', 'schlachten', 'werkzeuge', 'marotten', 'raenke', 'raenke-archiv', 'kapitel-1', 'kapitel-2', 'kapitel-3', 'kapitel-4', 'kapitel-5', 'kapitel-6', 'kapitel-7', 'kapitel-8', 'kapitel-9'];
+const scrollMem = {}; let curKey = null; let QUERY = {}; const HUBS = ['start', 'schlachten', 'werkzeuge', 'intrigen', 'marotten', 'raenke', 'raenke-archiv', 'kapitel-1', 'kapitel-2', 'kapitel-3', 'kapitel-4', 'kapitel-5', 'kapitel-6', 'kapitel-7', 'kapitel-8', 'kapitel-9'];
 function route() {
   const full = (location.hash || '').replace('#', ''); const qi = full.indexOf('?'); const id = qi < 0 ? full : full.slice(0, qi);
   QUERY = {}; if (qi >= 0) new URLSearchParams(full.slice(qi + 1)).forEach((v, k) => { QUERY[k] = v; });
@@ -9373,9 +9517,10 @@ function route() {
   let dest, title = null, split = false;
   if (id === 'schlachten') { dest = 'schlachten'; renderBattles(); }
   else if (id === 'werkzeuge') { dest = 'werkzeuge'; renderTools(); }
+  else if (id === 'intrigen') { dest = 'raenke'; renderIntrigen(); }
   else if (/^kapitel-\d+$/.test(id) && KT.chapters[+id.slice(8) - 1]) { const k = +id.slice(8) - 1; const ch = KT.chapters[k]; dest = ch.items.some((x) => RITEMS.includes(x)) ? 'raenke' : ch.items.includes('cannae') ? 'schlachten' : 'lehrgang'; renderChapter(k); title = ch.title; }
   else if (id === 'karten' && window.KTStory) { dest = 'werkzeuge'; window.KTStory.renderKarten(main); T = null; title = 'Gemerkte Karten'; document.title = 'Gemerkte Karten | Der Kriegstisch'; }
-  else if (id && KT.lessons[id] && CHAP[id]) { dest = destOf(id); renderLesson(id); if (dest !== 'archiv' && id !== 'raenke-archiv' && id !== 'raenke') { title = KT.lessons[id].nav || KT.lessons[id].title; split = true; } }
+  else if (id && KT.lessons[id] && CHAP[id]) { dest = destOf(id); renderLesson(id); if (dest !== 'archiv' && id !== 'raenke-archiv') { title = KT.lessons[id].nav || KT.lessons[id].title; split = true; } }
   else { dest = 'lehrgang'; renderHome(); }
   setNav(dest); setBar(dest, title);
   app.classList.toggle('split', split);
@@ -9424,7 +9569,8 @@ function sentences(t, n, max) {
 const ORDER = [], CHAP = {}, CHI = {};
 KT.chapters.forEach((c, ci) => c.items.forEach((id) => { ORDER.push(id); CHAP[id] = c; CHI[id] = ci; }));
 const NO_STORY = new Set(['marotten', 'raenke-archiv', 'raenke-wuerfel', 'wuerfel', 'glossar', 'quellen', 'realismus', 'kabinett']);
-const hasStory = (id) => !!(KT.lessons[id] && CHAP[id] && !NO_STORY.has(id));
+// Werkzeug- und Listenseiten haben nur eine Story, wenn eine handgeschrieben ist
+const hasStory = (id) => !!(KT.lessons[id] && CHAP[id] && (!NO_STORY.has(id) || (KT.stories && KT.stories[id])));
 // Je Kapitel eine Farbe für die Story-Flächen (dunkel genug für weiße Schrift)
 const COLORS = ['#55623a', '#2c527c', '#86382d', '#43525e', '#3a644a', '#7d6123', '#55457c', '#723043', '#2c6262', '#4b5563'];
 const colorOf = (id) => COLORS[(CHI[id] || 0) % COLORS.length];
@@ -9501,13 +9647,44 @@ const defVar = (scene) => { const m = (window.TT.defs[scene] || {}).meta || {}; 
 const varLabel = (scene, v) => { const m = (window.TT.defs[scene] || {}).meta || {}; const x = (m.variants || []).find((y) => y.id === v); return x ? (x.label || x.name || v) : v; };
 function ensureScene(scene, v) { const want = v || defVar(scene); if (!STAGE.sc || STAGE.sc.id !== scene || (STAGE.sc.variant || null) !== want) STAGE.load(scene, want); }
 let S = null, root = null, prevLabels = true, lastFocus = null;
+// ---------- Wiederholung: gemischte Fragen aus den Stories, falsch Beantwortetes kommt öfter ----------
+let weak = store.get('weak', {});
+const qKey = (id, q) => id + '|' + q;
+function shuffleQuiz(c) { const ix = c.opts.map((_, k) => k); for (let k = ix.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [ix[k], ix[j]] = [ix[j], ix[k]]; } return Object.assign({}, c, { opts: ix.map((k) => c.opts[k]), a: ix.indexOf(c.a) }); }
+function quizPool(scope) {
+  const read = new Set([...store.get('seen', []), ...seen]);
+  const ids = (scope === null || scope === undefined ? ORDER : KT.chapters[scope].items).filter((id) => KT.stories && KT.stories[id]);
+  const pool = []; ids.forEach((id) => KT.stories[id].cards.forEach((c) => { if (c.t === 'quiz') pool.push({ id, c, key: qKey(id, c.q), read: read.has(id) }); }));
+  return pool;
+}
+function reviewCards(scope, n) {
+  const pool = quizPool(scope); pool.forEach((p) => { p.w = (weak[p.key] ? 2 : 0) + (p.read ? 1 : 0) + Math.random(); }); pool.sort((a, b) => b.w - a.w);
+  const per = {}; const pick = [];
+  for (const p of pool) { if (pick.length >= n) break; if ((per[p.id] || 0) >= 2) continue; per[p.id] = (per[p.id] || 0) + 1; pick.push(p); }
+  for (let k = pick.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [pick[k], pick[j]] = [pick[j], pick[k]]; }
+  const nl = new Set(pick.map((p) => p.id)).size; const ch = scope === null || scope === undefined ? null : KT.chapters[scope];
+  return [{ t: 'cover', title: ch ? ch.title : 'Wiederholen', sub: pick.length + ' Fragen aus ' + nl + (nl === 1 ? ' Lektion' : ' Lektionen') + ', gemischt' + (pick.some((p) => weak[p.key]) ? ', mit deinen Wackelkandidaten' : ''), art: 'dice' }]
+    .concat(pick.map((p) => Object.assign(shuffleQuiz(p.c), { from: p.id, key: p.key })), [{ t: 'end', review: true }]);
+}
+function review(scope) {
+  scope = scope === undefined || scope === '' ? null : scope;
+  if (quizPool(scope).length < 3) return;
+  lastFocus = document.activeElement; ensureRoot();
+  S = { id: '__review', review: true, scope, seq: null, cards: reviewCards(scope, 10), i: 0, ans: {}, right: 0, asked: 0, wrong: [], phases: null, phases0: null, loop: null };
+  show(scope === null ? '#4b5563' : COLORS[scope % COLORS.length], 'Wiederholung', scope === null ? 'Wiederholung' : 'Wiederholung: ' + KT.chapters[scope].title);
+}
 function open(id, seq) {
   if (!hasStory(id)) return;
   lastFocus = document.activeElement;
   const L0 = KT.lessons[id]; if (L0.scene) { try { ensureScene(L0.scene, null); } catch (e) { } }
   const P0 = L0.scene && STAGE.sc ? STAGE.sc.phases : null;
   S = { id, seq: seq || null, cards: cardsOf(id), i: 0, ans: {}, right: 0, asked: 0, phases: P0, phases0: P0, loop: null };
-  if (!root) {
+  ensureRoot();
+  show(colorOf(id), 'Story: ' + KT.lessons[id].title, (CHAP[id].num ? CHAP[id].num + '  ' : '') + (KT.lessons[id].nav || KT.lessons[id].title));
+}
+function ensureRoot() {
+  if (root) return;
+  {
     root = document.createElement('div'); root.className = 'story'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
     root.innerHTML = '<div class="st-frame"><div class="st-bars" aria-hidden="true"></div><div class="st-top"><span class="st-ch"></span><button type="button" class="st-save" aria-pressed="false" aria-label="Karte merken"></button><button type="button" class="st-x" aria-label="Story schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="st-stack"></div><button type="button" class="sr-tap st-prev" aria-label="Vorige Karte"></button><button type="button" class="sr-tap st-next" aria-label="Nächste Karte"></button></div><button type="button" class="st-side st-sprev" aria-label="Vorige Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6l-6 6 6 6"/></svg></button><button type="button" class="st-side st-snext" aria-label="Nächste Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></svg></button>';
     document.body.appendChild(root);
@@ -9523,10 +9700,13 @@ function open(id, seq) {
     let y0 = null; root.addEventListener('touchstart', (e) => { y0 = e.touches[0].clientY; }, { passive: true });
     root.addEventListener('touchend', (e) => { if (y0 !== null && e.changedTouches[0].clientY - y0 > 110) close(); y0 = null; }, { passive: true });
   }
-  root.style.setProperty('--sc', colorOf(id));
-  root.setAttribute('aria-label', 'Story: ' + KT.lessons[id].title);
-  $('.st-ch', root).textContent = (CHAP[id].num ? CHAP[id].num + '  ' : '') + (KT.lessons[id].nav || KT.lessons[id].title);
-  prevLabels = STAGE.showLabels; STAGE.showLabels = false;
+}
+function show(color, aria, label) {
+  root.style.setProperty('--sc', color);
+  root.setAttribute('aria-label', aria);
+  $('.st-ch', root).textContent = label;
+  if (!document.body.classList.contains('has-story')) prevLabels = STAGE.showLabels; // nur beim ersten Öffnen, nicht beim Weiterspringen
+  STAGE.showLabels = false;
   document.body.classList.add('has-story'); root.hidden = false;
   document.addEventListener('keydown', onKey, true);
   draw(1);
@@ -9539,7 +9719,7 @@ function close() {
   const id = S.id; S = null; $('.st-stack', root).innerHTML = '';
   STAGE.readTheme && STAGE.readTheme(true);
   API.route(); // Tisch an seinen Platz zurück, Fortschritt neu zeichnen
-  const btn = document.querySelector('[data-story="' + id + '"]'); if (btn) btn.focus({ preventScroll: true }); else if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  const btn = document.querySelector(id === '__review' ? '[data-review]' : '[data-story="' + id + '"]'); if (btn) btn.focus({ preventScroll: true }); else if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
 }
 function onKey(e) {
   if (!S) return;
@@ -9553,7 +9733,7 @@ function go(d) {
   if (d > 0 && blocked()) { const q = $('.st-card.on .st-opts', root); if (q) { q.classList.remove('nudge'); void q.offsetWidth; q.classList.add('nudge'); } return; }
   const n = S.i + d;
   if (n < 0) return;
-  if (n >= S.cards.length) { nextStory(); return; }
+  if (n >= S.cards.length) { if (S.review) close(); else nextStory(); return; }
   S.i = n; draw(d);
 }
 function nextStory() {
@@ -9571,10 +9751,10 @@ function draw(dir) {
   const old = $$('.st-card', stack); old.forEach((o) => { o.classList.remove('on'); o.classList.add('off'); setTimeout(() => o.remove(), reduced ? 0 : 320); });
   stack.appendChild(el); requestAnimationFrame(() => el.classList.add('on'));
   wire(el, c);
-  const sv = $('.st-save', root); const can = ['text', 'list', 'novel', 'stage', 'duo'].includes(c.t);
+  const sv = $('.st-save', root); const can = !S.review && ['text', 'list', 'novel', 'stage', 'duo'].includes(c.t);
   sv.hidden = !can; sv.setAttribute('aria-pressed', isSaved(S.id, S.i)); sv.innerHTML = isSaved(S.id, S.i) ? SAVE_ON : SAVE_OFF;
   $('.st-prev', root).disabled = S.i === 0; $('.st-sprev', root).disabled = S.i === 0;
-  if (S.i === S.cards.length - 1) { seen.add(S.id); store.set('storySeen', [...seen]); }
+  if (S.i === S.cards.length - 1 && !S.review) { seen.add(S.id); store.set('storySeen', [...seen]); }
 }
 const SAVE_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M7 4.5h10v15.2l-5-3.7-5 3.7z"/></svg>';
 const SAVE_ON = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M7 4.5h10v15.2l-5-3.7-5 3.7z"/></svg>';
@@ -9595,7 +9775,7 @@ function artHTML(art, cls) {
 }
 function cardHTML(c, i) {
   const L = KT.lessons[S.id];
-  if (c.t === 'cover') return artHTML(c.art, 'cover') + '<div class="st-txt"><p class="st-kick">' + esc(CHAP[S.id].title) + '</p><h1>' + esc(c.title) + '</h1>' + (c.sub ? '<p class="st-sub">' + esc(c.sub) + '</p>' : '') + (c.when ? '<p class="st-when">' + esc(c.when) + '</p>' : '') + '<p class="st-hint">Tippe rechts, um weiterzugehen</p></div>';
+  if (c.t === 'cover') return artHTML(c.art, 'cover') + '<div class="st-txt"><p class="st-kick">' + esc(S.review ? 'Wiederholung' : CHAP[S.id].title) + '</p><h1>' + esc(c.title) + '</h1>' + (c.sub ? '<p class="st-sub">' + esc(c.sub) + '</p>' : '') + (c.when ? '<p class="st-when">' + esc(c.when) + '</p>' : '') + '<p class="st-hint">Tippe rechts, um weiterzugehen</p></div>';
   if (c.t === 'text') return artHTML(c.art === undefined ? artOf(S.id) : c.art) + '<div class="st-txt">' + (c.h ? '<h2>' + esc(c.h) + '</h2>' : '') + '<p class="st-p">' + c.p + '</p></div>';
   if (c.t === 'stage') return '<div class="st-art st-stage" data-phase="' + c.phase + '"></div><div class="st-txt"><p class="st-kick st-ph"></p><h2>' + esc(c.h || '') + '</h2><p class="st-p">' + (c.p || '') + '</p></div>';
   if (c.t === 'duo') return '<div class="st-txt st-duo"><div><p class="st-kick">Was der Gegner sah</p><p>' + esc(c.saw) + '</p></div><div><p class="st-kick">Was wirklich geschah</p><p>' + esc(c.was) + '</p></div></div>';
@@ -9605,7 +9785,11 @@ function cardHTML(c, i) {
   if (c.t === 'quiz' || c.t === 'quiz-order') {
     const q = c.t === 'quiz-order' ? orderQuiz(c) : c; if (!q) return '<div class="st-txt"><p class="st-p">Weiter.</p></div>';
     const a = S.ans[i];
-    return '<div class="st-txt st-quiz"><p class="st-kick">Kurz geprüft</p><h2>' + esc(q.q) + '</h2>' + (q.ctx ? '<p class="st-ctx">„' + esc(q.ctx) + '“</p>' : '') + '<div class="st-opts" role="group" aria-label="Antworten">' + q.opts.map((o, k) => '<button type="button" class="st-opt' + (a !== undefined ? (k === q.a ? ' right' : k === a ? ' wrong' : ' dim') : '') + '" data-k="' + k + '"' + (a !== undefined ? ' disabled' : '') + '>' + esc(o) + '</button>').join('') + '</div><div class="st-why" aria-live="polite">' + (a !== undefined ? whyHTML(q, a) : '') + '</div></div>';
+    return '<div class="st-txt st-quiz"><p class="st-kick">' + (c.from && KT.lessons[c.from] ? 'Aus „' + esc(KT.lessons[c.from].nav || KT.lessons[c.from].title) + '“' : 'Kurz geprüft') + '</p><h2>' + esc(q.q) + '</h2>' + (q.ctx ? '<p class="st-ctx">' + esc(q.ctx) + '</p>' : '') + '<div class="st-opts" role="group" aria-label="Antworten">' + q.opts.map((o, k) => '<button type="button" class="st-opt' + (a !== undefined ? (k === q.a ? ' right' : k === a ? ' wrong' : ' dim') : '') + '" data-k="' + k + '"' + (a !== undefined ? ' disabled' : '') + '>' + esc(o) + '</button>').join('') + '</div><div class="st-why" aria-live="polite">' + (a !== undefined ? whyHTML(q, a) : '') + '</div></div>';
+  }
+  if (c.t === 'end' && c.review) {
+    const wr = [...new Set(S.wrong)]; const pct = S.asked ? S.right / S.asked : 0;
+    return artHTML('dice', 'small') + '<div class="st-txt st-end"><p class="st-kick">Ergebnis</p><p class="st-score big">' + S.right + ' von ' + S.asked + ' richtig</p><p class="st-p">' + (pct === 1 ? 'Alles sitzt. Die nächste Runde mischt neue Fragen.' : pct >= 0.7 ? 'Gut. Was danebenging, kommt in den nächsten Runden öfter dran.' : 'Was danebenging, kommt in den nächsten Runden öfter dran. Ein Blick in die Lektionen hilft.') + '</p>' + (wr.length ? '<p class="st-kick">Nochmal ansehen</p><ul class="st-links">' + wr.map((id) => '<li><button type="button" class="linkbtn" data-act="story" data-id="' + id + '">' + esc(KT.lessons[id].nav || KT.lessons[id].title) + '</button></li>').join('') + '</ul>' : '') + '<div class="st-acts"><button type="button" class="st-btn primary" data-act="again">Neue Runde</button><button type="button" class="st-btn" data-act="close">Fertig</button></div></div>';
   }
   if (c.t === 'end') {
     const take = c.take || autoTake(L);
@@ -9635,6 +9819,7 @@ function wire(el, c) {
   $$('.st-opt', el).forEach((b) => b.addEventListener('click', (e) => {
     e.stopPropagation(); if (S.ans[S.i] !== undefined) return;
     const q = c.t === 'quiz-order' ? c._q : c; const k = +b.dataset.k; S.ans[S.i] = k; S.asked++; if (k === q.a) S.right++;
+    if (c.key) { if (k === q.a) { if (weak[c.key]) { weak[c.key]--; if (!weak[c.key]) delete weak[c.key]; } } else { weak[c.key] = (weak[c.key] || 0) + 1; S.wrong.push(c.from); } store.set('weak', weak); }
     $$('.st-opt', el).forEach((x) => { const kk = +x.dataset.k; x.disabled = true; x.classList.add(kk === q.a ? 'right' : kk === k ? 'wrong' : 'dim'); });
     $('.st-why', el).innerHTML = whyHTML(q, k);
     // Auf kleinen Bildschirmen liegt die Erklärung sonst unter dem Rand
@@ -9642,7 +9827,7 @@ function wire(el, c) {
   }));
   $$('[data-act]', el).forEach((b) => b.addEventListener('click', (e) => {
     e.stopPropagation(); const a = b.dataset.act;
-    if (a === 'next') nextStory(); else if (a === 'again') { const id = S.id, seq = S.seq; open(id, seq); } else if (a === 'read') { const id = S.id; close(); if (location.hash !== '#' + id) location.hash = id; }
+    if (a === 'next') nextStory(); else if (a === 'again' && S.review) review(S.scope); else if (a === 'close') close(); else if (a === 'story') { const id = b.dataset.id; stopLoop(); open(id, null); } else if (a === 'again') { const id = S.id, seq = S.seq; open(id, seq); } else if (a === 'read') { const id = S.id; close(); if (location.hash !== '#' + id) location.hash = id; }
   }));
 }
 function mountStage(slot, phase, el, c) {
@@ -9691,11 +9876,12 @@ function renderKarten(main) {
 }
 // Klicks auf [data-story] überall in der App
 document.addEventListener('click', (e) => {
+  const rv = e.target.closest && e.target.closest('[data-review]'); if (rv && !(root && root.contains(rv))) { e.preventDefault(); review(rv.dataset.review === '' ? null : +rv.dataset.review); return; }
   const b = e.target.closest && e.target.closest('[data-story]'); if (!b || (root && root.contains(b))) return;
   e.preventDefault(); const id = b.dataset.story; const seq = b.dataset.seq !== undefined ? KT.chapters[+b.dataset.seq].items.filter(hasStory) : null;
   open(id, seq); if (b.dataset.at && S) { S.i = Math.min(+b.dataset.at, S.cards.length - 1); draw(1); }
 });
-window.KTStory = { open, close, meta, hasStory, ringsHTML, renderKarten, motif: (n) => motifSVG(n, false), seen: () => seen, savedCount: () => store.get('cards', []).length };
+window.KTStory = { open, close, review, reviewCount: (scope) => quizPool(scope === undefined ? null : scope).length, weakCount: () => Object.keys(weak).length, meta, hasStory, ringsHTML, renderKarten, motif: (n) => motifSVG(n, false), seen: () => seen, savedCount: () => store.get('cards', []).length };
 API.route();
 })();
 

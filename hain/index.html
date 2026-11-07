@@ -522,6 +522,8 @@ b, strong { font-weight: 600; }
 .fest-list .fb b { display: block; font-family: var(--f-ui); font-size: 16.5px; font-weight: 600; line-height: 1.25; }
 .fest-list .fb small { display: block; font-family: var(--f-ui); font-size: 14px; line-height: 1.35; color: var(--muted); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.more-btn { display: flex; margin: 14px auto 4px; }
+.more-btn .note { font-weight: 500; margin-left: 4px; }
 
 </style>
 </head>
@@ -3386,10 +3388,21 @@ function renderArchiv(q) {
   function draw() {
     const words = norm(st.q).trim().split(/\s+/).filter(Boolean);
     const xs = E.filter((e) => inScope(e, st.k) && (!st.a || e.art === st.a) && (!st.r || e.rel === st.r) && (!st.t || (e.tags || []).includes(st.t)) && (!st.m || KEEP.has(e.id)) && words.every((w) => e._s.includes(w)));
-    let out = ''; let cur = null; let buf = [];
-    const flush = () => { if (cur) out += '<section class="grp"><h2 class="grp-h"><a href="' + kultHref(cur) + '">' + esc(cur) + '</a><span class="cnt">' + buf.length + '</span></h2><div class="ents">' + buf.map((e) => entRow(e)).join('') + '</div></section>'; };
-    for (const e of xs) { if (e.kultur !== cur) { flush(); cur = e.kultur; buf = []; } buf.push(e); } flush();
-    $('#arList').innerHTML = out || '<p class="empty-note">' + (st.m && !KEEP.size ? 'Du hast noch nichts gemerkt. Auf jeder Eintragsseite gibt es dafür den Knopf „Merken“.' : 'Nichts gefunden. Versuch einen anderen Begriff oder setz die Filter zurück.') + '</p>';
+    const counts = {}; xs.forEach((e) => { counts[e.kultur] = (counts[e.kultur] || 0) + 1; });
+    const list = $('#arList'); let n = 0; let cur = null; const STEP = 60;
+    // Lange Trefferlisten in Etappen: erst 60 Einträge, dann auf Knopfdruck die nächsten
+    const more = () => {
+      const b = $('.more-btn', list); if (b) b.remove();
+      let h = ''; let grp = null; const flush = () => { if (grp) { h += grp.open ? '<section class="grp"><h2 class="grp-h"><a href="' + kultHref(grp.k) + '">' + esc(grp.k) + '</a><span class="cnt">' + counts[grp.k] + '</span></h2><div class="ents">' + grp.rows + '</div></section>' : '<div class="ents">' + grp.rows + '</div>'; } };
+      for (const e of xs.slice(n, n + STEP)) { if (!grp || e.kultur !== grp.k) { flush(); grp = { k: e.kultur, open: e.kultur !== cur, rows: '' }; cur = e.kultur; } grp.rows += entRow(e); }
+      flush(); n += STEP;
+      // Fortsetzung einer Gruppe: an deren letzte Liste anhängen statt eine neue Überschrift zu setzen
+      const tmp = document.createElement('div'); tmp.innerHTML = h; const firstNode = tmp.firstElementChild;
+      if (firstNode && firstNode.classList.contains('ents') && !firstNode.closest('.grp')) { const lastEnts = $$('.grp .ents', list).pop(); if (lastEnts) { while (firstNode.firstChild) lastEnts.appendChild(firstNode.firstChild); firstNode.remove(); } }
+      while (tmp.firstChild) list.appendChild(tmp.firstChild);
+      const left = xs.length - n; if (left > 0) { list.insertAdjacentHTML('beforeend', '<button type="button" class="btn secondary more-btn">' + Math.min(STEP, left) + ' weitere Einträge zeigen<span class="note"> (noch ' + left + ')</span></button>'); $('.more-btn', list).addEventListener('click', more); }
+    };
+    list.innerHTML = ''; if (xs.length) more(); else list.innerHTML = '<p class="empty-note">' + (st.m && !KEEP.size ? 'Du hast noch nichts gemerkt. Auf jeder Eintragsseite gibt es dafür den Knopf „Merken“.' : 'Nichts gefunden. Versuch einen anderen Begriff oder setz die Filter zurück.') + '</p>';
     $('#arCount').textContent = xs.length === E.length ? E.length + ' Einträge' : xs.length + ' von ' + E.length + ' Einträgen';
     const tg = $('#arTag'); tg.hidden = !st.t; if (st.t) { tg.innerHTML = 'Stichwort: ' + esc(st.t) + '<span aria-hidden="true"> ×</span>'; tg.setAttribute('aria-label', 'Stichwort ' + st.t + ' entfernen'); }
     $('#arReset').hidden = !(st.q || st.k || st.a || st.r || st.t || st.m); sync();
@@ -3423,9 +3436,12 @@ const TOOLS = [
   { id: 'quellen', icon: 'quellen', title: 'Quellenkunde', short: 'Wer hat was wann aufgeschrieben?', desc: 'Wer hat was wann aufgeschrieben? Die Quellenlage jeder Kultur und wie man ihr misstraut.' },
 ];
 function renderWerkstatt() {
-  const list = TOOLS.map((t) => { const g = GENS[t.id] || t; return '<li><a href="#' + t.id + '">' + ICON[g.icon] + '<span><b>' + esc(g.title) + '</b><span>' + esc(g.desc) + '</span></span>' + ICON.chevR + '</a></li>'; }).join('');
-  main.innerHTML = '<div class="page"><header class="hub-head"><h1 class="h1">Werkstatt</h1><p class="lead">Werkzeuge für die Arbeit am Manuskript: Generatoren, die aus echten Riten, Göttern und Sagen neue Mischungen ziehen, und alles, um Quellen richtig zu lesen.</p></header><ul class="tools">' + list +
-    '<li><a href="https://timmisg.github.io/kriegstisch/" target="_blank" rel="noopener">' + ICON.ext + '<span><b>Der Kriegstisch</b><span>Die Schwester-App: Taktik vor dem Schießpulver, legendäre Manöver und die Ränke im Hintergrund.</span></span>' + ICON.chevR + '</a></li></ul></div>';
+  const row = (t) => { const g = GENS[t.id] || t; return '<a href="#' + t.id + '"><span class="ti">' + ICON[g.icon] + '</span><span><b>' + esc(g.title) + '</b><small>' + esc(g.desc) + '</small></span>' + ICON.chevR + '</a>'; };
+  const nSage = E.filter((e) => (e.tags || []).includes('Sage')).length;
+  main.innerHTML = '<div class="page"><header class="hub-head"><h1 class="h1">Werkstatt</h1><p class="lead">Werkzeuge für die Arbeit am Manuskript: Generatoren, die aus echten Riten, Göttern und Sagen neue Mischungen ziehen, und alles, um Quellen richtig zu lesen.</p></header>' +
+    '<section class="sect"><h2 class="h2">Mischen</h2><div class="tool-grid">' + TOOLS.filter((t) => GENS[t.id]).map(row).join('') + '</div></section>' +
+    '<section class="sect"><h2 class="h2">Nachschlagen</h2><div class="tool-grid">' + TOOLS.filter((t) => !GENS[t.id]).map(row).join('') + (nSage ? '<a href="#archiv?t=Sage"><span class="ti">' + ICON.sage + '</span><span><b>Sagenhafte Riten</b><small>' + nSage + ' Riten und Bräuche, die nur aus Sagen, Dichtung oder feindseligen Berichten bekannt sind.</small></span>' + ICON.chevR + '</a>' : '') + '<a href="#archiv?m=1"><span class="ti">' + ICON.keep + '</span><span><b>Merkliste</b><small>' + (KEEP.size === 1 ? '1 gemerkter Eintrag' : KEEP.size + ' gemerkte Einträge') + '</small></span>' + ICON.chevR + '</a></div></section>' +
+    '<section class="sect"><h2 class="h2">Schwester-App</h2><a class="sister" href="https://timmisg.github.io/kriegstisch/" target="_blank" rel="noopener"><span class="si">' + motif(SHIELD) + '</span><span><b>Der Kriegstisch</b><small>Taktik vor dem Schießpulver, legendäre Manöver und die Ränke im Hintergrund.</small></span>' + ICON.ext + '</a></section></div>';
   document.title = 'Werkstatt | Der Hain';
 }
 function renderGen(kind) {
