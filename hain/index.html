@@ -10003,6 +10003,74 @@ H.stories['th:sagenhaft'] = {
 
 })();
 
+/* ---- stories-themen-4.js ---- */
+/* Der Hain – handgeschriebene Themen-Stories: Hexen, Weissagung */
+(function () {
+const H = window.HAIN; H.stories = H.stories || {};
+
+// ===== Hexen & Hexenverfolgung: von den Zauberinnen der Dichtung bis zur Entschuldigung bei den Opfern =====
+H.stories['th:hexen'] = {
+  take: [
+    'Das Bild der Hexe entstand erst im 15. Jahrhundert; die großen Verfolgungen fielen in die Zeit zwischen etwa 1560 und 1660.',
+    'Den Sabbat kennt man nur aus Geständnissen, und unter der Folter nannten Angeklagte immer neue Namen.',
+    'Bis heute werden Menschen als Hexen getötet, während Parlamente die Opfer von einst rehabilitieren.',
+  ],
+  cards: [
+    { t: 'cover', title: 'Hexen & Hexenverfolgung', sub: 'Ein Sabbat, den es nur in Geständnissen gab, ein Brief aus dem Hexengefängnis und eine späte Entschuldigung', when: 'von Kirke bis zu den Hexenjagden der Gegenwart', art: 'hexen' },
+    { t: 'text', h: 'Zauberinnen der Dichtung', p: 'Zauberinnen kennt die antike Dichtung: Kirke verwandelt Männer in Schweine, Thessalierinnen holen angeblich den Mond vom Himmel, Lucans Erichtho lässt einen Toten die Zukunft sagen. Bei Horaz ist Canidia halb Grauen, halb Gespött.', art: 'sage' },
+    { t: 'entry', id: 'hb-canon-episcopi', p: 'Dieses Kirchengesetz, um 906 aufgezeichnet, erklärte die Nachtfahrt mit der Göttin Diana zum Traum, den der Teufel eingibt. Schon Karl der Große hatte den Sachsen bei Todesstrafe verboten, angebliche Hexen zu verbrennen.' },
+    { t: 'text', h: 'Aus Zauberei wird Hexerei', p: 'Im 15. Jahrhundert entstand das Bild der Hexe: Es verband Schadenzauber mit Teufelspakt, Flug und Sabbat. Die meisten Prozesse fielen zwischen etwa 1560 und 1660; in Europa starben wohl 40 000 bis 60 000 Menschen, die meisten von ihnen Frauen.' },
+    { t: 'quiz', q: 'Stimmt das: Im Mittelalter verbrannte die Kirche massenhaft Hexen?', opts: ['Ja, das Mittelalter war die Zeit der Scheiterhaufen', 'Nein, die großen Verfolgungen kamen erst später'], a: 1, why: 'Karl der Große bestrafte sogar den, der eine angebliche Hexe verbrannte, und das Kirchenrecht hielt die Nachtfahrt für einen Traum. Die großen Verfolgungen kamen erst nach 1560, meist vor weltlichen Gerichten.' },
+    { t: 'entry', id: 'hb-sabbat', p: 'Um 1430 entstand in den Westalpen die Vorstellung, Hexen träfen sich nachts beim Teufel zu Mahl, Tanz und Kindermord. Vieles gaben die Fragen der Richter im Verhör vor; dass ein solches Treffen je stattfand, belegt keine unabhängige Quelle.' },
+    { t: 'entry', id: 'hp-bamberg', p: 'Der gefolterte Kanzler nannte 1628 den Bürgermeister Johannes Junius. Aus dem Drudenhaus schrieb Junius seiner Tochter Veronika: „wer in daß hauß kompt, der müß ein drutner werden“, also ein Hexer. Im August wurde er hingerichtet.' },
+    { t: 'list', h: 'Stimmen gegen die Jagd', kind: 'konter', items: [
+      'Johann Weyer, Arzt, 1563: Kranke alte Frauen brauchten Ärzte, keine Henker.',
+      'Cornelius Loos, Theologe, 1592: Die Prozesse machten aus Blut Gold. Er musste widerrufen.',
+      'Alonso de Salazar, Inquisitor, 1611: fand bei fast 2000 Selbstbezichtigten keinen Beweis.',
+      'Friedrich Spee, Jesuit, 1631 anonym: Unter der Folter gesteht jeder alles.',
+      'Christian Thomasius, Jurist, 1701: verlangte das Ende aller Hexenprozesse.',
+    ] },
+    { t: 'quiz', q: 'Warum wuchs eine Hexenjagd wie in Bamberg immer weiter?', opts: ['Das Kirchenrecht verlangte es seit 906', 'Nachbarn hatten den Sabbat beobachtet', 'Gefolterte nannten immer neue Namen'], a: 2, why: 'Unter der Folter nannten Angeklagte Mitschuldige, und jeder Name konnte die nächste Verhaftung bringen. Spee warnte, gehe es so weiter, ende die Jagd erst, wenn alle verbrannt seien.' },
+    { t: 'fest', id: 'he-walpurgis', p: 'In der Nacht zum 1. Mai sollten die Hexen auf dem Brocken tanzen, belegt erst ab 1668; Goethes „Faust“ machte die Nacht berühmt. Im Dorf hielt man sie mit Feuer, Peitschenknall und Glocken fern. Ein heidnisches Fest dahinter ist unbelegt.' },
+    { t: 'quiz', q: 'Was hält die Forschung heute davon?', ctx: '1921 erklärte Margaret Murray die Verfolgten zu Anhängern einer heidnischen Fruchtbarkeitsreligion.', opts: ['Widerlegt: Die Treffen gibt es nur in Geständnissen', 'Bewiesen: Die Akten schildern die Treffen', 'Offen: Walpurgis ist ein heidnisches Fest'], a: 0, why: 'Murray nahm Verhöre beim Wort. Seit den 1970ern gilt die These als widerlegt; Wicca machte sie zur Gründungserzählung.' },
+    { t: 'entry', id: 'hv-gegenwart', p: 'Bis heute werden Menschen als Hexen getötet, meist nach Krankheit, Tod oder Missernte. Ein Netzwerk zählte in zehn Jahren mindestens 20 000 Opfer in rund 50 Ländern; besonders gefährdet sind alte Frauen, Kinder und Menschen mit Albinismus.' },
+    { t: 'entry', id: 'hv-rehabilitierung', p: 'Massachusetts hob Salems Urteile ab 1711 auf, das letzte erst 2022. Im selben Jahr entschuldigte sich Schottlands Erste Ministerin Nicola Sturgeon im Parlament: „Sie waren keine Hexen, sie waren Menschen, und ganz überwiegend Frauen.“' },
+    { t: 'novel', p: 'Erzähl die Hexenjagd deiner Welt als Verfahren, nicht als Zauberkampf: Nach einem Hagel fragt jemand, wem das Feld der Witwe zufällt, der Richter kennt die Antworten vor dem Verhör, und ein Brief aus dem Kerker zeigt, was in keiner Akte steht.' },
+  ],
+};
+
+// ===== Weissagung & Orakel: von den Orakeln der Kulturen über Sterne, Karten und Wahrsagekünste zu den Weissagungen nach dem Ereignis =====
+H.stories['th:weissagung'] = {
+  take: [
+    'Orakel fragten Götter und Ahnen durch Menschen, Knochen, Lebern oder Vögel; Ifá deutet bis heute Zeichen mit gelernten Versen.',
+    'Tarot und Lenormand waren zuerst Spiele; zum Orakel machten sie eine erfundene Herkunft und ein berühmter Name.',
+    'Viele Weissagungen stimmen nur bis zu dem Jahr, in dem sie entstanden; eine gescheiterte beendet den Glauben nicht immer.',
+  ],
+  cards: [
+    { t: 'cover', title: 'Weissagung & Orakel', sub: 'Knochen, die knacken, Karten, die zuerst ein Spiel waren, und Weissagungen, die erst hinterher stimmten', when: 'von den Orakelknochen der Shang bis zum Zeitungshoroskop', art: 'weissagung' },
+    { t: 'list', h: 'Wie man Götter und Ahnen fragte', items: [
+      'Delphi: Die Pythia, über fünfzig und im Mädchenkleid, sprach für Apollon, vielleicht von Erdgasen berauscht.',
+      'China: Der Shang-König fragte die Ahnen; Glut ließ Orakelknochen springen, Frage und Antwort ritzte man ein.',
+      'Babylon: Der Schauer schlachtete ein Schaf und las die Antwort von Schamasch und Adad in der Leber.',
+      'Rom: Ein Augur steckte mit dem Krummstab ein Himmelsfeld ab und wartete auf die Vögel.',
+    ] },
+    { t: 'entry', id: 'af-ifa', p: 'Mit sechzehn Palmnüssen und Strichen im Pulver auf seinem Brett findet der Babalawo eines von 256 Zeichen. Zu jedem gehören Verse, in denen der Ratsuchende seine Lage erkennt. Ifá ist eine lebende Religion; die Ausbildung dauert Jahre.' },
+    { t: 'quiz', q: 'Was unterscheidet den Babalawo von der Pythia?', opts: ['Er spricht in Trance für einen Gott', 'Er deutet Zeichen mit gelernten Versen', 'Er liest die Antwort aus einer Schafsleber'], a: 1, why: 'Die Pythia sprach für Apollon, ob berauscht oder nicht. Ifá verlangt keine Trance, sondern Jahre des Lernens: Der Babalawo kennt die Verse zu den Zeichen, und der Ratsuchende erkennt darin seine Lage.' },
+    { t: 'entry', id: 'wa-zeitungshoroskop', p: 'Zwölf gleiche Zeichen legten Babylons Gelehrte um 400 v. Chr. fest; das Horoskop für alle begann 1930 im Londoner Sunday Express. Warum es zu passen scheint, zeigte 1948 ein Test: Studenten fanden denselben Text im Schnitt sehr treffend.' },
+    { t: 'entry', id: 'wa-court-de-gebelin', p: 'Tarot entstand im 15. Jahrhundert in Norditalien als Kartenspiel. 1781 erklärte der Pfarrer Court de Gébelin es ohne Beleg zum Buch ägyptischer Priester, und ab 1783 schrieb der Pariser Wahrsager Etteilla Bücher über das Wahrsagen damit.' },
+    { t: 'quiz', q: 'Was haben Lenormand und Tarot gemeinsam?', ctx: 'Die 36 Lenormandkarten kommen aus einem Nürnberger Würfelspiel um 1799; den Namen bekamen sie später.', opts: ['Beide stammen aus Ägypten', 'Beide erfand eine Wahrsagerin', 'Beide waren zuerst Spiele'], a: 2, why: 'Tarot war ein Kartenspiel, Lenormand ein Würfelspiel. Zum Orakel machten sie erst eine erfundene Herkunft und ein berühmter Name.' },
+    { t: 'entry', id: 'wk-geomantie', p: 'Sechzehn Reihen Punkte in den Sand, ohne zu zählen: Gerade oder ungerade ergibt Figuren wie Populus oder Carcer. Im 12. Jahrhundert kam die Kunst aus dem Arabischen nach Europa; dieselben Figuren kennen Ifá und Sikidy auf Madagaskar.' },
+    { t: 'entry', id: 'wk-chiromantie', p: 'Um 1160 steht das Handlesen in einem Psalter aus Canterbury, zwischen theologischen Kommentaren. Später hängte man die Kunst den Roma an: Ein englisches Gesetz von 1530 wies sie aus, weil sie vorgäben, aus der Hand die Zukunft zu lesen.' },
+    { t: 'fest', id: 'wk-bleigiessen', p: 'Blei im Löffel über der Kerze schmelzen, ins Wasser gießen, die Form deuten: 1787 sollte sie in der Andreasnacht das Handwerkszeug des künftigen Bräutigams zeigen. Heute gießt man zu Silvester, seit 2018 ohne das Nervengift Blei.' },
+    { t: 'text', h: 'Weissagungen nach dem Ereignis', p: 'Die Papstweissagung des Malachias, angeblich aus dem 12. Jahrhundert, trifft bis um 1590 verblüffend gut, danach kaum noch. Die Lehninsche Weissagung, angeblich von 1300, stimmt bis 1688. Nostradamus nennt fast nie ein Datum; er passt immer erst hinterher.', art: 'schrift' },
+    { t: 'quiz', q: 'Was verrät eine Weissagung, die bis zu einem Jahr genau stimmt und dann nicht mehr?', opts: ['Wann sie wirklich geschrieben wurde', 'Dass der Seher in diesem Jahr starb', 'Dass sich die Zukunft geändert hat'], a: 0, why: 'Wer nach dem Ereignis schreibt, trifft genau bis zur eigenen Gegenwart. Die Papstliste ist erst seit 1587 bezeugt, die Lehninschen Verse entstanden um 1690; schon der Gottesname „Jehova“ verrät das 17. Jahrhundert.' },
+    { t: 'entry', id: 'wk-grosse-enttaeuschung', p: 'Am 22. Oktober 1844 erwarteten Zehntausende die Wiederkunft Christi, aus dem Buch Daniel errechnet. „Ich wartete den ganzen Dienstag, und der liebe Jesus kam nicht“, schrieb einer. Daraus wuchs eine Kirche mit über 20 Millionen Mitgliedern.' },
+    { t: 'novel', p: 'Erfinde für deine Welt ein eigenes Zeichensystem, statt eine lebende Praxis wie Ifá zu kopieren: sechzehn Figuren, ein Vers zu jeder, Jahre der Lehre. Dazu eine alte Weissagung, die genau bis zu dem Jahr stimmt, in dem jemand sie fand.' },
+  ],
+};
+
+})();
+
 /* ---- app.js ---- */
 /* =====================================================================
    Der Hain – Oberfläche: Rahmen, Kulturen, Jahreskreis, Archiv, Werkstatt
