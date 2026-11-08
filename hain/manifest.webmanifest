@@ -4,7 +4,7 @@
   "short_name": "Hain",
   "lang": "de",
   "dir": "ltr",
-  "description": "Archiv der Mythen, Götter, Wesen, Riten, Opfer und Feste aus aller Welt, mit Quellen, Verlässlichkeit und Hinweisen für den Roman, dazu ein Jahreskreis der Feste.",
+  "description": "Archiv der Mythen, Götter, Wesen, Riten und Feste aus aller Welt, dazu Themen von Alchemie und Magie bis zu Würfel- und Kartenspielen, mit Quellen, Verlässlichkeit und Hinweisen für den Roman.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

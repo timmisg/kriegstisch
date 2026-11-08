@@ -1,5 +1,5 @@
 /* Service Worker des Hains: legt alle Dateien beim ersten Start ab, danach läuft die App offline. */
-const CACHE = 'hain-21392bad2736';
+const CACHE = 'hain-104ca0464ef8';
 const ASSETS = [
   "./",
   "fonts/OFL-BarlowCondensed.txt",
